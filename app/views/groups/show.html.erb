@@ -7,7 +7,8 @@
 
 <p>
   <strong>Icon:</strong>
-  <%= @group.icon %>
+  <% @icon = @group.icon.html_safe %>
+  <td><%= @icon %></td>
 </p>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |

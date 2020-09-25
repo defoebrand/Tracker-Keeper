@@ -1,0 +1,59 @@
+My assigned items
+My unassigned items
+All groups
+ - shows any user's items assigned per group
+
+Signup / Signin Splash
+ - User login with username only
+User Profile
+?Collapsible menu?
+ - My assigned items
+ 	- Total amount displayed at top (reset per day)
+	- List of items with name / amount / time / icon
+		- sort by most recent
+	- Links to show page
+	- 'Add New' button
+ - My unassigned items
+ 	- Total amount displayed at top (reset per day)
+	- List of items with name / amount / time
+		- sort by most recent
+	- Links to show page
+	- 'Add New' button
+ - All groups
+	- Displayed alphabetically
+	- Displays icon / name / creation date
+	- Links to show page
+	- 'Create New' button
+ - Upon Item selection
+	- Icon
+	- Name
+ 	- Amount
+	- DateTime
+	- Edit / Destroy
+ - Upon group selection
+	- Displays all transactions assigned to that group
+	- Includes same information as my items PLUS author name
+ - Add New item
+	- Text field for item name
+	- Text field for item amount
+	- Selection for icon
+ - Create New
+ 	- Text field for input name
+	- Selection field for icon
+
+ = ADD MIN. OF ONE ADDITIONAL FEATURE =
+
+DATABASES
+User
+ - Name
+
+Transaction
+ - AuthorId
+ - Name
+ - Amount
+ - CreatedAt
+
+Group
+ - Name
+ - Icon
+ - CreatedAt
