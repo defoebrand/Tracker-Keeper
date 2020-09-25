@@ -1,0 +1,38 @@
+<%# form_with(model: session, local: true) do |form| %>
+  <%# if session.errors.any? %>
+    <!-- <div id="error_explanation"> -->
+      <!-- <h2><%# pluralize(session.errors.count, "error") %> prohibited this session from being saved:</h2> -->
+
+      <!-- <ul> -->
+        <%# session.errors.full_messages.each do |message| %>
+          <!-- <li><%# message %></li> -->
+        <%# end %>
+      <!-- </ul> -->
+    <!-- </div> -->
+  <%# end %>
+
+  <!-- <div class="actions"> -->
+    <%# form.submit %>
+  <!-- </div> -->
+<%# end %>
+
+
+<p id=”alert”><%= alert %></p>
+<h1>Login</h1>
+
+<%= form_tag sessions_path do |form| %>
+  <div class=”field”>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+  </div>
+  <!-- <div class=”field”> -->
+    <%# label_tag :email %>
+    <%# email_field_tag :email %>
+  <!-- </div> -->
+  <div class=”actions”>
+    <%= submit_tag('login') %>
+  </div>
+<% end %>
+<br>
+
+  <%= link_to "Sign_up", new_user_path %>

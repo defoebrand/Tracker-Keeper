@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
-
+<%= session[:user_id] %>
 <table>
   <thead>
     <tr>
@@ -25,3 +25,5 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+<%= link_to 'Log in', new_session_path %>
+<%= link_to 'Log Out', logout_path %>
