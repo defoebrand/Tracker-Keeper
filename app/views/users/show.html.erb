@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Log Out', logout_path %>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
-
+<!-- <p>My Transactions</p> -->
+<%= link_to 'Transactions', transactions_path %>
+<!-- <p>Groups</p> -->
+<%= link_to 'Groups', groups_path %>
+<br />
+<br />
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', user_path %>
