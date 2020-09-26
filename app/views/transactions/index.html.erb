@@ -2,14 +2,15 @@
 
 <%= link_to 'Home', user_path(session[:user_id]) %>
 <h1>Transactions</h1>
-
+<%=  %>
 <table>
   <thead>
     <tr>
       <th>User</th>
       <th>Name</th>
       <th>Amount</th>
-      <th colspan="3"></th>
+      <th>Icon</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -19,6 +20,11 @@
         <td><%= transaction.user_id %></td>
         <td><%= transaction.name %></td>
         <td><%= transaction.amount %></td>
+        <% if transaction.group %>
+        <td><%= transaction.group.icon.html_safe %></td>
+        <% else %>
+        <td></td>
+        <% end %>
         <td><%= link_to 'Show', transaction %></td>
         <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
         <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
