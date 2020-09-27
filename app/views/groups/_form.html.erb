@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<div class="container">
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -21,7 +21,21 @@
     <%= form.text_field :icon %>
   </div>
 
+  <div class="field">
+    <% @group_icons = [] %>
+    <% @groups.each do |x| %>
+    <% @group_icons << x.icon unless @group_icons.include?(x.icon) %>
+    <% end %>
+    <%# @group_icons.class %>
+    <% @group_icons.each do |icon| %>
+      <%= form.radio_button :icon, icon %>
+      <%= icon.html_safe %>
+      <p></p>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
+</div>
 <% end %>

@@ -1,27 +1,7 @@
 <p id="notice"><%= notice %></p>
+<main class="container">
 
-<h1>Users</h1>
-<%# session[:user_id] %>
-<!-- <table> -->
-  <!-- <thead> -->
-    <!-- <tr> -->
-      <!-- <th>Name</th> -->
-      <!-- <th colspan="3"></th> -->
-    <!-- </tr> -->
-  <!-- </thead> -->
-
-  <!-- <tbody> -->
-    <%# @users.each do |user| %>
-      <!-- <tr> -->
-        <!-- <td><%# user.name %></td> -->
-        <!-- <td><%# link_to 'Show', user %></td> -->
-        <!-- <td><%# link_to 'Edit', edit_user_path(user) %></td> -->
-        <!-- <td><%# link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      <!-- </tr> -->
-    <%# end %>
-  <!-- </tbody>
-</table> -->
-
+<h1>Tracker Keeper</h1>
 <br>
 
 <% if session[:user_id] %>
@@ -30,3 +10,7 @@
 <%= link_to 'New User', new_user_path %>
 <%= link_to 'Log in', new_session_path %>
 <% end %>
+
+
+
+</main>

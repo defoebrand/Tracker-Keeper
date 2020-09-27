@@ -3,4 +3,4 @@
 <%= render 'form', transaction: @transaction %>
 
 <%= link_to 'Show', @transaction %> |
-<%= link_to 'Back', transactions_path %>
+<%= link_to 'Back', user_path(session[:user_id]) %>

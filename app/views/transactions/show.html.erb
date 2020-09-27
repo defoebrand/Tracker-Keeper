@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
+<div>
 
 <p>
   <strong>User:</strong>
-  <%= @transaction.user_id %>
+  <%= @transaction.author.name %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Transaction Name:</strong>
   <%= @transaction.name %>
 </p>
 
@@ -15,5 +16,18 @@
   <%= @transaction.amount %>
 </p>
 
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
+<p>
+  <strong>Icon:</strong>
+  <% if @transaction.group %>
+    <%= @transaction.group.icon.html_safe %>
+  <% end %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @transaction.created_at %>
+</p>
+</div>
+<div>
+  <%= link_to 'Edit', edit_transaction_path(@transaction) %> |  <%= link_to 'Destroy', @transaction, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to 'Back', user_path(session[:user_id]) %>
+</div>

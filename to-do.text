@@ -1,3 +1,11 @@
+
+* in group declaration, add type of number
+
+
+
+* change user_id to authorId in transaction table
+
+
 My assigned items
 My unassigned items
 All groups

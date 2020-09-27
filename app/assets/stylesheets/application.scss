@@ -1,0 +1,80 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+:root {
+  --background: #7d5e82;
+  --font: #053225;
+  --link: #f7f7f2;
+  --hover: #9c914f;
+  --visited: #e4572e;
+}
+
+* {
+  box-sizing: border-box;
+  // border: 1px solid #e4572e;
+}
+
+html {
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background: var(--background);
+  position: fixed;
+  top: 15px;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+h1 {
+  color: var(--font);
+  font-size: 7em;
+  // width: max-content;
+  line-height: 100px;
+  // height: 100px;
+  margin: 15px;
+  padding: 0;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+a {
+  color: var(--link);
+  font-weight: bold;
+  margin: 10px;
+}
+
+a:hover {
+  color: var(--hover);
+}
+
+a:visited {
+  color: var(--visited);
+}
+
+#notice {
+  color: var(--hover);
+}

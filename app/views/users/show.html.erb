@@ -1,15 +1,94 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Log Out', logout_path %>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="user_buttons">
+  <%= link_to 'Account Settings', edit_user_path(@user) %>
+  <%= link_to 'Log Out', logout_path %>
+</div>
+<h2>
+  <%= "Hello #{@user.name}! Here are your tracked transactions!" %>
+</h2>
 <!-- <p>My Transactions</p> -->
-<%= link_to 'Transactions', transactions_path %>
+<%# link_to 'Transactions', transactions_path %>
+<% @total_assigned = [] %>
+<% @total_unassigned = [] %>
+<% @transactions.each{|x| x.group_id ?  @total_assigned << x.amount : @total_unassigned << x.amount } %>
+<h3>Assigned Transactions <%= @total_assigned.sum %></h3>
+<%=  %>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Icon</th>
+      <th>Created</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
+    <% if transaction.group_id %>
+        <tr>
+          <td><%= transaction.user_id %></td>
+          <td><%= transaction.name %></td>
+          <td><%= transaction.amount %></td>
+          <% if transaction.group %>
+          <td><%= transaction.group.icon.html_safe %></td>
+          <% else %>
+          <td></td>
+          <% end %>
+          <td><%= transaction.created_at %></td>
+          <td><%= link_to 'Show', transaction %></td>
+          <td><%# link_to 'Edit', edit_transaction_path(transaction) %></td>
+          <td><%# link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Unassigned Transactions <%= @total_unassigned.sum %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Icon</th>
+      <th>Created</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
+    <% unless transaction.group_id %>
+        <tr>
+          <td><%= transaction.user_id %></td>
+          <td><%= transaction.name %></td>
+          <td><%= transaction.amount %></td>
+          <% if transaction.group %>
+          <td><%= transaction.group.icon.html_safe %></td>
+          <% else %>
+          <td></td>
+          <% end %>
+          <td><%= transaction.created_at %></td>
+          <td><%= link_to 'Show', transaction %></td>
+          <td><%# link_to 'Edit', edit_transaction_path(transaction) %></td>
+          <td><%# link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
 <!-- <p>Groups</p> -->
-<%= link_to 'Groups', groups_path %>
 <br />
-<br />
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', user_path %>
+<%= link_to 'New Transaction', new_transaction_path %>
+<div>
+  <%= link_to 'Groups', groups_path %>
+   |
+  <%= link_to 'Back', user_path %>
+</div>

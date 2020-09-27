@@ -9,7 +9,9 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1
   # GET /transactions/1.json
-  def show; end
+  def show
+    @groups = Group.all
+  end
 
   # GET /transactions/new
   def new
@@ -18,7 +20,9 @@ class TransactionsController < ApplicationController
   end
 
   # GET /transactions/1/edit
-  def edit; end
+  def edit
+    @groups = Group.all
+  end
 
   # POST /transactions
   # POST /transactions.json
@@ -56,7 +60,7 @@ class TransactionsController < ApplicationController
   def destroy
     @transaction.destroy
     respond_to do |format|
-      format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
+      format.html { redirect_to user_path(session[:user_id]), notice: 'Transaction was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

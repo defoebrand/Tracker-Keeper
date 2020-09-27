@@ -1,15 +1,31 @@
 <p id="notice"><%= notice %></p>
 
+<% @total = [] %>
+<% @group.transactions.each{|x| @total << x.amount} %>
+
+<div class="container">
 <p>
   <strong>Name:</strong>
   <%= @group.name %>
-</p>
+<!-- </p>
 
-<p>
+<p> -->
   <strong>Icon:</strong>
   <% @icon = @group.icon.html_safe %>
-  <td><%= @icon %></td>
+  <%= @icon %>
+  <strong>Amount:</strong>
+  <%= @total.sum %>
 </p>
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+</div>
+<% @group.transactions.each do |transaction| %>
+<% if transaction.group_id == @group.id %>
+    <%= transaction.name %>
+    <%= transaction.amount %>
+    <%= transaction.author.name %>
+    <p></p>
+  <% end %>
+<% end %>
+<div>
+  <%= link_to 'Edit', edit_group_path(@group) %>   |
+  <%= link_to 'Back', groups_path %>
+</div>
