@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    @groups = Group.all
 
     respond_to do |format|
       if @group.save
