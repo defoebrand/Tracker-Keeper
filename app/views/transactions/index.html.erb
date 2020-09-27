@@ -9,6 +9,7 @@
       <th>User</th>
       <th>Name</th>
       <th>Amount</th>
+      <th>Type</th>
       <th>Icon</th>
       <th colspan="4"></th>
     </tr>
@@ -20,6 +21,7 @@
         <td><%= transaction.user_id %></td>
         <td><%= transaction.name %></td>
         <td><%= transaction.amount %></td>
+        <td><%= transaction.amount_type %></td>
         <% if transaction.group %>
         <td><%= transaction.group.icon.html_safe %></td>
         <% else %>

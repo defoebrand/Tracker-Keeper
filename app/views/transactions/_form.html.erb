@@ -13,13 +13,18 @@
 
   <%= form.hidden_field :user_id, :value => session[:user_id] %>
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, 'Name of Transaction:' %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :amount %>
+    <%= form.label :amount, 'Amount of Transaction:' %>
     <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount_type, 'Amount Type:' %>
+    <%= form.text_field :amount_type %>
   </div>
 
   <div class="icon-box">

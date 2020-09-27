@@ -13,6 +13,8 @@
       <th></th>
       <th>Amount:</th>
       <th></th>
+      <th>Type:</th>
+      <th></th>
       <th>Date:</th>
       <th colspan="3"></th>
     </tr>
@@ -27,6 +29,8 @@
         <% end %>
         <td></td>
         <td><%= @transaction.amount %></td>
+        <td></td>
+        <td><%= @transaction.amount_type %></td>
         <td></td>
         <td><%= @transaction.created_at.strftime("%d %b. %Y") %></td>
       </tr>

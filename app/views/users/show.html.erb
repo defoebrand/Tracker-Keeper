@@ -8,14 +8,30 @@
 <% @total_assigned = [] %>
 <% @total_unassigned = [] %>
 <% @transactions.each{|x| x.group_id ?  @total_assigned << x.amount : @total_unassigned << x.amount } %>
-<h4>Assigned Transactions - <%= @total_assigned.sum %></h4>
-<%=  %>
+<h4>Assigned Transactions</h4>
+<!-- <h4>Assigned Transactions - <%# @total_assigned.sum %></h4> -->
+<% @types = []  %>
+<% @transactions.each{|x| @types << x.amount_type if x.amount_type} %>
+<% @type_sums = {} %>
+<% @transactions.each{|x| @type_sums[x.amount_type] = 0 unless x.group_id == nil} %>
+<% @transactions.each{|x| @type_sums[x.amount_type] += x.amount unless x.group_id == nil} %>
+  <div>
+  <% @type_sums.each do |x| %>
+    <span><%= x[0] == nil ? 'Unassigned' : x[0] %>: <%= x[1] %><%= ' | ' unless x[0] == @type_sums.keys.last %>  </span>
+  <% end %>
+</div>
+<br>
 <table>
   <thead>
     <tr>
       <th>Icon</th>
+      <td></td>
       <th>Name</th>
+      <td></td>
       <th>Amount</th>
+      <td></td>
+      <th>Type</th>
+      <td></td>
       <th>Created</th>
       <th colspan="4"></th>
     </tr>
@@ -26,8 +42,13 @@
     <% if transaction.group_id %>
         <tr>
           <td><%= link_to transaction.group.icon.html_safe, transaction.group %></td>
+          <td></td>
           <td><%= link_to transaction.name, transaction %></td>
+          <td></td>
           <td><%= transaction.amount %></td>
+          <td></td>
+          <td><%= transaction.amount_type %></td>
+          <td></td>
           <td><%= transaction.created_at.strftime("%d %b. %Y") %></td>
         </tr>
       <% end %>
@@ -35,7 +56,15 @@
   </tbody>
 </table>
 
-<h4>Unassigned Transactions - <%= @total_unassigned.sum %></h4>
+<h4>Unassigned Transactions</h4>
+<!-- <h4>Unassigned Transactions - <%# @total_unassigned.sum %></h4> -->
+<% @type_sums = {} %>
+<% @transactions.each{|x| @type_sums[x.amount_type] = 0 if x.group_id == nil} %>
+<% @transactions.each{|x| @type_sums[x.amount_type] += x.amount if x.group_id == nil} %>
+  <div>
+  <% @type_sums.each do |x| %>
+    <span><%= x[0] == nil ? 'Unassigned' : x[0] %>: <%= x[1] %><%= ' | ' unless x[0] == @type_sums.keys.last %> </span>
+  <% end %>
 
 <table>
   <thead>
@@ -43,6 +72,7 @@
       <th>Icon</th>
       <th>Name</th>
       <th>Amount</th>
+      <th>Type</th>
       <th>Created</th>
       <th colspan="4"></th>
     </tr>
@@ -55,6 +85,7 @@
           <td><%= link_to 'Assign', edit_transaction_path(transaction) %> </td>
           <td><%= link_to transaction.name, transaction %></td>
           <td><%= transaction.amount %></td>
+          <td><%= transaction.amount_type %></td>
           <td><%= transaction.created_at.strftime("%d %b. %Y") %></td>
         </tr>
       <% end %>

@@ -5,7 +5,11 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     if session[:user_id]
-      @transactions = Transaction.all
+      if session[:user_id] == 1
+        @transactions = Transaction.all
+      else
+        redirect_to user_path(session[:user_id])
+      end
     else
       redirect_to root_path
     end
@@ -90,6 +94,6 @@ class TransactionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def transaction_params
-    params.require(:transaction).permit(:user_id, :name, :amount, :group_id)
+    params.require(:transaction).permit(:user_id, :name, :amount, :amount_type, :group_id)
   end
 end
