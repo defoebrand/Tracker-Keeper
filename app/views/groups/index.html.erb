@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Home', user_path(session[:user_id]) %>
+
 <h1>Groups</h1>
 
 <table>
@@ -17,13 +17,16 @@
     <% @groups.sort_by{|x|x.name.downcase}.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <% @icon = group.icon.html_safe %>
-        <td><%= @icon %></td>
-        <td><%= group.created_at %></td>
+        <%# @icon = group.icon.html_safe %>
+        <!-- <td><%# @icon %></td> -->
+        <td><%= link_to group.icon.html_safe, group %></td>
+        <td><%= group.created_at.strftime("%d %b. %Y") %></td>
         <!-- <td><%# group.icon %></td> -->
-        <td><%= link_to 'Show', group %></td>
+        <!-- <td><%# link_to 'Show', group %></td> -->
+        <% if session[:user_id] == 1 %>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

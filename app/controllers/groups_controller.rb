@@ -20,7 +20,9 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit; end
+  def edit
+    @groups = Group.all
+  end
 
   # POST /groups
   # POST /groups.json

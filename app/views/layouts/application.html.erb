@@ -11,6 +11,18 @@
   </head>
 
   <body class='container'>
+    <% if session[:user_id] %>
+    <div class="user_buttons">
+      <div>
+      <%= link_to 'Home', user_path(session[:user_id]) %>
+      | <%= link_to 'Groups', groups_path %>
+      </div>
+      <div>
+        <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
+        | <%= link_to 'Log Out', logout_path %>
+      </div>
+    </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

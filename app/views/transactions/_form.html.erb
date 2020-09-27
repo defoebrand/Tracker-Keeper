@@ -22,14 +22,17 @@
     <%= form.text_field :amount %>
   </div>
 
-  <div class="field">
+  <div class="icon-box">
     <% @groups.each do |group| %>
+    <div>
       <%= form.radio_button :group_id, group.id %>
       <%= group.icon.html_safe %>
       <%= group.name %>
-      <p></p>
+      </div>
+      <p>|</p>
     <% end %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>

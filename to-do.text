@@ -1,8 +1,6 @@
 
 * in group declaration, add type of number
 
-
-
 * change user_id to authorId in transaction table
 
 
@@ -45,7 +43,7 @@ User Profile
 	- Text field for item name
 	- Text field for item amount
 	- Selection for icon
- - Create New
+ - Create New Group
  	- Text field for input name
 	- Selection field for icon
 

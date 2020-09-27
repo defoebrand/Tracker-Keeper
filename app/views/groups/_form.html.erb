@@ -17,20 +17,20 @@
   </div>
 
   <div class="field">
-    <%= form.label :icon %>
+    <%= form.label :icon, 'Add New Icon' %>
     <%= form.text_field :icon %>
   </div>
 
-  <div class="field">
+  <div class="icon-box">
     <% @group_icons = [] %>
     <% @groups.each do |x| %>
     <% @group_icons << x.icon unless @group_icons.include?(x.icon) %>
     <% end %>
-    <%# @group_icons.class %>
     <% @group_icons.each do |icon| %>
-      <%= form.radio_button :icon, icon %>
-      <%= icon.html_safe %>
-      <p></p>
+      <div>
+        <%= form.radio_button :icon, icon %>
+        <%= icon.html_safe %>
+      </div>
     <% end %>
   </div>
 

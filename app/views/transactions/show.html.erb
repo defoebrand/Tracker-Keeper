@@ -1,32 +1,31 @@
 <p id="notice"><%= notice %></p>
-<div>
+<h2><%= @transaction.name %></h2>
+<p><%= link_to @transaction.group.icon.html_safe, @transaction.group %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @transaction.author.name %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Group:</th>
+      <th></th>
+      <th>Amount:</th>
+      <th></th>
+      <th>Date:</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Transaction Name:</strong>
-  <%= @transaction.name %>
-</p>
+  <tbody>
+      <tr>
+        <td><%= @transaction.group.name %></td>
+        <td></td>
+        <td><%= @transaction.amount %></td>
+        <td></td>
+        <td><%= @transaction.created_at.strftime("%d %b. %Y") %></td>
+      </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @transaction.amount %>
-</p>
 
-<p>
-  <strong>Icon:</strong>
-  <% if @transaction.group %>
-    <%= @transaction.group.icon.html_safe %>
-  <% end %>
-</p>
-<p>
-  <strong>Date:</strong>
-  <%= @transaction.created_at %>
-</p>
-</div>
 <div>
   <%= link_to 'Edit', edit_transaction_path(@transaction) %> |  <%= link_to 'Destroy', @transaction, method: :delete, data: { confirm: 'Are you sure?' } %> |
   <%= link_to 'Back', user_path(session[:user_id]) %>

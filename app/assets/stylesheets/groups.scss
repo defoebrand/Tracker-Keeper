@@ -1,3 +1,11 @@
 // Place all the styles related to the Groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.icon-box {
+  margin: 25px 0;
+  width: 66vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
