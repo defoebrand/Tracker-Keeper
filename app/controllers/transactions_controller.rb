@@ -4,24 +4,40 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    if session[:user_id]
+      @transactions = Transaction.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
   def show
-    @groups = Group.all
+    if session[:user_id]
+      @groups = Group.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /transactions/new
   def new
-    @transaction = Transaction.new
-    @groups = Group.all
+    if session[:user_id]
+      @transaction = Transaction.new
+      @groups = Group.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /transactions/1/edit
   def edit
-    @groups = Group.all
+    if session[:user_id]
+      @groups = Group.all
+    else
+      redirect_to root_path
+    end
   end
 
   # POST /transactions

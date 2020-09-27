@@ -4,24 +4,40 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    if session[:user_id]
+      @groups = Group.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @groups = Group.all
+    if session[:user_id]
+      @groups = Group.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /groups/new
   def new
-    @group = Group.new
-    @groups = Group.all
+    if session[:user_id]
+      @group = Group.new
+      @groups = Group.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /groups/1/edit
   def edit
-    @groups = Group.all
+    if session[:user_id]
+      @groups = Group.all
+    else
+      redirect_to root_path
+    end
   end
 
   # POST /groups

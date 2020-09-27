@@ -4,24 +4,41 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if session[:user_id]
+      @users = User.all
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(session[:user_id])
-    @transactions = []
-    Transaction.all.each { |x| @transactions << x if x.user_id == session[:user_id] }
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      @transactions = []
+      Transaction.all.each { |x| @transactions << x if x.user_id == session[:user_id] }
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /users/new
   def new
-    @user = User.new
+    if session[:user_id]
+      @user = User.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    if session[:user_id]
+    else
+      redirect_to root_path
+    end
+  end
 
   # POST /users
   # POST /users.json
