@@ -25,11 +25,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    if session[:user_id]
-      @user = User.new
-    else
-      redirect_to root_path
-    end
+    @user = User.new
   end
 
   # GET /users/1/edit
