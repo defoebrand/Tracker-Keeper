@@ -17,11 +17,11 @@
     <div class="user_buttons">
       <div>
       <%= link_to 'Home', user_path(session[:user_id]) %>
-      | <%= link_to 'Groups', groups_path %>
+      | <%= link_to 'Groups', groups_path %> | <%= link_to 'New Transaction', new_transaction_path %>
       </div>
       <div>
         <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-        | <div><%= link_to 'Log Out', logout_path %></div>
+        | <%= link_to 'Log Out', logout_path %>
       </div>
     </div>
     <% end %>

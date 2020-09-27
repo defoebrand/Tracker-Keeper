@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_name(params[:name])
-    if user[:name] == params[:name]
+    if user && (user[:name] == params[:name])
       session[:user_id] = user.id
       redirect_to user_path(session[:user_id]), notice: 'Logged in!'
     else

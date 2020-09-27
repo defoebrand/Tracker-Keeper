@@ -1,8 +1,14 @@
-
-* in group declaration, add type of number
-
 * change user_id to authorId in transaction table
 
+check amount types of transactions
+ - add variable type names or include text with number
+ ? in group declaration, add type of number
+
+Today Month Year? All - amount totals and display
+
+profile pic?
+
+color scheme?
 
 My assigned items
 My unassigned items
