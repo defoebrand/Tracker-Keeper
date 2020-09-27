@@ -16,11 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def new
-    if session[:user_id]
-      redirect_to user_path(session[:user_id])
-    else
-      redirect_to root_path
-    end
+    redirect_to user_path(session[:user_id]) if session[:user_id]
   end
 
   def show
