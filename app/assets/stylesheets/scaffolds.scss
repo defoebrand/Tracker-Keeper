@@ -1,7 +1,8 @@
 body {
-  background-color: #fff;
   color: #333;
   margin: 33px;
+  background: var(--background);
+  width: 100vw;
 }
 
 body,
@@ -20,25 +21,13 @@ pre {
   font-size: 11px;
 }
 
-a {
-  color: #000;
-}
-
-a:visited {
-  color: #666;
-}
-
-a:hover {
-  color: #fff;
-  background-color: #000;
-}
-
 th {
   padding-bottom: 5px;
 }
 
 td {
   padding: 0 5px 7px;
+  text-align: center;
 }
 
 div.actions,
@@ -47,7 +36,9 @@ div.field {
 }
 
 #notice {
-  color: green;
+  color: var(--notice);
+  position: absolute;
+  top: 5px;
 }
 
 .field_with_errors {

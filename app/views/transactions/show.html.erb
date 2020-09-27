@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 <h2><%= @transaction.name %></h2>
+<% if @transaction.group_id %>
 <p><%= link_to @transaction.group.icon.html_safe, @transaction.group %></p>
+<% else %>
+<p></p>
+<% end %>
 
 <table>
   <thead>
@@ -16,7 +20,11 @@
 
   <tbody>
       <tr>
-        <td><%= @transaction.group.name %></td>
+        <% if @transaction.group_id %>
+          <td><%= @transaction.group.name %></td>
+        <% else %>
+          <td><%= link_to 'Assign', edit_transaction_path(@transaction) %> </td>
+        <% end %>
         <td></td>
         <td><%= @transaction.amount %></td>
         <td></td>

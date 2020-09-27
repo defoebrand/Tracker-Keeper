@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h2>
-  <%= "Hello #{@user.name}! Here are your tracked transactions!" %>
+  <%= "Hello #{@user.name}!" %>
 </h2>
+<h3><%= "Here are your tracked transactions!" %></h3>
 
 <% @total_assigned = [] %>
 <% @total_unassigned = [] %>
 <% @transactions.each{|x| x.group_id ?  @total_assigned << x.amount : @total_unassigned << x.amount } %>
-<h3>Assigned Transactions <%= @total_assigned.sum %></h3>
+<h4>Assigned Transactions - <%= @total_assigned.sum %></h4>
 <%=  %>
 <table>
   <thead>
@@ -34,7 +35,7 @@
   </tbody>
 </table>
 
-<h3>Unassigned Transactions <%= @total_unassigned.sum %></h3>
+<h4>Unassigned Transactions - <%= @total_unassigned.sum %></h4>
 
 <table>
   <thead>

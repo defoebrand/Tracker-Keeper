@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
@@ -19,7 +21,7 @@
       </div>
       <div>
         <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-        | <%= link_to 'Log Out', logout_path %>
+        | <div><%= link_to 'Log Out', logout_path %></div>
       </div>
     </div>
     <% end %>

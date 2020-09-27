@@ -23,7 +23,12 @@
 
 * {
   box-sizing: border-box;
+  text-align: center;
   // border: 1px solid #e4572e;
+}
+
+input {
+  text-align: left;
 }
 
 html {
@@ -37,14 +42,6 @@ html {
   // overflow-y: auto;
 }
 
-body {
-  background: var(--background);
-  // position: fixed;
-  // top: 15px;
-  width: 100vw;
-  // height: 100vh;
-}
-
 .container {
   display: flex;
   flex-direction: column;
@@ -54,19 +51,33 @@ body {
 
 h1 {
   color: var(--font);
-  font-size: 7em;
-  // width: max-content;
-  line-height: 100px;
-  // height: 100px;
-  margin: 15px;
+  font-size: 3rem;
+  line-height: 65px;
+  margin: 25px 15px 15px;
   padding: 0;
   text-align: center;
   word-wrap: break-word;
 }
 
 h2 {
-  margin-top: 25px;
+  color: var(--font);
+  margin-top: 35px;
   margin-bottom: -10px;
+  text-align: center;
+  font-size: 3em;
+  line-height: 50px;
+}
+
+h3 {
+  color: var(--font);
+  font-size: 2em;
+  text-align: center;
+  line-height: 25px;
+}
+
+h4 {
+  font-size: 1.5em;
+  text-align: center;
 }
 
 a {
@@ -83,10 +94,6 @@ a:visited {
   color: var(--notice);
 }
 
-#notice {
-  color: var(--notice);
-}
-
 .user_buttons {
   position: absolute;
   display: flex;
@@ -94,9 +101,10 @@ a:visited {
   align-items: center;
   top: 75px;
   width: 90vw;
-  // right: 55px;
   text-align: center;
   margin-top: -25px;
+  overflow-wrap: normal;
+
 }
 
 .fas {
