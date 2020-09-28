@@ -3,16 +3,13 @@
 
 <h1>Tracker Keeper</h1>
 
+<%= form_tag sessions_path, class: 'form container' do |form| %>
+  <%= label_tag :name, "What name are your transactions under?" %>
+  <div class='actions'>
+    <%= text_field_tag :name %>
+    <%= submit_tag('login') %>
+  </div>
+<% end %>
 
-<%= link_to "Sign up", new_user_path, class: 'sign-up' %>
-
-<%# form_tag sessions_path, class: 'form container' do |form| %>
-  <%# label_tag :name, "What name are your transactions under?" %>
-  <!-- <div class='actions'> -->
-    <%# text_field_tag :name %>
-    <%# submit_tag('login') %>
-  <!-- </div> -->
-<%# end %>
-
-<!-- <p>Haven't registered yet?<%# link_to "Sign up", new_user_path, class: 'sign-up' %><span class='today'>today!</span></p> -->
+<p>Haven't registered yet?<%= link_to "Sign up", new_user_path, class: 'sign-up' %><span class='today'>today!</span></p>
 </div>
