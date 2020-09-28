@@ -1,10 +1,25 @@
 * change user_id to authorId in transaction table
 
+sign up using outside authorization
+- github / facebook / reddit / twitter / google
+
+Sign up with profile pic
+ - profile pic / cover image
+
+ IN JAVASCRIPT
+collapsible menu for smaller widths
 Today Month Year? All - amount totals and display
 
-profile pic?
+? create user for groups of fruit / meat ....?
 
-color scheme?
+main page
+ - Profile name
+ - Profile pic
+ - my transactions
+ - my unassigned transactions
+ - all groups
+ - new transactions
+
 
 My assigned items
 My unassigned items
