@@ -14,16 +14,21 @@
 
   <body class='container'>
     <% if session[:user_id] %>
-    <div class="user_buttons">
-      <div>
-      <%= link_to 'Home', user_path(session[:user_id]) %>
-      | <%= link_to 'Groups', groups_path %> | <%= link_to 'New Transaction', new_transaction_path %>
+    <div class="sticky-header">
+      <!-- <p id="notice"><%= notice %></p> -->
+
+      <div class="user_buttons">
+        <div>
+        <%= link_to 'Home', user_path(session[:user_id]) %>
+        | <%= link_to 'Groups', groups_path %> | <%= link_to 'New Transaction', new_transaction_path %>
+        </div>
+        <div>
+          <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
+          | <%= link_to 'Log Out', logout_path %>
+        </div>
       </div>
-      <div>
-        <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-        | <%= link_to 'Log Out', logout_path %>
-      </div>
-    </div>
+  </div>
+    <!-- <hr /> -->
     <% end %>
     <%= yield %>
   </body>

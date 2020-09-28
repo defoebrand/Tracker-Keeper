@@ -11,11 +11,36 @@
   align-items: center;
   padding-bottom: 25px;
 
+  label {
+    margin-bottom: 35px;
+
+  }
+
   .sign-up {
     color: blue;
   }
 
   @media (min-width: 920px) {
     width: 60vw;
+  }
+}
+
+.new-user {
+  @extend .splash;
+}
+
+.user-show {
+  padding: 15px;
+
+  .transactions {
+    // flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 90vw;
+    @media (min-width: 920px) {
+      width: 60vw;
+    }
   }
 }

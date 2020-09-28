@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
+<div class="user-show">
+
 
 <h2>
   <%= "Hello #{@user.name}" %>
 </h2>
 <h3><%= "Here are your tracked transactions!" %></h3>
-
+<div class='transactions'>
+<div class="assigned">
 <% @total_assigned = [] %>
 <% @total_unassigned = [] %>
 <% @transactions.each{|x| x.group_id ?  @total_assigned << x.amount : @total_unassigned << x.amount } %>
@@ -21,17 +24,18 @@
   <% end %>
 </div>
 <br>
+
 <table>
   <thead>
     <tr>
       <th>Icon</th>
-      <td></td>
+      <!-- <td></td> -->
       <th>Name</th>
-      <td></td>
+      <!-- <td></td> -->
       <th>Amount</th>
-      <td></td>
+      <!-- <td></td> -->
       <th>Type</th>
-      <td></td>
+      <!-- <td></td> -->
       <th>Created</th>
       <th colspan="4"></th>
     </tr>
@@ -42,19 +46,23 @@
     <% if transaction.group_id %>
         <tr>
           <td><%= link_to transaction.group.icon.html_safe, transaction.group %></td>
-          <td></td>
-          <td><%= link_to transaction.name, transaction %></td>
-          <td></td>
+          <!-- <td></td> -->
+          <td><span><%= link_to transaction.name, transaction %></span></td>
+          <!-- <td></td> -->
           <td><%= transaction.amount %></td>
-          <td></td>
+          <!-- <td></td> -->
           <td><%= transaction.amount_type %></td>
-          <td></td>
+          <!-- <td></td> -->
           <td><%= transaction.created_at.strftime("%d %b. %Y") %></td>
         </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
+</div>
+
+
+<div class="unassigned">
 
 <h4>Unassigned Transactions</h4>
 <!-- <h4>Unassigned Transactions - <%# @total_unassigned.sum %></h4> -->
@@ -65,6 +73,8 @@
   <% @type_sums.each do |x| %>
     <span><%= x[0] == nil ? 'Unassigned' : x[0] %>: <%= x[1] %><%= ' | ' unless x[0] == @type_sums.keys.last %> </span>
   <% end %>
+</div>
+<br>
 
 <table>
   <thead>
@@ -96,3 +106,6 @@
 <!-- <p>Groups</p> -->
 <br />
 <%# link_to 'New Transaction', new_transaction_path %>
+</div>
+</div>
+</div>

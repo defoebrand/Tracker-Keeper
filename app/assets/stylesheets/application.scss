@@ -16,7 +16,8 @@
 :root {
   --background: #7d5e82;
   --font: #053225;
-  --link: #f7f7f2;
+  --link: #274a0d;
+  // --link: #f7f7f2;
   --hover: #9c914f;
   --notice: #91bf8a;
 }
@@ -38,7 +39,7 @@ html {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  padding-top: 25px;
+  // padding-top: 25px;
   // overflow-y: auto;
 }
 
@@ -47,6 +48,7 @@ html {
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  padding: 0 15px 15px;
 }
 
 h1 {
@@ -85,7 +87,9 @@ a {
   color: var(--link);
   font-weight: bold;
   margin: 10px;
-  white-space: nowrap;
+  // text-align: center;
+  word-wrap: break-word;
+  text-align: justify;
 }
 
 a:hover {
@@ -93,24 +97,43 @@ a:hover {
 }
 
 a:visited {
-  color: var(--notice);
+  color: var(--link);
 }
 
 table {
   margin-bottom: 25px;
 }
 
+.sticky-header {
+  position: sticky;
+  top: 0;
+  height: 95px;
+  width: 100vw;
+  // z-index: 2;
+  background: white;
+  border-bottom: 1px solid black;
+  padding-top: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 15px;
+}
+
 .user_buttons {
-  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  top: 75px;
   width: 90vw;
   text-align: center;
-  margin-top: -35px;
+  // margin-top: -35px;
   overflow-wrap: normal;
+  // padding-right: 15px;
+  padding-bottom: 15px;
 
+  a {
+
+    white-space: nowrap;
+  }
 }
 
 .fab,

@@ -1,6 +1,6 @@
 body {
-  color: #333;
-  margin: 33px;
+  // color: #333;
+  margin: 0 33px 33px;
   // background: var(--background);
   background: rgba(125,94,130,1);
   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(125,94,130,1) 100%);
@@ -30,6 +30,12 @@ th {
 td {
   padding: 0 5px 7px;
   text-align: center;
+  // vertical-align: middle;
+  // max-width: 15%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // flex-wrap: wrap;
 }
 
 div.actions,
