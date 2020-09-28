@@ -1,7 +1,9 @@
 body {
   color: #333;
   margin: 33px;
-  background: var(--background);
+  // background: var(--background);
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(125,94,130,1) 100%);
   width: 100vw;
 }
 

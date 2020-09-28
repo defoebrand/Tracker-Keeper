@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
+  def splash
+    # code
+  end
+
   # GET /users
   # GET /users.json
   def index

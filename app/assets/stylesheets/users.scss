@@ -1,3 +1,25 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.splash {
+  width: 80vw;
+  height: 80vh;
+  // background-color: #DBFAE1;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  h1 {
+    margin-top: -33%;
+  }
+
+  .sign-up {
+    color: blue;
+  }
+
+  @media (min-width: 920px) {
+    width: 60vw;
+  }
+}
