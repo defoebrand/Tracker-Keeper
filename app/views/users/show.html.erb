@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 <div class="user-show">
 
-<%= image_tag @user.avatar %>
+<% if @user.avatar %>
+<%= image_tag @user.avatar, class: 'profile-pic' %>
+<% end %>
 <h2>
   <%= "Hello #{@user.name}" %>
 </h2>
