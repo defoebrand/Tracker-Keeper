@@ -11,8 +11,9 @@
   </div>
 <% end %>
 
-<div class="omniauth mb-4">
+<div class="omniauth">
   <%= link_to 'Sign in with Github?', "/auth/github"  %>
+  <%= link_to 'Sign in with Zoom?', "/auth/zoom"  %>
 </div>
 <p>Haven't registered yet?<%= link_to "Sign up", new_user_path, class: 'sign-up' %><span class='today'>today!</span></p>
 </div>

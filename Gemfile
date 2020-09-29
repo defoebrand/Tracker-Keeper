@@ -54,4 +54,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # gem 'aws-sdk-s3', require: false
+gem 'omniauth'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+# gem 'omniauth-linkedin'
+gem 'omniauth-zoom'
