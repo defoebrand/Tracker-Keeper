@@ -45,7 +45,73 @@
   }
 }
 
-.profile-pic {
-  width: 75px;
-  border-radius: 50px;
+.burger-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+
+  .burger-links {
+    // display: none;
+    position: absolute;
+    height: fit-content;
+    top: 75px;
+    left: -25px;
+    font-size: 1rem;
+    width: 50px;
+    // right: -25px;
+    a {
+
+      // white-space: normal;
+    }
+  }
 }
+
+// .burger-menu:focus {
+//   .burger-links {
+//     // display: block;
+//   }
+// }
+
+.account-menu {
+  // border: 5px solid green;
+  border-radius: 50%;
+  outline: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .profile-pic {
+    width: 75px;
+    border-radius: 50px;
+  }
+
+  .profile-pic:focus {
+    // border: 5px solid blue;
+    // outline: none;
+  }
+
+  .profile-pic:active {}
+
+  .account-links {
+    // display: none;
+    position: absolute;
+    height: fit-content;
+    top: 95px;
+    right: -25px;
+    // font-size: 1rem;
+  }
+
+  // .account-menu:focus {
+  // border: 5px solid orange;
+  .ac-hidden {
+    display: none;
+  }
+
+  .ac-visible {
+    display: block;
+    // transition: ease-in-out, width 0.35s ease-in-out;
+  }
+}
+
+// }
