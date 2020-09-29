@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 <div class="user-show">
 
-<% if @user.avatar %>
-<%= image_tag @user.avatar, class: 'profile-pic' %>
-<% end %>
+  <%# image_tag @user.avatar, class: 'profile-pic' if @user.avatar.attached?%>
+
+<br />
+<%# @day_of_week = "Monday" %>
+<%# select_tag :days, options_for_select([@transactions_test.name, "Tuesday"]), :id => "select_days" %>
+<!-- <div id="text_to_be_changed"> -->
+  <%# @something %>
+<!-- </div> -->
+<!-- <div class="number_to_be_changed"><%# @click %></div>
+<%# link_to 'Click Here Next', '#',
+        :onclick => "", id: 'clickHereNext' %> -->
+<br />
+
+
 <h2>
   <%= "Hello #{@user.name}" %>
 </h2>
@@ -14,7 +25,7 @@
 <% @total_unassigned = [] %>
 <% @transactions.each{|x| x.group_id ?  @total_assigned << x.amount : @total_unassigned << x.amount } %>
 <h4>Assigned Transactions</h4>
-<!-- <h4>Assigned Transactions - <%# @total_assigned.sum %></h4> -->
+
 <% @types = []  %>
 <% @transactions.each{|x| @types << x.amount_type if x.amount_type} %>
 <% @type_sums = {} %>
@@ -22,7 +33,7 @@
 <% @transactions.each{|x| @type_sums[x.amount_type] += x.amount unless x.group_id == nil} %>
   <div>
   <% @type_sums.each do |x| %>
-    <span><%= x[0] == nil ? 'Unassigned' : x[0] %>: <%= x[1] %><%= ' | ' unless x[0] == @type_sums.keys.last %>  </span>
+    <span><%= x[0] == nil ? 'Unassigned' : x[0] %> : <%= x[1] %><%= ' | ' unless x[0] == @type_sums.keys.last %>  </span>
   <% end %>
 </div>
 <br>

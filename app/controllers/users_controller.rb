@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def index
     if session[:user_id]
       @users = User.all
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
   def show
     if session[:user_id]
       @user = User.find(session[:user_id])
+      @transactions_test = Transaction.first
       @transactions = []
       Transaction.all.each { |x| @transactions << x if x.user_id == session[:user_id] }
     else
@@ -35,6 +37,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     if session[:user_id]
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end

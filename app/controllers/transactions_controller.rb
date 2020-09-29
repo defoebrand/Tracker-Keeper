@@ -7,6 +7,7 @@ class TransactionsController < ApplicationController
     if session[:user_id]
       if session[:user_id] == 1
         @transactions = Transaction.all
+        @user = User.find(session[:user_id])
       else
         redirect_to user_path(session[:user_id])
       end
@@ -20,6 +21,7 @@ class TransactionsController < ApplicationController
   def show
     if session[:user_id]
       @groups = Group.all
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end
@@ -30,6 +32,7 @@ class TransactionsController < ApplicationController
     if session[:user_id]
       @transaction = Transaction.new
       @groups = Group.all
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end
@@ -39,6 +42,7 @@ class TransactionsController < ApplicationController
   def edit
     if session[:user_id]
       @groups = Group.all
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end

@@ -107,12 +107,12 @@ table {
 .sticky-header {
   position: sticky;
   top: 0;
-  height: 95px;
+  // height: 95px;
   width: 100vw;
   // z-index: 2;
   background: white;
-  border-bottom: 1px solid black;
-  padding-top: 45px;
+  // border-bottom: 1px solid black;
+  padding-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,6 +129,7 @@ table {
   overflow-wrap: normal;
   // padding-right: 15px;
   padding-bottom: 15px;
+  // border: 1px solid black;
 
   a {
 

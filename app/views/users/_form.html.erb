@@ -1,3 +1,5 @@
+<div class="user-registration">
+
 <%= form_with(model: user, local: true, class: 'form container') do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +13,15 @@
     </div>
   <% end %>
 
-    <%= form.label :name, "What name will these transactions be under?" %>
 
 
   <div class="actions container">
+    <%= form.label :name, "What name will these transactions be under?" %>
     <%= form.text_field :name %>
+    <%= form.label :avatar, 'Choose a Profile Picture' %>
     <%= form.file_field :avatar %>
     <%= form.submit %>
   </div>
 <% end %>
+
+</div>

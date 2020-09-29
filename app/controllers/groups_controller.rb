@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
   def index
     if session[:user_id]
       @groups = Group.all
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end
@@ -16,6 +17,7 @@ class GroupsController < ApplicationController
   def show
     if session[:user_id]
       @groups = Group.all
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end
@@ -26,6 +28,7 @@ class GroupsController < ApplicationController
     if session[:user_id]
       @group = Group.new
       @groups = Group.all
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end
@@ -35,6 +38,7 @@ class GroupsController < ApplicationController
   def edit
     if session[:user_id]
       @groups = Group.all
+      @user = User.find(session[:user_id])
     else
       redirect_to root_path
     end

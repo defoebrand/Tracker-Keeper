@@ -43,6 +43,31 @@ div.field {
   margin-bottom: 10px;
 }
 
+.user-registration {
+  div.actions {
+    // display: flex;
+    flex-direction: column;
+    // border: 1px solid black;
+
+    input {
+      margin: 5px;
+
+    }
+
+    #user_avatar {
+      margin-left: 30px;
+      // border: 1px solid black;
+      width: 250px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      margin-bottom: 0;
+      margin-top: 25px;
+    }
+  }
+}
+
 #notice {
   color: var(--notice);
   position: absolute;
