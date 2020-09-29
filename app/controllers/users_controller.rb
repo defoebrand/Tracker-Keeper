@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def splash
     # code
+    redirect_to user_path(session[:user_id]) if session[:user_id]
   end
 
   # GET /users

@@ -53,6 +53,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     @groups = Group.all
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @transaction.save
