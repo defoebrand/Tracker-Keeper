@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # get '/about', to: 'portal#about'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # root 'sessions#new'
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider', to: 'sessions#create'
+  # match '/auth/:provider/callback', to: 'sessions#create', via: %i[get post]
+  # match '/auth/failure', to: 'sessions#failure', via: %i[get post]
   root 'users#splash'
 end
