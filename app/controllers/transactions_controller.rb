@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
         @transactions = Transaction.all
         @user = User.find(session[:user_id])
       else
-        redirect_to user_path(session[:user_id])
+        redirect_to new_transaction_path
       end
     else
       redirect_to root_path
@@ -33,6 +33,9 @@ class TransactionsController < ApplicationController
       @transaction = Transaction.new
       @groups = Group.all
       @user = User.find(session[:user_id])
+      @types = Type.all
+      # @types = []
+      # Transaction.all.each { |x| @types << x.amount_type unless @types.include?(x.amount_type) }
     else
       redirect_to root_path
     end
@@ -54,6 +57,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     @groups = Group.all
     @user = User.find(session[:user_id])
+    @types = Type.all
 
     respond_to do |format|
       if @transaction.save
@@ -90,6 +94,40 @@ class TransactionsController < ApplicationController
     end
   end
 
+  def new_type
+    if session[:user_id]
+      @type = Type.new
+      @user = User.find(session[:user_id])
+    else
+      redirect_to root_path
+    end
+  end
+
+  def show_type
+    if session[:user_id]
+      @type = Type.new
+      @user = User.find(session[:user_id])
+    else
+      redirect_to root_path
+    end
+  end
+
+  def create_type
+    # @transaction = Transaction.new(transaction_params)
+    @type = Type.new(type_params)
+    @user = User.find(session[:user_id])
+
+    respond_to do |format|
+      if @type.save
+        format.html { redirect_to new_transaction_path, notice: 'Type was successfully created.' }
+        format.json { render :show_type, status: :created, location: @type }
+      else
+        format.html { render :new_type }
+        format.json { render json: @type.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -100,5 +138,9 @@ class TransactionsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def transaction_params
     params.require(:transaction).permit(:user_id, :name, :amount, :amount_type, :group_id)
+  end
+
+  def type_params
+    params.require(:type).permit(:amount_type)
   end
 end

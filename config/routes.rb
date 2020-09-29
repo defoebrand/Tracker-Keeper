@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get '/splash', to: 'users#splash', as: 'home'
+  get '/new_type', to: 'transactions#new_type', as: 'types'
+  post '/new_type', to: 'transactions#create_type'
   # get '/about', to: 'portal#about'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # root 'sessions#new'

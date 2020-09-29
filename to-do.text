@@ -1,12 +1,9 @@
+* change user_id to authorId in transaction table
+
 for desktop
 hide menu icon
 profile pic moves to left
 all menu options come out into header
-
-create select menu for amount types
-
-alternate log ins available?
-
 
 cover image?
 
@@ -16,20 +13,20 @@ add friend capability?
 change color scheme
 - jquery?
 
-create filter by day week month year all
-- jquery
-
 picture preview
 - jquery
 
 
-* change user_id to authorId in transaction table
+alternate log ins available?
 
 sign up using outside authorization
 - github / facebook / reddit / twitter / google
 OMNIAUTH
 
- IN JAVASCRIPT
+
+
+ create filter by day week month year all
+ - jquery
 
 Today Month Year? All - amount totals and display
 
