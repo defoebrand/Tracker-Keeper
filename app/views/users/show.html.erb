@@ -41,7 +41,7 @@
 <table>
   <thead>
     <tr>
-      <th>Icon</th>
+      <th>Group</th>
       <!-- <td></td> -->
       <th>Name</th>
       <!-- <td></td> -->
@@ -58,7 +58,7 @@
     <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
     <% if transaction.group_id %>
         <tr>
-          <td><%= link_to transaction.group.icon.html_safe, transaction.group %></td>
+          <td><%= link_to transaction.group.icon.html_safe, transaction.group %><br /><%= transaction.group.name %></td>
           <!-- <td></td> -->
           <td><span><%= link_to transaction.name, transaction %></span></td>
           <!-- <td></td> -->
@@ -92,7 +92,7 @@
 <table>
   <thead>
     <tr>
-      <th>Icon</th>
+      <th>Group</th>
       <th>Name</th>
       <th>Amount</th>
       <th>Type</th>

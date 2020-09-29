@@ -1,13 +1,9 @@
+
 * change user_id to authorId in transaction table
 
 sign up using outside authorization
 - github / facebook / reddit / twitter / google
 OMNIAUTH
-
-Sign up with profile pic
- - cover image??
-
- Add friend capability?
 
  IN JAVASCRIPT
 collapsible menu for smaller widths
@@ -15,7 +11,6 @@ Today Month Year? All - amount totals and display
 
 create form select that refreshes browser with new variable scope choice - fuck js and jquery
 
-? create user for groups of fruit / meat ....?
 
 main page
  - Profile name

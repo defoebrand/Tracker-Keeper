@@ -19,7 +19,11 @@
     <%= form.label :name, "What name will these transactions be under?" %>
     <%= form.text_field :name %>
     <%= form.label :avatar, 'Choose a Profile Picture' %>
-    <%= form.file_field :avatar %>
+    <%= form.file_field :avatar, preview: true %>
+
+
+
+
     <%= form.submit %>
   </div>
 <% end %>

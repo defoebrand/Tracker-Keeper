@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-
-<h1>Groups</h1>
-
-<%= link_to 'New Group', new_group_path, class: 'new-group' %>
+<div class='new-group'>
+  <h1>Groups</h1>
+  <a href="/groups/new"><i class="fas fa-plus-square"><span>New Group</span></i></a>
+</div>
+<%# link_to 'New Group', new_group_path, class: 'new-group' %>
 
 <table>
   <thead>

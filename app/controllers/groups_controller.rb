@@ -49,6 +49,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @groups = Group.all
+    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @group.save
