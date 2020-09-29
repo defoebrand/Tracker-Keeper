@@ -28,8 +28,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_name(params[:name])
-    if user && (user[:name] == params[:name])
+    # user = User.find_or_create_from_auth_hash(auth_hash)
+    user = auth_hash.nil? ? User.find_by_name(params[:name]) : User.from_omniauth(auth_hash)
+
+    # self.current_user = @user
+    # redirect_to '/'
+    # user = User.find_by_name(params[:name])
+    # if user && (user[:name] == params[:name])
+    if user
       session[:user_id] = user.id
       redirect_to user_path(session[:user_id]), notice: 'Logged in!'
     else
@@ -41,5 +47,11 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_url, notice: 'Logged out!'
+  end
+
+  private
+
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end
