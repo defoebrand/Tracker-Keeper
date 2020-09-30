@@ -18,40 +18,39 @@
   <body class='container'>
     <% if session[:user_id] %>
     <div class="sticky-header">
-      <div class="user_buttons">
-       <i class="fas fa-bars burger-menu">
-        <div class='burger-links hidden'>
-        <%= link_to 'Home', user_path(session[:user_id]) %>
-        <br />
-         <%= link_to 'Groups', groups_path %>
-         <br />
-         <%= link_to 'New Transaction', new_transaction_path %>
-        </div>
-      </i>
-        <!-- <a href="#" tabindex='0'> -->
-        <span class='account-menu' tabindex='0'>
-        <%= image_tag @user.avatar, class: 'profile-pic' if @user.avatar.attached? %>
-        <div class='account-links ac-hidden'>
-          <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-          <br />
-          <%= link_to 'Log Out', logout_path %>
-        </div>
-        </span>
-          <!-- <p>Hello</p> -->
-        <!-- </a> -->
-        <!-- <ul id="nav">
-  <li>Home</li>
-  <li class="parent">About
-    <ul class="sub-nav">
-      <li>Johnny</li>
-      <li>Julie</li>
-      <li>Jamie</li>
-    </ul>
-  </li>
-  <li>Contact</li>
-</ul> -->
+      <div class="mobile-header">
+        <div class="user_buttons">
+         <i class="fas fa-bars burger-menu">
+          <div class='burger-links hidden'>
+            <%= link_to 'Home', user_path(session[:user_id]) %>
+            <br />
+            <%= link_to 'Groups', groups_path %>
+            <br />
+            <%= link_to 'New Transaction', new_transaction_path %>
+          </div>
+         </i>
+         <span class='account-menu' tabindex='0'>
+          <%= image_tag @user.avatar, class: 'profile-pic' if @user.avatar.attached? %>
+          <div class='account-links ac-hidden'>
+            <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
+            <br />
+            <%= link_to 'Log Out', logout_path %>
+          </div>
+         </span>
+       </div>
       </div>
-  </div>
+      <div class="desktop-header">
+        <%= link_to 'Home', user_path(session[:user_id]) %>
+
+        <%= link_to 'Groups', groups_path %>
+
+        <%= link_to 'New Transaction', new_transaction_path %>
+
+        <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
+
+        <%= link_to 'Log Out', logout_path %>
+      </div>
+    </div>
     <% end %>
     <%= yield %>
   </body>

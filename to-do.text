@@ -1,3 +1,5 @@
+split view into assigned and unassigned (all??)
+
 * change user_id to authorId in transaction table
 
 for desktop
@@ -22,8 +24,6 @@ alternate log ins available?
 sign up using outside authorization
 - github / facebook / reddit / twitter / google
 OMNIAUTH
-
-
 
  create filter by day week month year all
  - jquery

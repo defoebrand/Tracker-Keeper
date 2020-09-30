@@ -162,3 +162,16 @@ table {
 #nav ul.visible {
   display: block;
 }
+
+.mobile-header {
+  @media (min-width: 650px) {
+    display: none;
+  }
+}
+
+.desktop-header {
+  display: none;
+  @media (min-width: 650px) {
+    display: block;
+  }
+}
