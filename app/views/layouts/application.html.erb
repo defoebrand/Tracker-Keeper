@@ -15,47 +15,86 @@
   </head>
 
   <body class='container'>
+
     <% if session[:user_id] %>
-    <div class="sticky-header">
-      <div class="mobile-header">
-        <div class="user_buttons">
-         <i class="fas fa-bars burger-menu">
-          <div class='burger-links hidden'>
+      <div class="sticky-header">
+
+
+
+        <div class="mobile-header">
+
+
+          <!-- <div class="user_buttons"> -->
+           <i class="fas fa-bars burger-menu">
+
+            <!-- <div class='burger-links hidden'> -->
+            <div class='burger-links hidden'>
+
+              <%= profile_pic(@user) %>
+              <br>
+              <br>
+              <%= link_to 'Home', user_path(session[:user_id]) %>
+              <br>
+              <br>
+              <%= link_to 'Groups', groups_path %>
+              <br>
+              <br>
+              <%= link_to 'Transactions', transactions_path %>
+              <br>
+              <br>
+              <%= link_to 'Settings', edit_user_path(session[:user_id]) %>
+              <br>
+              <br>
+              <%= link_to 'Log Out', logout_path %>
+            </div>
+
+           </i>
+
+
+           <span class='account-menu' tabindex='0'>
+               <%# profile_pic(@user) %>
+
+            <div class='account-links ac-hidden'>
+              <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
+              <br />
+              <%= link_to 'Log Out', logout_path %>
+            </div>
+
+           </span>
+         <!-- </div> -->
+
+
+        </div>
+
+
+
+
+        <div class="desktop-header">
+
+
+          <div class='desktop-menu'>
+            <%= profile_pic(@user) %>
+
             <%= link_to 'Home', user_path(session[:user_id]) %>
-            <br />
+
             <%= link_to 'Groups', groups_path %>
-            <br />
-            <%= link_to 'Transactions', transactions_path %>
+
+            <%= link_to 'New Transaction', new_transaction_path %>
           </div>
-         </i>
-         <span class='account-menu' tabindex='0'>
-             <%= profile_pic(@user) %>
-          <div class='account-links ac-hidden'>
+          <div>
             <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-            <br />
+
             <%= link_to 'Log Out', logout_path %>
           </div>
-         </span>
-       </div>
-      </div>
-      <div class="desktop-header">
-        <div class='desktop-menu'>
-          <%= profile_pic(@user) %>
 
-          <%= link_to 'Home', user_path(session[:user_id]) %>
 
-          <%= link_to 'Groups', groups_path %>
-
-          <%= link_to 'New Transaction', new_transaction_path %>
         </div>
-        <div>
-          <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
 
-          <%= link_to 'Log Out', logout_path %>
-        </div>
-      </div>
+
     </div>
     <% end %>
+
+
     <%= yield %>
   </body>
 </html>

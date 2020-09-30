@@ -130,7 +130,7 @@ table {
   padding-right: 15px;
 }
 
-.user_buttons {
+.mobile-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -154,13 +154,13 @@ table {
   margin: 10px 5px;
 }
 
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
+// .hidden {
+//   display: none;
+// }
+//
+// .visible {
+//   display: block;
+// }
 
 #nav ul.sub-nav {
   display: none;
