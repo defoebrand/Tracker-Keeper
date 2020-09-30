@@ -55,6 +55,10 @@
     div {
       border: 1px solid white;
 
+      a:hover {
+        text-decoration: none;
+      }
+
       span {
         // display: none;
         color: var(--font);
@@ -90,11 +94,9 @@
     left: 25px;
     font-size: 1rem;
     width: 50px;
-    // right: -25px;
-    a {
 
-      // white-space: normal;
-    }
+    a {
+      }
   }
 }
 

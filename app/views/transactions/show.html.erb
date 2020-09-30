@@ -1,20 +1,13 @@
 <p id="notice"><%= notice %></p>
 <h2><%= @transaction.name %></h2>
-<% if @transaction.group_id %>
-<p><%= link_to @transaction.group.icon.html_safe, @transaction.group %></p>
-<% else %>
-<p></p>
-<% end %>
+<%= has_icon?(@transaction) %>
 
 <table>
   <thead>
     <tr>
       <th>Group:</th>
-      <th></th>
       <th>Amount:</th>
-      <th></th>
       <th>Type:</th>
-      <th></th>
       <th>Date:</th>
       <th colspan="3"></th>
     </tr>
@@ -22,16 +15,9 @@
 
   <tbody>
       <tr>
-        <% if @transaction.group_id %>
-          <td><%= @transaction.group.name %></td>
-        <% else %>
-          <td><%= link_to 'Assign', edit_transaction_path(@transaction) %> </td>
-        <% end %>
-        <td></td>
+        <%= has_group?(@transaction) %>
         <td><%= @transaction.amount %></td>
-        <td></td>
         <td><%= @transaction.amount_type %></td>
-        <td></td>
         <td><%= @transaction.created_at.strftime("%d %b. %Y") %></td>
       </tr>
   </tbody>
@@ -40,5 +26,5 @@
 
 <div>
   <%= link_to 'Edit', edit_transaction_path(@transaction) %> |  <%= link_to 'Destroy', @transaction, method: :delete, data: { confirm: 'Are you sure?' } %> |
-  <%= link_to 'Back', user_path(session[:user_id]) %>
+  <%= link_to 'Back', transactions_path %>
 </div>

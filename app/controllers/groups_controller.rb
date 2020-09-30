@@ -18,6 +18,8 @@ class GroupsController < ApplicationController
     if session[:user_id]
       @groups = Group.all
       @user = User.find(session[:user_id])
+      @total = []
+      @group.transactions.each { |x| @total << x.amount }
     else
       redirect_to root_path
     end
@@ -29,6 +31,8 @@ class GroupsController < ApplicationController
       @group = Group.new
       @groups = Group.all
       @user = User.find(session[:user_id])
+      @group_icons = []
+      @groups.each { |x| @group_icons << x.icon unless @group_icons.include?(x.icon) }
     else
       redirect_to root_path
     end
@@ -39,6 +43,8 @@ class GroupsController < ApplicationController
     if session[:user_id]
       @groups = Group.all
       @user = User.find(session[:user_id])
+      @group_icons = []
+      @groups.each { |x| @group_icons << x.icon unless @group_icons.include?(x.icon) }
     else
       redirect_to root_path
     end

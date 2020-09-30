@@ -5,12 +5,10 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     if session[:user_id]
-      if session[:user_id] == 1
-        @transactions = Transaction.all
-        @user = User.find(session[:user_id])
-      else
-        redirect_to new_transaction_path
-      end
+      @transactions = Transaction.all
+      @user = User.find(session[:user_id])
+      @assigned_type_sums = {}
+      @unassigned_type_sums = {}
     else
       redirect_to root_path
     end

@@ -1,13 +1,9 @@
 <p id="notice"><%= notice %></p>
-<!-- <div class="container"> -->
 
-<% @total = [] %>
-<% @group.transactions.each{|x| @total << x.amount} %>
 
 <h2><%= @group.name %> Transactions </h2>
 <h3>Total - <%= @total.sum %></h3>
 <p class='group-show-icon'><%= @group.icon.html_safe %></p>
-<!-- <p><%# link_to @transaction.group.icon.html_safe, @transaction.group %></p> -->
 
 <table>
   <thead>
@@ -41,12 +37,6 @@
 </table>
 
 <br />
-<!-- <div>
-  <%# link_to 'Edit', edit_group_path(@group) %> | <%# link_to 'Destroy', @transaction, method: :delete, data: { confirm: 'Are you sure?' } %> | <%# link_to 'Back', groups_path %>
-</div>-->
-
 <div>
   <%= link_to 'Back', groups_path %>
 </div>
-
-<!-- </div> -->

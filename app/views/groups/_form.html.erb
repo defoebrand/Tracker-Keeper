@@ -22,10 +22,6 @@
   </div>
 
   <div class="icon-box">
-    <% @group_icons = [] %>
-    <% @groups.each do |x| %>
-    <% @group_icons << x.icon unless @group_icons.include?(x.icon) %>
-    <% end %>
     <% @group_icons.each do |icon| %>
       <div>
         <%= form.radio_button :icon, icon %>
