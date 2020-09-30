@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
     # auth_hash.to_json
     # raise env['omniauth.auth'].to_yaml
 
-    user = omniauth_hash.nil? ? User.find_by(user_params) : User.from_omniauth(omniauth_hash)
+    user = omniauth_hash.nil? ? User.find_by_name(params[:name]) : User.from_omniauth(omniauth_hash)
     # user = User.from_omniauth(env['omniauth.auth'])
     # user = User.find_or_create_by(params)
     # user = auth_hash.nil? ? User.find_by_name(params[:name]) : User.new(auth_hash)
@@ -59,4 +59,8 @@ class SessionsController < ApplicationController
   def omniauth_hash
     request.env['omniauth.auth']
   end
+
+  # def user_params
+  #   params.require(:user).permit(:name)
+  # end
 end
