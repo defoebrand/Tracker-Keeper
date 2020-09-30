@@ -237,7 +237,6 @@ DEPENDENCIES
   figaro (~> 1.1, >= 1.1.1)
   jbuilder (~> 2.7)
   listen (~> 3.2)
-  omniauth
   omniauth-github!
   omniauth-zoom
   pg (>= 0.18, < 2.0)
