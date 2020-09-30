@@ -171,7 +171,23 @@ table {
 
 .desktop-header {
   display: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+
+  .profile-pic {
+    width: 75px;
+    border-radius: 50px;
+    margin: 0 15px 15px;
+  }
+
+  .desktop-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   @media (min-width: 650px) {
-    display: block;
+    display: flex;
   }
 }

@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Type</th>
+      <th>Created</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
+    <% if transaction.group_id %>
+        <tr>
+          <td><%= link_to transaction.group.icon.html_safe, transaction.group %><br /><%= transaction.group.name %></td>
+          <td><span><%= link_to transaction.name, transaction %></span></td>
+          <td><%= transaction.amount %></td>
+          <td><%= transaction.amount_type %></td>
+          <td><%= transaction.created_at.strftime("%d %b. %Y") %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

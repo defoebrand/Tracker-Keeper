@@ -26,11 +26,15 @@
             <br />
             <%= link_to 'Groups', groups_path %>
             <br />
-            <%= link_to 'New Transaction', new_transaction_path %>
+            <%= link_to 'Transactions', transactions_path %>
           </div>
          </i>
          <span class='account-menu' tabindex='0'>
-          <%= image_tag @user.avatar, class: 'profile-pic' if @user.avatar.attached? %>
+           <% if @user.avatar.attached? %>
+             <%= image_tag @user.avatar, class: 'profile-pic' %>
+           <% else %>
+             <%= image_tag '/star.png', class: 'profile-pic' %>
+           <% end %>
           <div class='account-links ac-hidden'>
             <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
             <br />
@@ -40,15 +44,23 @@
        </div>
       </div>
       <div class="desktop-header">
-        <%= link_to 'Home', user_path(session[:user_id]) %>
+        <div class='desktop-menu'>
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, class: 'profile-pic' %>
+          <% else %>
+            <%= image_tag '/star.png', class: 'profile-pic' %>
+          <% end %>
+          <%= link_to 'Home', user_path(session[:user_id]) %>
 
-        <%= link_to 'Groups', groups_path %>
+          <%= link_to 'Groups', groups_path %>
 
-        <%= link_to 'New Transaction', new_transaction_path %>
+          <%= link_to 'New Transaction', new_transaction_path %>
+        </div>
+        <div>
+          <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
 
-        <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-
-        <%= link_to 'Log Out', logout_path %>
+          <%= link_to 'Log Out', logout_path %>
+        </div>
       </div>
     </div>
     <% end %>

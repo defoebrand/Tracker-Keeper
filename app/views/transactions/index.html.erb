@@ -1,40 +1,34 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Home', user_path(session[:user_id]) %>
-<h1>Transactions</h1>
-<%=  %>
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Type</th>
-      <th>Icon</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @transactions.each do |transaction| %>
-      <tr>
-        <td><%= transaction.user_id %></td>
-        <td><%= transaction.name %></td>
-        <td><%= transaction.amount %></td>
-        <td><%= transaction.amount_type %></td>
-        <% if transaction.group %>
-        <td><%= transaction.group.icon.html_safe %></td>
-        <% else %>
-        <td></td>
-        <% end %>
-        <td><%= link_to 'Show', transaction %></td>
-        <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class='transactions'>
+  <div class="assigned">
+    <h4>Assigned Transactions</h4>
+  <% @assigned_type_sums = {} %>
+  <% @transactions.each{|x| @assigned_type_sums[x.amount_type] = 0 unless x.group_id == nil} %>
+  <% @transactions.each{|x| @assigned_type_sums[x.amount_type] += x.amount unless x.group_id == nil} %>
+    <div>
+    <% @assigned_type_sums.each do |x| %>
+      <span><%= x[0] == nil ? 'Unassigned' : x[0] %> : <%= x[1] %><%= ' | ' unless x[0] == @assigned_type_sums.keys.last %>  </span>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <br>
+    <%= render 'assigned_transactions', @assigned_type_sums %>
+    </div>
 
-<br>
+  <div class="unassigned">
+    <h4>Unassigned Transactions</h4>
+      <% @unassigned_type_sums = {} %>
+      <% @transactions.each{|x| @unassigned_type_sums[x.amount_type] = 0 if x.group_id == nil} %>
+      <% @transactions.each{|x| @unassigned_type_sums[x.amount_type] += x.amount if x.group_id == nil} %>
+      <div>
+        <% @unassigned_type_sums.each do |x| %>
+          <span><%= x[0] == nil ? 'Unassigned' : x[0] %>: <%= x[1] %><%= ' | ' unless x[0] == @unassigned_type_sums.keys.last %> </span>
+        <% end %>
+      </div>
+      <br>
 
-<%= link_to 'New Transaction', new_transaction_path %>
+        <%= render 'unassigned_transactions', @unassigned_type_sums %>
+
+
+
+      <br />
+    </div>
+  </div>

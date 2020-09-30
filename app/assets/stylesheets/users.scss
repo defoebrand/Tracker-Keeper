@@ -43,6 +43,37 @@
       width: 60vw;
     }
   }
+
+  .new-transaction-button {
+    border: 1px solid white;
+    background-color: var(--link);
+    min-width: 75px;
+    line-height: 50px;
+    margin: 25px;
+    padding: 15px;
+
+    div {
+      border: 1px solid white;
+
+      span {
+        // display: none;
+        color: var(--font);
+        font-size: 1.25rem;
+      }
+
+    }
+
+    div:hover {
+      opacity: 0.5;
+      transform: scale(0.95);
+
+      span {
+        color: black;
+      }
+
+    }
+  }
+
 }
 
 .burger-menu {
@@ -55,8 +86,8 @@
     // display: none;
     position: absolute;
     height: fit-content;
-    top: 75px;
-    left: -25px;
+    top: -15px;
+    left: 25px;
     font-size: 1rem;
     width: 50px;
     // right: -25px;
@@ -97,8 +128,8 @@
     // display: none;
     position: absolute;
     height: fit-content;
-    top: 95px;
-    right: -25px;
+    top: 15px;
+    right: 75px;
     // font-size: 1rem;
   }
 
@@ -114,4 +145,7 @@
   }
 }
 
-// }
+.date {
+  // border: 1px solid black;
+  text-align: right;
+}

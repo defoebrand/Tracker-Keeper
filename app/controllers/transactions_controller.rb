@@ -22,6 +22,7 @@ class TransactionsController < ApplicationController
     if session[:user_id]
       @groups = Group.all
       @user = User.find(session[:user_id])
+      # @types = Type.all
     else
       redirect_to root_path
     end
@@ -46,6 +47,7 @@ class TransactionsController < ApplicationController
     if session[:user_id]
       @groups = Group.all
       @user = User.find(session[:user_id])
+      @types = Type.all
     else
       redirect_to root_path
     end
