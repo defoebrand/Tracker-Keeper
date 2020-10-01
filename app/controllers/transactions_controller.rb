@@ -54,12 +54,21 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = Transaction.new(transaction_params.except(:groups))
     @groups = Group.all
     @user = User.find(session[:user_id])
     @types = Type.all
 
     respond_to do |format|
+      transaction_params.slice(:groups).values.each do |x|
+        x.each do |y|
+          if y.empty?
+          else
+            group = @groups.find(y.to_i)
+            @transaction.groups << group
+          end
+        end
+      end
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
@@ -73,8 +82,18 @@ class TransactionsController < ApplicationController
   # PATCH/PUT /transactions/1
   # PATCH/PUT /transactions/1.json
   def update
+    @groups = Group.all
     respond_to do |format|
-      if @transaction.update(transaction_params)
+      transaction_params.slice(:groups).values.each do |x|
+        x.each do |y|
+          if y.empty?
+          else
+            group = @groups.find(y.to_i)
+            @transaction.groups << group
+          end
+        end
+      end
+      if @transaction.update(transaction_params.except(:groups))
         format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
         format.json { render :show, status: :ok, location: @transaction }
       else
@@ -137,7 +156,7 @@ class TransactionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def transaction_params
-    params.require(:transaction).permit(:authorid, :name, :amount, :amount_type, :group_id)
+    params.require(:transaction).permit(:authorid, :name, :amount, :amount_type, :group_id, groups: [])
   end
 
   def type_params

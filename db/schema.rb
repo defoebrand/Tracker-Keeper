@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_082837) do
+ActiveRecord::Schema.define(version: 2020_10_01_111802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2020_09_30_082837) do
     t.string "icon", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "transaction_id"
+    t.index ["transaction_id"], name: "index_groups_on_transaction_id"
+  end
+
+  create_table "groups_transactions", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "transaction_id", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -49,15 +56,15 @@ ActiveRecord::Schema.define(version: 2020_09_30_082837) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "authorid", null: false
     t.string "name"
     t.float "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "group_id"
     t.string "amount_type"
+    t.index ["authorid"], name: "index_transactions_on_authorid"
     t.index ["group_id"], name: "index_transactions_on_group_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -75,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_082837) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "groups", "transactions"
   add_foreign_key "transactions", "groups"
-  add_foreign_key "transactions", "users"
+  add_foreign_key "transactions", "users", column: "authorid"
 end

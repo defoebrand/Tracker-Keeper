@@ -34,7 +34,7 @@
   </span>
   </div>
 <!-- </div> -->
-<p>Groups</p>
+<p>Primary Group</p>
   <div class="icon-box">
     <% @groups.each do |group| %>
     <div>
@@ -47,6 +47,16 @@
 
   </div>
 
+  <div class="field">
+  <%= form.label "Secondary Groups" %>
+  <%= form.collection_check_boxes :groups, Group.all, :id, :icon do |b| %>
+    <div class="collection-check-box" style='display:flex'>
+      <%= b.check_box %>
+      <%= b.text.html_safe %>
+      <%= @groups.find(b.value).name %>
+    </div>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
