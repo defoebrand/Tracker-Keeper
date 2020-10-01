@@ -5,8 +5,8 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     if session[:user_id]
-      @transactions = Transaction.all
       @user = User.find(session[:user_id])
+      @transactions = Transaction.all.where(authorid: @user.id)
       @assigned_type_sums = {}
       @unassigned_type_sums = {}
     else
@@ -137,7 +137,7 @@ class TransactionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def transaction_params
-    params.require(:transaction).permit(:user_id, :name, :amount, :amount_type, :group_id)
+    params.require(:transaction).permit(:authorid, :name, :amount, :amount_type, :group_id)
   end
 
   def type_params

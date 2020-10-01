@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :user_id, :value => session[:user_id] %>
+  <%= form.hidden_field :authorid, :value => session[:user_id] %>
   <div class="field">
     <%= form.label :name, 'Name of Transaction:' %>
     <%= form.text_field :name %>

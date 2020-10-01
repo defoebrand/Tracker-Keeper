@@ -50,4 +50,34 @@ form {
 
 .transactions {
   padding: 25px;
+
+  .new-transaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+
+    .fas {
+      position: relative;
+      font-size: 3.5em;
+      z-index: -1;
+    }
+
+    span {
+      display: none;
+      font-size: 15px;
+      color: black;
+    }
+
+    .fas:hover {
+      span {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 50px;
+        // right: 5px;
+      }
+    }
+  }
 }

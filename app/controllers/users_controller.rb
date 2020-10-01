@@ -23,8 +23,7 @@ class UsersController < ApplicationController
     if session[:user_id]
       @user = User.find(session[:user_id])
       @transactions_test = Transaction.first
-      @transactions = []
-      Transaction.all.each { |x| @transactions << x if x.user_id == session[:user_id] }
+      @transactions = Transaction.all.where(authorid: @user.id)
     else
       redirect_to root_path
     end
