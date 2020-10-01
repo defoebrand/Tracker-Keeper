@@ -19,16 +19,33 @@
 }
 
 .new-group {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: -10px;
-  margin-bottom: 20px;
+  z-index: 1;
+  background-color: var(--link);
 
-  .fas {
-    position: relative;
-    font-size: 3.5em;
-    z-index: -1;
+  a {
+    display: flex;
+    width: 75%;
+    border: 1px solid white;
+    justify-content: center;
+
+    .fas {
+      position: relative;
+      font-size: 3.5em;
+      z-index: -1;
+      color: white;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 
   span {

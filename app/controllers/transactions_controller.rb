@@ -5,6 +5,8 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     if session[:user_id]
+      @transactions_test = Transaction.first
+
       @user = User.find(session[:user_id])
       @transactions = Transaction.all.where(authorid: @user.id)
       @assigned_type_sums = {}
@@ -110,6 +112,31 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_path(session[:user_id]), notice: 'Transaction was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def assigned_transactions
+    if session[:user_id]
+      @groups = Group.all
+      @user = User.find(session[:user_id])
+
+      @transactions = Transaction.all.where(authorid: @user.id)
+      @assigned_type_sums = {}
+      # @types = Type.all
+    else
+      redirect_to root_path
+    end
+  end
+
+  def unassigned_transactions
+    if session[:user_id]
+      @groups = Group.all
+      @user = User.find(session[:user_id])
+      @transactions = Transaction.all.where(authorid: @user.id)
+      @unassigned_type_sums = {}
+      # @types = Type.all
+    else
+      redirect_to root_path
     end
   end
 

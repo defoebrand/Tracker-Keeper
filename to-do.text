@@ -1,24 +1,7 @@
-split view into assigned and unassigned (all??)
-
-* change user_id to authorId in transaction table
-
-only show transactions for individual user
-group and type are shared
-
 add amazon s3
 
-Check ERD - Transactions / Groups should be many to many
 
-add friend capability?
-
-
-change color scheme
-- jquery?
-
-picture preview
-- jquery
-
-
+split view into assigned and unassigned (all??)
 
  create filter by day week month year all
  - jquery
@@ -27,6 +10,11 @@ Today Month Year? All - amount totals and display
 
 create form select that refreshes browser with new variable scope choice
 
+
+add friend capability?
+
+change color scheme
+- jquery?
 
 main page
  - Profile name

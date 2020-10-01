@@ -88,8 +88,13 @@ document.addEventListener("turbolinks:load", function() {
       $('.ac-hidden').toggleClass('ac-visible');
       // alert('Hooray!');
       // event.preventDefault(); // Prevent link from following its href
-    });
+    }); //hover - focus - change - click?
+
   });
+  // $(document).ready(function() {
+
+
+  // });
 });
 
 // document.addEventListener("turbolinks:load", function() {

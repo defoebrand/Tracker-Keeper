@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/splash', to: 'users#splash', as: 'home'
   get '/new_type', to: 'transactions#new_type', as: 'types'
   post '/new_type', to: 'transactions#create_type'
+  get '/assigned_transactions', to: 'transactions#assigned_transactions', as: 'assigned'
+  get '/unassigned_transactions', to: 'transactions#unassigned_transactions', as: 'unassigned'
   # get '/about', to: 'portal#about'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # root 'sessions#new'

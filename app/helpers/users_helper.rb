@@ -4,7 +4,7 @@ module UsersHelper
     day = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
     @content << content_tag(:span, "Today is #{day[Time.now.wday]}")
     @content << tag(:br)
-    @content << content_tag(:span, DateTime.now.strftime('%d %b. %Y').to_s)
+    @content << content_tag(:span, Time.now.strftime('%d %b. %Y').to_s)
     @content
   end
 
@@ -14,15 +14,15 @@ module UsersHelper
                  'Good Afternoon', 'Good Evening', 'Working late today',
                  "Shouldn't you be sleeping"]
 
-    index = if DateTime.now.hour > 22
+    index = if Time.now.hour > 22
               4
-            elsif DateTime.now.hour > 18
+            elsif Time.now.hour > 18
               3
-            elsif DateTime.now.hour > 12
+            elsif Time.now.hour > 12
               2
-            elsif DateTime.now.hour > 8
+            elsif Time.now.hour > 8
               1
-            elsif DateTime.now.hour > 4
+            elsif Time.now.hour > 4
               0
             else
               5

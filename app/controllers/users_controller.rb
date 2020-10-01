@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   def show
     if session[:user_id]
       @user = User.find(session[:user_id])
-      @transactions_test = Transaction.first
       @transactions = Transaction.all.where(authorid: @user.id)
     else
       redirect_to root_path

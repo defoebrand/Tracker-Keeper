@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_111802) do
+ActiveRecord::Schema.define(version: 2020_10_01_212636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2020_10_01_111802) do
     t.float "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "group_id"
     t.string "amount_type"
+    t.bigint "group_id"
     t.index ["authorid"], name: "index_transactions_on_authorid"
     t.index ["group_id"], name: "index_transactions_on_group_id"
   end

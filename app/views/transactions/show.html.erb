@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h2><%= @transaction.name %></h2>
-<%= has_icon?(@transaction) %>
+<%= icon?(@transaction) %>
 
 <table>
   <thead>
@@ -15,7 +15,7 @@
 
   <tbody>
       <tr>
-        <%= has_group?(@transaction) %>
+        <%= group?(@transaction) %>
         <td><%= @transaction.amount %></td>
         <td><%= @transaction.amount_type %></td>
         <td><%= @transaction.created_at.strftime("%d %b. %Y") %></td>
@@ -23,6 +23,9 @@
   </tbody>
 </table>
 
+<% @transaction.groups.each do |group|%>
+<%= group.name %>
+<% end %>
 
 <div>
   <%= link_to 'Edit', edit_transaction_path(@transaction) %> |  <%= link_to 'Destroy', @transaction, method: :delete, data: { confirm: 'Are you sure?' } %> |

@@ -1,7 +1,8 @@
-<%= get_unassigned_transactions %>
-<br>
-<br>
+
+  <h1>Assigned</h1>
 <table>
+  <p>Transaction Totals by Type</p>
+  <%= assigned_transactions_count %>
   <thead>
     <tr>
       <th>Group</th>
@@ -15,10 +16,10 @@
 
   <tbody>
     <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
-    <% unless transaction.group_id %>
+    <% if transaction.group_id %>
         <tr>
-          <td><%= link_to 'Assign', edit_transaction_path(transaction) %> </td>
-          <td><%= link_to transaction.name, transaction %></td>
+          <td><%= link_to transaction.group.icon.html_safe, transaction.group %><br /><%= transaction.group.name %></td>
+          <td><span><%= link_to transaction.name, transaction %></span></td>
           <td><%= transaction.amount %></td>
           <td><%= transaction.amount_type %></td>
           <td><%= transaction.created_at.strftime("%d %b. %Y") %></td>
@@ -27,3 +28,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class='new-transaction'>
+  <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
+</div>

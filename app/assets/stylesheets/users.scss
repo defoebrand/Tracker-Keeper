@@ -45,26 +45,28 @@
   }
 
   .new-transaction-button {
-    border: 1px solid white;
+    border: 1px solid rgb(226, 226, 226);
     background-color: var(--link);
     min-width: 75px;
     line-height: 50px;
     margin: 25px;
     padding: 15px;
 
-    div {
+    a {
+      display: block;
+      text-align: center;
       border: 1px solid white;
-
-      a:hover {
-        text-decoration: none;
-      }
+      min-width: 250px;
 
       span {
         // display: none;
         color: var(--font);
         font-size: 1.25rem;
       }
+    }
 
+    a:hover {
+      text-decoration: none;
     }
 
     div:hover {
@@ -85,7 +87,6 @@
   display: flex;
   flex-direction: column;
   outline: none;
-  // align-items: flex-start;
 
   .profile-pic {
     width: 75px;
@@ -112,19 +113,42 @@
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 25px;
+    // padding-top: 25px;
     transition: 0.5s;
-    border: 1px solid orange;
+    // border: 1px solid orange;
     font-size: 1rem;
     // display: none;
     // border: 1px solid black;
+    text-align: left;
   }
 
   .visible {
     // display: block;
-    border: 1px solid green;
-    width: 125px;
+    // border: 1px solid green;
+    width: 175px;
+    padding-left: 10px;
+
+    .menu-icon {
+      color: white;
+      border: 1px solid white;
+      border-radius: 50%;
+      padding: 5px;
+      font-size: 0.75rem;
+    }
+
+    .menu-lines {
+      opacity: 0.25;
+    }
+
+    .menu-pic {
+      margin: 25px 25px -25px 15px;
+      color: white;
+      // height: 100%;
+      // border: 3px solid magenta;
+    }
+
   }
+
 }
 
 // .burger-menu:focus {

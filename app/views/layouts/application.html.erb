@@ -29,22 +29,32 @@
 
             <!-- <div class='burger-links hidden'> -->
             <div class='burger-links hidden'>
-
-              <%= profile_pic(@user) %>
+              <div class='menu-pic container'>
+                <%= profile_pic(@user) %>
+                <br>
+                <%= @user.name %>
+              </div>
               <br>
               <br>
+              <i class="fas fa-home menu-icon"></i>
               <%= link_to 'Home', user_path(session[:user_id]) %>
               <br>
-              <br>
+              <hr class='menu-lines'>
+              <i class="fas fa-layer-group menu-icon"></i>
               <%= link_to 'Groups', groups_path %>
               <br>
+              <hr class='menu-lines'>
+              <i class="fas fa-list menu-icon"></i>
+              <%= link_to 'Transactions' %>
+              <%= link_to ' - Assigned', assigned_path, class: 'filter-links' %>
+              <%= link_to ' - Unassigned', unassigned_path, class: 'filter-links' %>
               <br>
-              <%= link_to 'Transactions', transactions_path %>
-              <br>
-              <br>
+              <hr class='menu-lines'>
+              <i class="fas fa-cog menu-icon"></i>
               <%= link_to 'Settings', edit_user_path(session[:user_id]) %>
               <br>
-              <br>
+              <hr class='menu-lines'>
+              <i class="fas fa-sign-out-alt menu-icon"></i>
               <%= link_to 'Log Out', logout_path %>
             </div>
 

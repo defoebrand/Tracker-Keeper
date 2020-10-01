@@ -1,15 +1,27 @@
 <div class='transactions'>
-  <div class='new-transaction'>
- <h1>Transactions</h1>
- <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
-</div>
   <div class="assigned">
-    <h4>Assigned Transactions</h4>
-    <%= render 'assigned_transactions', @assigned_type_sums %>
+    <!-- <h4>Assigned Transactions</h4> -->
+    <%# render 'assigned_transactions'  %>
   </div>
 
   <div class="unassigned">
     <h4>Unassigned Transactions</h4>
-      <%= render 'unassigned_transactions', @unassigned_type_sums %>
+      <%# render 'unassigned_transactions', @unassigned_type_sums %>
   </div>
 </div>
+
+
+ <br />
+<%# @day_of_week = "assigned_transactions" %>
+<%# select_tag :days, options_for_select(["assigned_transactions", "unassigned_transactions"]), :id => "select_days" %>
+<%# select_tag :days, options_for_select([@transactions_test.name, "Tuesday"]), :id => "select_days" %>
+ <!-- <div id="text_to_be_changed" href='test'> -->
+
+  <%# render @day_of_week %>
+  <%# @day_of_week %>
+   <!-- </div> -->
+
+
+   <div class='new-transaction'>
+     <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
+   </div>
