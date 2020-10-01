@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 <div class="user-show">
-  <%= date %>
-  <%= greeting %>
-  <%= DateTime.now %>
+  <%# date %>
+  <%# greeting %>
+
+  <h1><%= "Hello #{@user.name}" %></h1>
+
   <div class='new-transaction-button'>
     <div>
       <a href="/transactions/new"><span>New Transaction</span></a>

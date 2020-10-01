@@ -119,8 +119,8 @@ class TransactionsController < ApplicationController
     if session[:user_id]
       @groups = Group.all
       @user = User.find(session[:user_id])
-
-      @transactions = Transaction.all.where(authorid: @user.id)
+      @transactions = []
+      Transaction.all.each { |x| @transactions << x if (x.authorid == @user.id) && !x.group_id.nil? }
       @assigned_type_sums = {}
       # @types = Type.all
     else
@@ -132,7 +132,8 @@ class TransactionsController < ApplicationController
     if session[:user_id]
       @groups = Group.all
       @user = User.find(session[:user_id])
-      @transactions = Transaction.all.where(authorid: @user.id)
+      @transactions = []
+      Transaction.all.each { |x| @transactions << x if (x.authorid == @user.id) && x.group_id.nil? }
       @unassigned_type_sums = {}
       # @types = Type.all
     else
