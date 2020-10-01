@@ -59,3 +59,5 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 # gem 'omniauth-linkedin'
 gem 'omniauth-zoom'
+
+gem 'hirb'
