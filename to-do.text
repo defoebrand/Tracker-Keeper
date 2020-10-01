@@ -2,12 +2,10 @@ split view into assigned and unassigned (all??)
 
 * change user_id to authorId in transaction table
 
-for desktop
-hide menu icon
-profile pic moves to left
-all menu options come out into header
+only show transactions for individual user
+group and type are shared
 
-cover image?
+add amazon s3
 
 add friend capability?
 
@@ -21,9 +19,6 @@ picture preview
 
 alternate log ins available?
 
-sign up using outside authorization
-- github / facebook / reddit / twitter / google
-OMNIAUTH
 
  create filter by day week month year all
  - jquery
