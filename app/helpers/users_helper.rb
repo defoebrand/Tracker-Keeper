@@ -10,16 +10,28 @@ module UsersHelper
 
   def greeting
     @content = tag(:div)
-    greetings = ['Good Morning', 'Good Afternoon', 'Good Evening', 'You work crazy hours']
-    index = if DateTime.now.hour > 18
-              2
+    greetings = ["Up early or haven't slept", 'Good Morning',
+                 'Good Afternoon', 'Good Evening', 'Working late today',
+                 "Shouldn't you be sleeping"]
+
+    index = if DateTime.now.hour > 22
+              4
+            elsif DateTime.now.hour > 18
+              3
             elsif DateTime.now.hour > 12
-              1
+              2
             elsif DateTime.now.hour > 8
+              1
+            elsif DateTime.now.hour > 4
               0
             else
-              3
+              5
             end
-    @content << content_tag(:h2, "#{greetings[index]} #{@user.name}!")
+
+    @content << if [0, 4, 5].include?(index)
+                  content_tag(:h2, "#{greetings[index]} #{@user.name}?")
+                else
+                  content_tag(:h2, "#{greetings[index]} #{@user.name}!")
+                end
   end
 end
