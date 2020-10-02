@@ -10,6 +10,28 @@
   position: relative;
 }
 
+.add-type {
+  .fas {
+    position: relative;
+    font-size: 1.5em;
+  }
+
+  span {
+    display: none;
+    font-size: 15px;
+    color: black;
+  }
+
+  .fas:hover {
+    span {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 25px;
+    }
+  }
+}
+
 .new-transaction {
   position: fixed;
   bottom: 0;
@@ -52,28 +74,6 @@
       position: absolute;
       top: 10px;
       left: 50px;
-    }
-  }
-}
-
-.add-type {
-  .fas {
-    position: relative;
-    font-size: 1.5em;
-  }
-
-  span {
-    display: none;
-    font-size: 15px;
-    color: black;
-  }
-
-  .fas:hover {
-    span {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 25px;
     }
   }
 }
