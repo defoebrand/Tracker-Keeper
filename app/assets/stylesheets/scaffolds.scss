@@ -23,6 +23,7 @@ pre {
 
 th {
   padding-bottom: 5px;
+  font-family: Proxima-Nova-Light, sans-serif;
 }
 
 td {
@@ -38,6 +39,7 @@ div.field {
 #notice {
   color: var(--notice);
   position: absolute;
+  font-family: Proxima-Nova-Bold, sans-serif;
 }
 
 .field_with_errors {
@@ -63,11 +65,13 @@ div.field {
   margin: -7px -7px 0;
   background-color: #c00;
   color: #fff;
+  font-family: Proxima-Nova-Bold, sans-serif;
 }
 
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+  font-family: Proxima-Nova-Light, sans-serif;
 }
 
 label {
