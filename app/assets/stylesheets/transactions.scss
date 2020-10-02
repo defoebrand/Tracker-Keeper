@@ -56,21 +56,17 @@
   }
 }
 
-.add-type {
-  .fas:hover {
-    span {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 25px;
-    }
+.add-type .fas:hover {
+  span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 25px;
   }
 }
 
-.new-transaction {
-  a:hover {
-    text-decoration: none;
-  }
+.new-transaction a:hover {
+  text-decoration: none;
 
   .fas:hover {
     span {
