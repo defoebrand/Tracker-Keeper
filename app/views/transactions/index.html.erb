@@ -3,12 +3,13 @@
 <%= link_to 'Assigned', assigned_path %>
 <%= link_to 'Unassigned', unassigned_path %>
 </div>
-<div class="container">
+<div class="container sum-totals">
    <%=  transactions_count %>
 </div>
 <div>
 
-     <h1>All</h1>
+     <h1>All Transactions</h1>
+<div class="view-display">
 
  <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |trans| %>
  <div class='group-cards'>
@@ -18,7 +19,7 @@
 <%= link_to 'Assign', edit_transaction_path(trans) %>
 <% end %>
    <div class='card-text'>
-     <h4><%= trans.name %></h4>
+     <h4><%= link_to trans.name, transaction_path(trans.id) %></h4>
    <p><%= trans.created_at.strftime("%d %b. %Y") %></p>
    </div>
    <p><%= trans.amount %><br>
@@ -27,6 +28,7 @@
 <% end %>
 
  </div>
+</div>
 
    <div class='new-transaction'>
      <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>

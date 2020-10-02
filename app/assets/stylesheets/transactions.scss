@@ -91,3 +91,52 @@
 .collection-check-box {
   display: flex;
 }
+
+.transactions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 90vw;
+  @media (min-width: 920px) {
+    width: 60vw;
+  }
+}
+
+.new-transaction-button {
+  border: 1px solid rgb(226, 226, 226);
+  background-color: var(--link);
+  min-width: 75px;
+  line-height: 50px;
+  margin: 25px;
+  padding: 15px;
+
+  a {
+    display: block;
+    text-align: center;
+    border: 1px solid white;
+    min-width: 250px;
+
+    span {
+      color: var(--font);
+      font-size: 1.25rem;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  div:hover {
+    opacity: 0.5;
+    transform: scale(0.95);
+
+    span {
+      color: black;
+    }
+  }
+}
+
+.sum-totals {
+  margin-top: 15px;
+}

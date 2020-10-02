@@ -25,7 +25,7 @@
         <% if transaction.group_id == @group.id %>
         <td><%= transaction.author.name %></td>
         <td></td>
-        <td><%= transaction.name %></td>
+        <td><%= link_to transaction.name, transaction_path(transaction.id) %></td>
         <td></td>
         <td><%= transaction.amount %></td>
         <td></td>

@@ -45,139 +45,24 @@
 
 .user-show {
   padding: 15px;
-
-  .transactions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    width: 90vw;
-    @media (min-width: 920px) {
-      width: 60vw;
-    }
-  }
-
-  .new-transaction-button {
-    border: 1px solid rgb(226, 226, 226);
-    background-color: var(--link);
-    min-width: 75px;
-    line-height: 50px;
-    margin: 25px;
-    padding: 15px;
-
-    a {
-      display: block;
-      text-align: center;
-      border: 1px solid white;
-      min-width: 250px;
-
-      span {
-        color: var(--font);
-        font-size: 1.25rem;
-      }
-    }
-
-    a:hover {
-      text-decoration: none;
-    }
-
-    div:hover {
-      opacity: 0.5;
-      transform: scale(0.95);
-
-      span {
-        color: black;
-      }
-
-    }
-  }
-
-}
-
-.burger-menu {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  outline: none;
-
-  .profile-pic {
-    width: 75px;
-    border-radius: 50px;
-  }
-
-  .burger-links {
-    a {
-      font-size: 15px;
-    }
-  }
-
-  .hidden {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    font-size: 1rem;
-    text-align: left;
-  }
-
-  .visible {
-    width: 200px;
-    padding-left: 10px;
-
-    .menu-icon {
-      color: white;
-      border: 1px solid white;
-      border-radius: 50%;
-      padding: 5px;
-      font-size: 0.65rem;
-    }
-
-    .menu-lines {
-      opacity: 0.25;
-    }
-
-    .menu-pic {
-      margin: 25px 25px -25px 15px;
-      color: white;
-    }
-  }
-}
-
-.account-menu {
-  border-radius: 50%;
-  outline: none;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  .profile-pic {
-    width: 75px;
-    border-radius: 50px;
-  }
-
-  .profile-pic:active {}
-
-  .account-links {
-    position: absolute;
-    height: fit-content;
-    top: 15px;
-    right: 75px;
-  }
-
-  .ac-hidden {
-    display: none;
-  }
-
-  .ac-visible {
-    display: block;
-  }
 }
 
 .date {
   text-align: right;
+}
+
+.disclaimer {
+  width: 75vw;
+}
+
+.sign-up-form {
+  width: 30vw;
+
+  label {
+    margin-top: 15px;
+  }
+
+  input {
+    margin-bottom: 15px;
+  }
 }

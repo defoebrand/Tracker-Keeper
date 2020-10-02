@@ -27,7 +27,7 @@
 <% @transaction.groups.each do |group|%>
 <div class='container'>
 <%= group.name %>
-<%= group.icon.html_safe %>
+<%= link_to group.icon.html_safe, group_path(group.id) %>
 </div>
 <% end %>
 </div>

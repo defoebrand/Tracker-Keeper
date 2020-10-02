@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
   <h1>Groups</h1>
 
+<div class="view-display">
+
   <% @groups.sort_by{|x|x.name.downcase}.each do |group| %>
     <div class='group-cards'>
       <%= link_to group.icon.html_safe, group %>
@@ -9,33 +11,13 @@
         <h4><%= group.name %></h4>
       <p><%= group.created_at.strftime("%d %b. %Y") %></p>
       </div>
+      <div>
+        <p>Number of Transactions</p>
       <h5><%= group.transactions.count %></h5>
     </div>
+    </div>
   <% end %>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Icon</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.sort_by{|x|x.name.downcase}.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= link_to group.icon.html_safe, group %></td>
-        <td><%= group.created_at.strftime("%d %b. %Y") %></td>
-        <% if session[:user_id] == 1 %>
-          <td><%= link_to 'Edit', edit_group_path(group) %></td>
-          <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
 
 <br>
 

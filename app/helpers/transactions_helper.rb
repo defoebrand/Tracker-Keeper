@@ -5,7 +5,6 @@ module TransactionsHelper
     @type_sums.each do |x|
       @content << content_tag(:span, "#{x[0]}: #{x[1]}")
       @content << ' | ' unless x[0] == @type_sums.keys.last
-      @content << tag(:br)
     end
     @content
   end
