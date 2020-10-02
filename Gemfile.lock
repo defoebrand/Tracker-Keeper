@@ -132,9 +132,6 @@ GEM
     omniauth-oauth2 (1.7.0)
       oauth2 (~> 1.4)
       omniauth (~> 1.9)
-    omniauth-zoom (0.2.1)
-      oauth2 (>= 1.4.4)
-      omniauth-oauth2 (>= 1.6.0)
     pg (1.2.3)
     public_suffix (4.0.6)
     puma (4.3.6)
@@ -240,7 +237,6 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   omniauth-github!
-  omniauth-zoom
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.3)
