@@ -46,7 +46,7 @@
   <%= form.label "Secondary Groups" %>
   <%= form.collection_check_boxes :groups, Group.all, :id, :icon do |b| %>
   <% unless b.value == @transaction.group_id  %>
-    <div class="collection-check-box" style='display:flex'>
+    <div class="collection-check-box" >
       <% unless @transaction.groups.select{|x| x if x.id == b.value}.empty? %>
       <%= b.check_box(checked: true) %>
       <% else %>

@@ -20,21 +20,19 @@
 
 :root {
   // --background: #7d5e82; my background choice
+  // --font: #053225; my font choice
+  // --link: #274a0d; my link choice
   --background: #f5f6f8;
   --main: #3778c2;
-  // --font: #053225; my font choice
   --font: #434b54;
   --link: #5fb523;
-  // --link: #274a0d; my link choice
-  // --link: #f7f7f2; don't remember what this was for
   --hover: #9c914f;
-  --notice: #91bf8a;
+  --notice: #c3d2d5;
 }
 
 * {
   box-sizing: border-box;
   text-align: center;
-  // border: 1px solid #e4572e;
 }
 
 input {
@@ -42,22 +40,11 @@ input {
 }
 
 html {
-  // background: var(--background);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  // padding-top: 25px;
-  // overflow-y: auto;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  padding: 0 15px 15px;
 }
 
 h1 {
@@ -98,7 +85,6 @@ a {
   color: var(--link);
   font-weight: bold;
   margin: 10px;
-  // text-align: center;
   word-wrap: break-word;
   text-align: justify;
 }
@@ -118,11 +104,8 @@ table {
 .sticky-header {
   position: sticky;
   top: 0;
-  // height: 95px;
   width: 100vw;
-  // z-index: 2;
   background: var(--main);
-  // border-bottom: 1px solid black;
   padding-top: 15px;
   display: flex;
   justify-content: center;
@@ -136,11 +119,8 @@ table {
   align-items: center;
   width: 90vw;
   text-align: center;
-  // margin-top: -35px;
   overflow-wrap: normal;
-  // padding-right: 15px;
   padding-bottom: 15px;
-  // border: 1px solid black;
 
   a {
 
@@ -153,14 +133,6 @@ table {
   font-size: 2em;
   margin: 10px 5px;
 }
-
-// .hidden {
-//   display: none;
-// }
-//
-// .visible {
-//   display: block;
-// }
 
 #nav ul.sub-nav {
   display: none;
@@ -203,5 +175,35 @@ table {
   display: block;
   padding-right: 10px;
   text-align: right;
-  // margin-top: -5px;
+}
+
+.group-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgrey;
+  width: 100%;
+  margin: 5px;
+
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+
+    h4 {
+      margin-top: 5px;
+      margin-bottom: -5px;
+    }
+  }
+}
+
+.icon-box {
+  margin: 25px 0;
+  width: 66vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
 }

@@ -16,24 +16,37 @@
 
   }
 
-  .sign-up {
-    color: blue;
-  }
-
   @media (min-width: 920px) {
     width: 60vw;
   }
 }
 
-.new-user {
-  @extend .splash;
+.user-registration {
+  div.actions {
+    flex-direction: column;
+
+    input {
+      margin: 5px;
+
+    }
+
+    #user_avatar {
+      margin-left: 30px;
+      width: 250px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      margin-bottom: 0;
+      margin-top: 25px;
+    }
+  }
 }
 
 .user-show {
   padding: 15px;
 
   .transactions {
-    // flex-direction: row;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -59,7 +72,6 @@
       min-width: 250px;
 
       span {
-        // display: none;
         color: var(--font);
         font-size: 1.25rem;
       }
@@ -94,13 +106,6 @@
   }
 
   .burger-links {
-    // position: absolute;
-    // height: fit-content;
-    // top: -15px;
-    // left: 25px;
-    // font-size: 1rem;
-    // width: 50px;
-
     a {
       font-size: 15px;
     }
@@ -115,18 +120,12 @@
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    // padding-top: 25px;
     transition: 0.5s;
-    // border: 1px solid orange;
     font-size: 1rem;
-    // display: none;
-    // border: 1px solid black;
     text-align: left;
   }
 
   .visible {
-    // display: block;
-    // border: 1px solid green;
     width: 200px;
     padding-left: 10px;
 
@@ -145,22 +144,11 @@
     .menu-pic {
       margin: 25px 25px -25px 15px;
       color: white;
-      // height: 100%;
-      // border: 3px solid magenta;
     }
-
   }
-
 }
 
-// .burger-menu:focus {
-//   .burger-links {
-//     // display: block;
-//   }
-// }
-
 .account-menu {
-  // border: 5px solid green;
   border-radius: 50%;
   outline: none;
   position: relative;
@@ -172,35 +160,24 @@
     border-radius: 50px;
   }
 
-  .profile-pic:focus {
-    // border: 5px solid blue;
-    // outline: none;
-  }
-
   .profile-pic:active {}
 
   .account-links {
-    // display: none;
     position: absolute;
     height: fit-content;
     top: 15px;
     right: 75px;
-    // font-size: 1rem;
   }
 
-  // .account-menu:focus {
-  // border: 5px solid orange;
   .ac-hidden {
     display: none;
   }
 
   .ac-visible {
     display: block;
-    // transition: ease-in-out, width 0.35s ease-in-out;
   }
 }
 
 .date {
-  // border: 1px solid black;
   text-align: right;
 }
