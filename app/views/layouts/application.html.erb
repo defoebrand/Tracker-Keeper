@@ -8,7 +8,6 @@
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <!-- <link rel="stylesheet" href="schemes/light.css" media="(prefers-color-scheme: light)">
       <link rel="stylesheet" href="../../app/assets/stylesheets/schemes/dark.css" media="(prefers-color-scheme: dark)" />
       <script type="module" src="https://googlechromelabs.github.io/dark-mode-toggle/src/dark-mode-toggle.mjs"></script> -->
@@ -22,12 +21,8 @@
 
 
         <div class="mobile-header">
-
-
-          <!-- <div class="user_buttons"> -->
            <i class="fas fa-bars burger-menu">
 
-            <!-- <div class='burger-links hidden'> -->
             <div class='burger-links hidden'>
               <div class='menu-pic container'>
                 <%= profile_pic(@user) %>
@@ -62,7 +57,6 @@
 
 
            <span class='account-menu' tabindex='0'>
-               <%# profile_pic(@user) %>
 
             <div class='account-links ac-hidden'>
               <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
@@ -71,7 +65,6 @@
             </div>
 
            </span>
-         <!-- </div> -->
 
 
         </div>
@@ -106,5 +99,6 @@
 
 
     <%= yield %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>
 </html>

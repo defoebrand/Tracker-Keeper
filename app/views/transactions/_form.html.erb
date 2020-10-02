@@ -17,23 +17,18 @@
     <%= form.text_field :name %>
   </div>
 
-  <!-- <div class="field row-container"> -->
     <div class="field">
     <%= form.label :amount, 'Amount of Transaction:' %>
     <%= form.text_field :amount %>
   </div>
-<!-- </div>
-<div> -->
   <div class="field amount-field">
     <%= form.label :amount_type, 'Amount Type:' %>
     <%= form.collection_select :amount_type, @types, :amount_type, :amount_type,
      :include_blank => true %>
   <span class='add-type'>
       <a href="/new_type"><i class="fas fa-plus-square"><span>New Type</span></i></a>
-    <!-- <i class="fas fa-plus-square"><%# link_to 'New Type', types_path %></i> -->
   </span>
   </div>
-<!-- </div> -->
 <p>Primary Group</p>
   <div class="icon-box">
     <% @groups.each do |group| %>
@@ -63,8 +58,6 @@
     <% end %>
     <% end %>
   </div>
-
-  <%# b.label(class: "check_box") { b.check_box(checked: true, class: "add_margin") + b.text } %>
 
 
   <div class="actions">

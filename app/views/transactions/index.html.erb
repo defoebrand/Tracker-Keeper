@@ -9,18 +9,6 @@
 <div class='transactions'>
 
      <h1>All</h1>
-  <!-- <div class="assigned"> -->
-    <!-- <h4>Assigned Transactions</h4> -->
-    <%# render 'assigned_transactions'  %>
-  <!-- </div> -->
-
-  <!-- <div class="unassigned"> -->
-    <!-- <h4>Unassigned Transactions</h4> -->
-      <%# render 'unassigned_transactions' %>
-  <!-- </div> -->
-
-
- <!-- <br /> -->
 
  <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |trans| %>
  <div class='group-cards'>
@@ -38,45 +26,19 @@
  </div>
 <% end %>
 
-<!-- <table> -->
-<!-- <p>Transaction Totals by Type</p>
-<thead>
- <tr>
-   <th>Group</th>
-   <th>Name</th>
-   <th>Amount</th>
-   <th>Type</th>
-   <th>Created</th>
-   <th colspan="4"></th>
- </tr>
-</thead> -->
-<!--
-<tbody>
- <%# @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
- <%# if transaction.group_id %>
-     <tr>
-       <td><%# link_to transaction.group.icon.html_safe, transaction.group %><br /><%# transaction.group.name %></td>
-       <td><span><%# link_to transaction.name, transaction %></span></td>
-       <td><%# transaction.amount %></td>
-       <td><%# transaction.amount_type %></td>
-       <td><%# transaction.created_at.strftime("%d %b. %Y") %></td>
-     </tr>
-   <%# end %>
- <%# end %>
-</tbody>
-</table> -->
-
-<%# @day_of_week = "assigned_transactions" %>
-<%# select_tag :days, options_for_select(["assigned_transactions", "unassigned_transactions"]), :id => "select_days" %>
-<%# select_tag :days, options_for_select([@transactions_test.name, "Tuesday"]), :id => "select_days" %>
- <!-- <div id="text_to_be_changed" href='test'> -->
-
-  <%# render @day_of_week %>
-  <%# @day_of_week %>
-   <!-- </div> -->
-
  </div>
 
    <div class='new-transaction'>
      <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
    </div>
+
+
+
+   <%# @day_of_week = "assigned_transactions" %>
+   <%# select_tag :days, options_for_select(["assigned_transactions", "unassigned_transactions"]), :id => "select_days" %>
+   <%# select_tag :days, options_for_select([@transactions_test.name, "Tuesday"]), :id => "select_days" %>
+   <!-- <div id="text_to_be_changed" href='test'> -->
+
+     <%# render @day_of_week %>
+     <%# @day_of_week %>
+     <!-- </div> -->
