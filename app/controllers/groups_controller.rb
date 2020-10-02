@@ -1,61 +1,32 @@
 class GroupsController < ApplicationController
+  before_action :check_user_log_in
+  before_action :set_user, :share_groups, except: %i[update destroy]
   before_action :set_group, only: %i[show edit update destroy]
+  before_action :group_icons, only: %i[new edit]
 
   # GET /groups
   # GET /groups.json
-  def index
-    if session[:user_id]
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-    else
-      redirect_to root_path
-    end
-  end
+  def index; end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
-    if session[:user_id]
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-      @total = []
-      @group.transactions.each { |x| @total << x.amount }
-    else
-      redirect_to root_path
-    end
+    @total = []
+    @group.transactions.each { |x| @total << x.amount }
   end
 
   # GET /groups/new
   def new
-    if session[:user_id]
-      @group = Group.new
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-      @group_icons = []
-      @groups.each { |x| @group_icons << x.icon unless @group_icons.include?(x.icon) }
-    else
-      redirect_to root_path
-    end
+    @group = Group.new
   end
 
   # GET /groups/1/edit
-  def edit
-    if session[:user_id]
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-      @group_icons = []
-      @groups.each { |x| @group_icons << x.icon unless @group_icons.include?(x.icon) }
-    else
-      redirect_to root_path
-    end
-  end
+  def edit; end
 
   # POST /groups
   # POST /groups.json
   def create
     @group = Group.new(group_params)
-    @groups = Group.all
-    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @group.save
@@ -85,6 +56,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    @group.transactions.clear
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
@@ -97,6 +69,11 @@ class GroupsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def group_icons
+    @group_icons = []
+    @groups.each { |x| @group_icons << x.icon unless @group_icons.include?(x.icon) }
   end
 
   # Only allow a list of trusted parameters through.

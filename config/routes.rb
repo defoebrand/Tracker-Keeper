@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/splash', to: 'users#splash', as: 'home'
   get '/new_type', to: 'transactions#new_type', as: 'types'
   post '/new_type', to: 'transactions#create_type'
+  get '/show_type', to: 'transactions#show_type'
   get '/assigned_transactions', to: 'transactions#assigned_transactions', as: 'assigned'
   get '/unassigned_transactions', to: 'transactions#unassigned_transactions', as: 'unassigned'
   # get '/about', to: 'portal#about'

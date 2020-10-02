@@ -1,65 +1,32 @@
 class TransactionsController < ApplicationController
+  before_action :check_user_log_in
   before_action :set_transaction, only: %i[show edit update destroy]
+  before_action :set_user, except: %i[update destroy]
+  before_action :share_groups, except: %i[index destroy new_type show_type create_type]
+  before_action :share_types, only: %i[new edit create]
 
   # GET /transactions
   # GET /transactions.json
   def index
-    if session[:user_id]
-      @transactions_test = Transaction.first
-
-      @user = User.find(session[:user_id])
-      @transactions = Transaction.all.where(authorid: @user.id)
-      @assigned_type_sums = {}
-      @unassigned_type_sums = {}
-    else
-      redirect_to root_path
-    end
+    @transactions = Transaction.all.where(authorid: @user.id)
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
-  def show
-    if session[:user_id]
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-      # @types = Type.all
-    else
-      redirect_to root_path
-    end
-  end
+  def show; end
 
   # GET /transactions/new
   def new
-    if session[:user_id]
-      @transaction = Transaction.new
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-      @types = Type.all
-      # @types = []
-      # Transaction.all.each { |x| @types << x.amount_type unless @types.include?(x.amount_type) }
-    else
-      redirect_to root_path
-    end
+    @transaction = Transaction.new
   end
 
   # GET /transactions/1/edit
-  def edit
-    if session[:user_id]
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-      @types = Type.all
-    else
-      redirect_to root_path
-    end
-  end
+  def edit; end
 
   # POST /transactions
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params.except(:groups))
-    @groups = Group.all
-    @user = User.find(session[:user_id])
-    @types = Type.all
 
     respond_to do |format|
       transaction_params.slice(:groups).values.each do |x|
@@ -84,7 +51,6 @@ class TransactionsController < ApplicationController
   # PATCH/PUT /transactions/1
   # PATCH/PUT /transactions/1.json
   def update
-    @groups = Group.all
     @transaction.groups.clear
     respond_to do |format|
       transaction_params.slice(:groups).values.each do |x|
@@ -118,53 +84,26 @@ class TransactionsController < ApplicationController
   end
 
   def assigned_transactions
-    if session[:user_id]
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-      @transactions = []
-      Transaction.all.each { |x| @transactions << x if (x.authorid == @user.id) && !x.group_id.nil? }
-      @assigned_type_sums = {}
-      # @types = Type.all
-    else
-      redirect_to root_path
-    end
+    @transactions = []
+    Transaction.all.each { |x| @transactions << x if (x.authorid == @user.id) && !x.group_id.nil? }
   end
 
   def unassigned_transactions
-    if session[:user_id]
-      @groups = Group.all
-      @user = User.find(session[:user_id])
-      @transactions = []
-      Transaction.all.each { |x| @transactions << x if (x.authorid == @user.id) && x.group_id.nil? }
-      @unassigned_type_sums = {}
-      # @types = Type.all
-    else
-      redirect_to root_path
-    end
+    @transactions = []
+    Transaction.all.each { |x| @transactions << x if (x.authorid == @user.id) && x.group_id.nil? }
   end
 
   def new_type
-    if session[:user_id]
-      @type = Type.new
-      @user = User.find(session[:user_id])
-    else
-      redirect_to root_path
-    end
+    @type = Type.new
   end
 
   def show_type
-    if session[:user_id]
-      @type = Type.new
-      @user = User.find(session[:user_id])
-    else
-      redirect_to root_path
-    end
+    @transactions = Transaction.all
+    @type = Type.find_by(params[:amount_type])
   end
 
   def create_type
-    # @transaction = Transaction.new(transaction_params)
     @type = Type.new(type_params)
-    @user = User.find(session[:user_id])
 
     respond_to do |format|
       if @type.save
@@ -182,6 +121,10 @@ class TransactionsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_transaction
     @transaction = Transaction.find(params[:id])
+  end
+
+  def share_types
+    @types = Type.all
   end
 
   # Only allow a list of trusted parameters through.

@@ -4,12 +4,18 @@
 <h1>Tracker Keeper</h1>
 <br>
 
-<% if session[:user_id] %>
-<%= link_to 'Log Out', logout_path %>
-<% else %>
-<%= link_to 'New User', new_user_path %>
-<%= link_to 'Log in', new_session_path %>
+<% @users.each do |user| %>
+  <%= user.name %>
+  <%= user.id %>
+  <%= tag(:br) %>
 <% end %>
+
+<p>
+<%= link_to 'New User', new_user_path %> |
+<%= link_to 'Log Out', logout_path %>
+</p>
+
+
 
 
 

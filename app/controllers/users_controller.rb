@@ -1,32 +1,20 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, :check_user_log_in, except: %i[splash new create]
 
   def splash
-    # code
     redirect_to user_path(session[:user_id]) if session[:user_id]
   end
 
   # GET /users
   # GET /users.json
   def index
-    if session[:user_id] == 1
-      @users = User.all
-      @user = User.find(session[:user_id])
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path unless session[:user_id] == 1
+    @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
-  def show
-    if session[:user_id]
-      @user = User.find(session[:user_id])
-      @transactions = Transaction.all.where(authorid: @user.id)
-    else
-      redirect_to root_path
-    end
-  end
+  def show; end
 
   # GET /users/new
   def new
@@ -34,13 +22,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-    if session[:user_id]
-      @user = User.find(session[:user_id])
-    else
-      redirect_to root_path
-    end
-  end
+  def edit; end
 
   # POST /users
   # POST /users.json
@@ -86,9 +68,6 @@ class UsersController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def user_params

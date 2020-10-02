@@ -1,25 +1,25 @@
 module TransactionsHelper
-  def assigned_transactions_count
+  def transactions_count
     @content = tag(:div, class: 'trans-totals')
-    @transactions.each { |x| @assigned_type_sums[x.amount_type] = 0 unless x.group_id.nil? }
-    @transactions.each { |x| @assigned_type_sums[x.amount_type] += x.amount unless x.group_id.nil? }
-    @assigned_type_sums.each do |x|
+    filter_transactions
+    @type_sums.each do |x|
       @content << content_tag(:span, "#{x[0]}: #{x[1]}")
-      @content << ' | ' unless x[0] == @assigned_type_sums.keys.last
+      @content << ' | ' unless x[0] == @type_sums.keys.last
       @content << tag(:br)
     end
     @content
   end
 
-  def unassigned_transactions_count
-    @content = tag(:div, class: 'trans-totals')
-    @transactions.each { |x| @unassigned_type_sums[x.amount_type] = 0 if x.group_id.nil? }
-    @transactions.each { |x| @unassigned_type_sums[x.amount_type] += x.amount if x.group_id.nil? }
-    @unassigned_type_sums.each do |x|
-      @content << content_tag(:span, "#{x[0]}: #{x[1]}")
-      @content << ' | ' unless x[0] == @unassigned_type_sums.keys.last
+  def filter_transactions
+    @type_sums = {}
+    @transactions.each do |x|
+      @type_sums[x.amount_type] = 0
     end
-    @content
+
+    @transactions.each do |x|
+      @type_sums[x.amount_type] += x.amount
+    end
+    @type_sums
   end
 
   def icon?(transaction)
@@ -41,7 +41,6 @@ module TransactionsHelper
   end
 
   def back(transaction)
-    # @content = tag(:span)
     @content = if transaction.group_id
                  content_tag(:a, 'Back', href: '/assigned_transactions')
                else

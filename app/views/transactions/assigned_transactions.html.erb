@@ -1,4 +1,12 @@
+<div class="">
+<%= link_to 'All', transactions_path %>
 <%= link_to 'Unassigned', unassigned_path %>
+</div>
+<div>
+<%=  transactions_count %>
+</div>
+<div class="">
+
   <h1>Assigned</h1>
 
     <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |trans| %>
@@ -14,9 +22,8 @@
     </div>
   <% end %>
 
-<table>
+<!-- <table>
   <p>Transaction Totals by Type</p>
-  <%= assigned_transactions_count %>
   <thead>
     <tr>
       <th>Group</th>
@@ -29,19 +36,20 @@
   </thead>
 
   <tbody>
-    <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
-    <% if transaction.group_id %>
+    <%# <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %> %>
+    <%# <% if transaction.group_id %> %>
         <tr>
-          <td><%= link_to transaction.group.icon.html_safe, transaction.group %><br /><%= transaction.group.name %></td>
-          <td><span><%= link_to transaction.name, transaction %></span></td>
-          <td><%= transaction.amount %></td>
-          <td><%= transaction.amount_type %></td>
-          <td><%= transaction.created_at.strftime("%d %b. %Y") %></td>
+          <td><%# link_to transaction.group.icon.html_safe, transaction.group %><br /><%# transaction.group.name %></td>
+          <td><span><%# link_to transaction.name, transaction %></span></td>
+          <td><%# transaction.amount %></td>
+          <td><%# transaction.amount_type %></td>
+          <td><%# transaction.created_at.strftime("%d %b. %Y") %></td>
         </tr>
-      <% end %>
-    <% end %>
+      <%# <% end %> %>
+    <%# <% end %> %>
   </tbody>
-</table>
+</table> -->
+</div>
 
 <div class='new-transaction'>
   <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>

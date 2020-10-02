@@ -1,47 +1,19 @@
 class SessionsController < ApplicationController
-  def index
-    if session[:user_id]
-      redirect_to user_path(session[:user_id])
-    else
-      redirect_to root_path
-    end
-  end
+  before_action :redirect_login, only: %i[index edit new show]
 
-  def edit
-    if session[:user_id]
-      redirect_to user_path(session[:user_id])
-    else
-      redirect_to root_path
-    end
-  end
+  def index; end
 
-  def new
-    redirect_to user_path(session[:user_id]) if session[:user_id]
-  end
+  def edit; end
 
-  def show
-    if session[:user_id]
-      redirect_to user_path(session[:user_id])
-    else
-      redirect_to root_path
-    end
-  end
+  def new; end
+
+  def show; end
 
   def create
-    # auth_hash.to_json
-    # raise env['omniauth.auth'].to_yaml
+    find_or_create_user
 
-    user = omniauth_hash.nil? ? User.find_by_name(params[:name]) : User.from_omniauth(omniauth_hash)
-    # user = User.from_omniauth(env['omniauth.auth'])
-    # user = User.find_or_create_by(params)
-    # user = auth_hash.nil? ? User.find_by_name(params[:name]) : User.new(auth_hash)
-
-    # self.current_user = @user
-    # redirect_to '/'
-    # user = User.find_by_name(params[:name])
-    # if user && (user[:name] == params[:name])
-    if user
-      session[:user_id] = user.id
+    if @user
+      session[:user_id] = @user.id
       redirect_to user_path(session[:user_id]), notice: 'Logged in!'
     else
       flash.now[:alert] = 'Name or email is invalid'
@@ -60,7 +32,12 @@ class SessionsController < ApplicationController
     request.env['omniauth.auth']
   end
 
-  # def user_params
-  #   params.require(:user).permit(:name)
-  # end
+  def find_or_create_user
+    @user = omniauth_hash.nil? ? User.find_by_name(params[:name]) : User.from_omniauth(omniauth_hash)
+    @user
+  end
+
+  def redirect_login
+    session[:user_id] ? (redirect_to user_path(session[:user_id])) : (redirect_to root_path)
+  end
 end

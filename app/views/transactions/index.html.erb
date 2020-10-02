@@ -1,17 +1,71 @@
+<div class="">
+<%= link_to 'All', transactions_path %>
+<%= link_to 'Assigned', assigned_path %>
+<%= link_to 'Unassigned', unassigned_path %>
+</div>
+<div class="container">
+   <%=  transactions_count %>
+</div>
 <div class='transactions'>
-  <div class="assigned">
+
+     <h1>All</h1>
+  <!-- <div class="assigned"> -->
     <!-- <h4>Assigned Transactions</h4> -->
     <%# render 'assigned_transactions'  %>
-  </div>
+  <!-- </div> -->
 
-  <div class="unassigned">
-    <h4>Unassigned Transactions</h4>
-      <%# render 'unassigned_transactions', @unassigned_type_sums %>
-  </div>
-</div>
+  <!-- <div class="unassigned"> -->
+    <!-- <h4>Unassigned Transactions</h4> -->
+      <%# render 'unassigned_transactions' %>
+  <!-- </div> -->
 
 
- <br />
+ <!-- <br /> -->
+
+ <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |trans| %>
+ <div class='group-cards'>
+ <% if trans.group_id %>
+   <%= link_to trans.group.icon.html_safe, trans.group %>
+<% else %>
+<%= link_to 'Assign', edit_transaction_path(trans) %>
+<% end %>
+   <div class='card-text'>
+     <h4><%= trans.name %></h4>
+   <p><%= trans.created_at.strftime("%d %b. %Y") %></p>
+   </div>
+   <p><%= trans.amount %><br>
+     <%= link_to trans.amount_type, show_type_path(trans.amount_type) %></p>
+ </div>
+<% end %>
+
+<!-- <table> -->
+<!-- <p>Transaction Totals by Type</p>
+<thead>
+ <tr>
+   <th>Group</th>
+   <th>Name</th>
+   <th>Amount</th>
+   <th>Type</th>
+   <th>Created</th>
+   <th colspan="4"></th>
+ </tr>
+</thead> -->
+<!--
+<tbody>
+ <%# @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
+ <%# if transaction.group_id %>
+     <tr>
+       <td><%# link_to transaction.group.icon.html_safe, transaction.group %><br /><%# transaction.group.name %></td>
+       <td><span><%# link_to transaction.name, transaction %></span></td>
+       <td><%# transaction.amount %></td>
+       <td><%# transaction.amount_type %></td>
+       <td><%# transaction.created_at.strftime("%d %b. %Y") %></td>
+     </tr>
+   <%# end %>
+ <%# end %>
+</tbody>
+</table> -->
+
 <%# @day_of_week = "assigned_transactions" %>
 <%# select_tag :days, options_for_select(["assigned_transactions", "unassigned_transactions"]), :id => "select_days" %>
 <%# select_tag :days, options_for_select([@transactions_test.name, "Tuesday"]), :id => "select_days" %>
@@ -21,6 +75,7 @@
   <%# @day_of_week %>
    <!-- </div> -->
 
+ </div>
 
    <div class='new-transaction'>
      <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>

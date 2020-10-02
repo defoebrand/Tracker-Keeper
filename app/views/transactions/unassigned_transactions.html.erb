@@ -1,9 +1,28 @@
+<div class="">
+<%= link_to 'All', transactions_path %>
 <%= link_to 'Assigned', assigned_path %>
-  <h1>Unassigned</h1>
+</div>
+<div class="">
+  <%= transactions_count %>
+</div>
+<div class="">
 
-<table>
+  <h1>Unassigned</h1>
+  <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |trans| %>
+  <div class='group-cards'>
+<%= link_to 'Assign', edit_transaction_path(trans) %> 
+    <div class='card-text'>
+      <h4><%= trans.name %></h4>
+    <p><%= trans.created_at.strftime("%d %b. %Y") %></p>
+    </div>
+    <p><%= trans.amount %><br>
+      <%= trans.amount_type %></p>
+  </div>
+
+<% end %>
+
+<!-- <table>
     <p>Transaction Totals by Type</p>
-  <%= unassigned_transactions_count %>
   <thead>
     <tr>
       <th>Group</th>
@@ -16,19 +35,20 @@
   </thead>
 
   <tbody>
-    <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
-    <% unless transaction.group_id %>
+    <%# @transactions.sort_by{ |x| x.created_at }.reverse.each do |transaction| %>
+    <%# unless transaction.group_id %>
         <tr>
-          <td><%= link_to 'Assign', edit_transaction_path(transaction) %> </td>
-          <td><%= link_to transaction.name, transaction %></td>
-          <td><%= transaction.amount %></td>
-          <td><%= transaction.amount_type %></td>
-          <td><%= transaction.created_at.strftime("%d %b. %Y") %></td>
+          <td><%# link_to 'Assign', edit_transaction_path(transaction) %> </td>
+          <td><%# link_to transaction.name, transaction %></td>
+          <td><%# transaction.amount %></td>
+          <td><%# transaction.amount_type %></td>
+          <td><%# transaction.created_at.strftime("%d %b. %Y") %></td>
         </tr>
-      <% end %>
-    <% end %>
+      <%# end %>
+    <%# end %>
   </tbody>
-</table>
+</table> -->
+</div>
 <div class='new-transaction'>
   <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
 </div>
