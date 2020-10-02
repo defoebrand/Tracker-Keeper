@@ -14,20 +14,11 @@
   .fas {
     position: relative;
     font-size: 1.5em;
-  }
 
-  span {
-    display: none;
-    font-size: 15px;
-    color: black;
-  }
-
-  .fas:hover {
     span {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 25px;
+      display: none;
+      font-size: 15px;
+      color: black;
     }
   }
 }
@@ -55,17 +46,30 @@
       font-size: 3.5em;
       z-index: 1;
       color: white;
+
+      span {
+        display: none;
+        font-size: 15px;
+        color: black;
+      }
     }
   }
+}
 
+.add-type {
+  .fas:hover {
+    span {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 25px;
+    }
+  }
+}
+
+.new-transaction {
   a:hover {
     text-decoration: none;
-  }
-
-  span {
-    display: none;
-    font-size: 15px;
-    color: black;
   }
 
   .fas:hover {
