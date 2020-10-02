@@ -7,17 +7,27 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   padding-bottom: 25px;
 
   label {
     margin-bottom: 35px;
-
   }
 
   @media (min-width: 920px) {
     width: 60vw;
+  }
+}
+
+.sign-up-form {
+  width: 30vw;
+
+  label {
+    margin-top: 15px;
+  }
+
+  input {
+    margin-bottom: 15px;
   }
 }
 
@@ -27,7 +37,6 @@
 
     input {
       margin: 5px;
-
     }
 
     #user_avatar {
@@ -53,16 +62,4 @@
 
 .disclaimer {
   width: 75vw;
-}
-
-.sign-up-form {
-  width: 30vw;
-
-  label {
-    margin-top: 15px;
-  }
-
-  input {
-    margin-bottom: 15px;
-  }
 }

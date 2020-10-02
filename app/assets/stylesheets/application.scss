@@ -17,6 +17,7 @@
   font-family: Proxima-Nova-Bold;
   src: url("/Proxima Nova Bold.otf");
 }
+
 @font-face {
   font-family: Proxima-Nova-Light;
   src: url("/Proxima Nova Thin.otf");
@@ -32,7 +33,7 @@
   --link: #5fb523;
   --hover: #9c914f;
   --notice: #c3d2d5;
-  --visited: #3A4F41;
+  --visited: #3a4f41;
 }
 
 * {
@@ -139,6 +140,10 @@ table {
   a {
     white-space: nowrap;
   }
+
+  @media (min-width: 650px) {
+    display: none;
+  }
 }
 
 .fab,
@@ -153,12 +158,6 @@ table {
 
 #nav ul.visible {
   display: block;
-}
-
-.mobile-header {
-  @media (min-width: 650px) {
-    display: none;
-  }
 }
 
 .desktop-header {
@@ -179,6 +178,7 @@ table {
     justify-content: center;
     align-items: center;
   }
+
   @media (min-width: 650px) {
     display: flex;
   }
@@ -287,8 +287,6 @@ table {
     width: 75px;
     border-radius: 50px;
   }
-
-  .profile-pic:active {}
 
   .account-links {
     position: absolute;

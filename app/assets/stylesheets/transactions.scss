@@ -10,24 +10,36 @@
   position: relative;
 }
 
-.add-type {
-  .fas {
-    position: relative;
-    font-size: 1.5em;
-  }
+.new-transaction-button {
+  border: 1px solid rgb(226, 226, 226);
+  background-color: var(--link);
+  min-width: 75px;
+  line-height: 50px;
+  margin: 25px;
+  padding: 15px;
 
-  span {
-    display: none;
-    font-size: 15px;
-    color: black;
-  }
+  a {
+    display: block;
+    text-align: center;
+    border: 1px solid white;
+    min-width: 250px;
 
-  .fas:hover {
     span {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 25px;
+      color: var(--font);
+      font-size: 1.25rem;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  div:hover {
+    opacity: 0.5;
+    transform: scale(0.95);
+
+    span {
+      color: black;
     }
   }
 }
@@ -78,6 +90,28 @@
   }
 }
 
+.add-type {
+  .fas {
+    position: relative;
+    font-size: 1.5em;
+  }
+
+  span {
+    display: none;
+    font-size: 15px;
+    color: black;
+  }
+
+  .fas:hover {
+    span {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 25px;
+    }
+  }
+}
+
 .trans-totals {
   border: 1px solid lightgray;
   display: flex;
@@ -98,42 +132,9 @@
   justify-content: space-around;
   align-items: flex-start;
   width: 90vw;
+
   @media (min-width: 920px) {
     width: 60vw;
-  }
-}
-
-.new-transaction-button {
-  border: 1px solid rgb(226, 226, 226);
-  background-color: var(--link);
-  min-width: 75px;
-  line-height: 50px;
-  margin: 25px;
-  padding: 15px;
-
-  a {
-    display: block;
-    text-align: center;
-    border: 1px solid white;
-    min-width: 250px;
-
-    span {
-      color: var(--font);
-      font-size: 1.25rem;
-    }
-  }
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  div:hover {
-    opacity: 0.5;
-    transform: scale(0.95);
-
-    span {
-      color: black;
-    }
   }
 }
 
