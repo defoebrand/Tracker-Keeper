@@ -1,9 +1,8 @@
-
+<%= link_to 'Unassigned', unassigned_path %>
   <h1>Assigned</h1>
 
     <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |trans| %>
     <div class='group-cards'>
-      <%# trans.group_id ? 'true' : 'false' %>
       <%= link_to trans.group.icon.html_safe, trans.group %>
 
       <div class='card-text'>

@@ -85,6 +85,7 @@ class TransactionsController < ApplicationController
   # PATCH/PUT /transactions/1.json
   def update
     @groups = Group.all
+    @transaction.groups.clear
     respond_to do |format|
       transaction_params.slice(:groups).values.each do |x|
         x.each do |y|
@@ -108,6 +109,7 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1
   # DELETE /transactions/1.json
   def destroy
+    @transaction.groups.clear
     @transaction.destroy
     respond_to do |format|
       format.html { redirect_to user_path(session[:user_id]), notice: 'Transaction was successfully destroyed.' }

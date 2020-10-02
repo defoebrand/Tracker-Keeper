@@ -39,4 +39,14 @@ module TransactionsHelper
                 end
     @content
   end
+
+  def back(transaction)
+    # @content = tag(:span)
+    @content = if transaction.group_id
+                 content_tag(:a, 'Back', href: '/assigned_transactions')
+               else
+                 content_tag(:a, 'Back', href: '/unassigned_transactions')
+               end
+    @content
+  end
 end

@@ -50,21 +50,17 @@
   <div class="field">
   <%= form.label "Secondary Groups" %>
   <%= form.collection_check_boxes :groups, Group.all, :id, :icon do |b| %>
+  <% unless b.value == @transaction.group_id  %>
     <div class="collection-check-box" style='display:flex'>
-      <%# if @transaction.groups.find(b.value) %>
-      <%#  test = [] %>
-      <%# @transaction.groups.select{|x| test << x.name if x.id == b.value} %>
-      <%# test %>
       <% unless @transaction.groups.select{|x| x if x.id == b.value}.empty? %>
       <%= b.check_box(checked: true) %>
-      <!-- <p>true</p> -->
       <% else %>
       <%= b.check_box %>
       <% end %>
-      <%= b.value %>
       <%= b.text.html_safe %>
       <%= @groups.find(b.value).name %>
     </div>
+    <% end %>
     <% end %>
   </div>
 

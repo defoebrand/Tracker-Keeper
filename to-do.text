@@ -1,8 +1,6 @@
 add amazon s3
 
 
-split view into assigned and unassigned (all??)
-
  create filter by day week month year all
  - jquery
 
