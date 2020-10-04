@@ -4,26 +4,28 @@
 <%= link_to 'Unassigned', unassigned_path %>
 </div>
 <div class="container sum-totals">
-   <%=  transactions_count %>
+   <%#  transactions_count %>
 </div>
 <div>
 
      <h1>All Transactions</h1>
 <div class="view-display">
+   <%# @tracktions.sort_by{ |x| x.created_at }.each do |trans| %>
 
- <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |trans| %>
+ <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |track| %>
  <div class='group-cards'>
- <% if trans.group_id %>
-   <%= link_to trans.group.icon.html_safe, trans.group %>
+ <% if track.groups.first %>
+   <%= link_to track.groups.first.icon.html_safe, track.groups.first %>
 <% else %>
-<%= link_to 'Assign', edit_transaction_path(trans) %>
+<%= link_to 'Assign', edit_transaction_path(track) %>
 <% end %>
    <div class='card-text'>
-     <h4><%= link_to trans.name, transaction_path(trans.id) %></h4>
-   <p><%= trans.created_at.strftime("%d %b. %Y") %></p>
+     <h4><%= link_to track.name, transaction_path(track.id) %></h4>
+   <p>   <%= track.created_at.strftime("%d %b. %Y") %></p>
    </div>
-   <p><%= trans.amount %><br>
-     <%= link_to trans.amount_type, show_type_path(trans.amount_type) %></p>
+   <p><%= track.amount %><br>
+     <%= link_to track.type.amount_type, show_type_path(track.type.amount_type) %></p>
+     <%= track.author.name %>
  </div>
 <% end %>
 

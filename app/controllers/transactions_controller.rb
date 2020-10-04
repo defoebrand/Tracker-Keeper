@@ -8,12 +8,20 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all.where(authorid: @user.id)
+    # @transactions = Transaction.all.where(authorid: @user.id)
+    # @tracktions = Tracktion.includes(:type).eager_load(:groups)
+    @tracktions = Tracktion.includes(:author).includes(:type).eager_load(:groups)
+    # @tracktions = Tracktion.includes(:type).includes(:groups).all
+
+    # @tracktions = Tracktion.group(:author_id)
+    # @tracktions = Tracktion.includes(:groups).all
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
-  def show; end
+  def show
+    @tracktions = Tracktion.all
+  end
 
   # GET /transactions/new
   def new

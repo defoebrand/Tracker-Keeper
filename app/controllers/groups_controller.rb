@@ -1,18 +1,25 @@
 class GroupsController < ApplicationController
   before_action :check_user_log_in
-  before_action :set_user, :share_groups, except: %i[update destroy]
-  before_action :set_group, only: %i[show edit update destroy]
-  before_action :group_icons, only: %i[new edit]
+  # before_action :set_user, :share_groups, except: %i[update destroy]
+  before_action :set_user, except: %i[update destroy]
+  # before_action :set_group, only: %i[show edit update destroy]
+  # before_action :group_icons, only: %i[new edit]
 
   # GET /groups
   # GET /groups.json
-  def index; end
+  def index
+    @groups = Group.eager_load(:tracktions).all
+  end
 
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @total = []
-    @group.transactions.each { |x| @total << x.amount }
+    @group = Group.find(params[:id]).eager_load(:tracktions).all
+    # @groups = Group.eager_load(:tracktions)
+    # @groups = Group.eager_load(:tracktions).all
+    # @groups_count = Group.eager_load(:tracktions).count
+    # @total = []
+    # @group.transactions.each { |x| @total << x.amount }
   end
 
   # GET /groups/new

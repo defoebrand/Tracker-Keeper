@@ -2,7 +2,7 @@
 
 
 <h2><%= @group.name %> Transactions </h2>
-<h3>Total - <%= @total.sum %></h3>
+<h3>Total - <%# @total.sum %></h3>
 <p class='group-show-icon'><%= @group.icon.html_safe %></p>
 
 <table>
@@ -20,17 +20,17 @@
   </thead>
 
   <tbody>
-    <% @group.transactions.each do |transaction| %>
+    <% @group.tracktions.each do |track| %>
       <tr>
-        <% if transaction.group_id == @group.id %>
-        <td><%= transaction.author.name %></td>
+        <%# if track.id == @group.id %>
+        <td><%= track.author.name %></td>
         <td></td>
-        <td><%= link_to transaction.name, transaction_path(transaction.id) %></td>
+        <td><%= link_to track.name, transaction_path(track.id) %></td>
         <td></td>
-        <td><%= transaction.amount %></td>
+        <td><%= track.amount %></td>
         <td></td>
-        <td><%= transaction.created_at.strftime("%d %b. %Y") %></td>
-        <% end %>
+        <td><%= track.created_at.strftime("%d %b. %Y") %></td>
+        <%# end %>
       </tr>
     <% end %>
   </tbody>
