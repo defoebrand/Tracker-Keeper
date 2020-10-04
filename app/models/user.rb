@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :transactions
   validates :name, uniqueness: true
   validates_length_of :name, minimum: 5, allow_blank: false
+  has_many :tracktions, foreign_key: 'author_id'
   has_one_attached :avatar
 
   def name=(value)

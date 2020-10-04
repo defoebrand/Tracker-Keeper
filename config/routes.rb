@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tracktions
   resources :sessions
   resources :groups
   resources :transactions

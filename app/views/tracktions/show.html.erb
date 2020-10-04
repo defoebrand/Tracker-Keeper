@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @tracktion.author_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @tracktion.type_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tracktion.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @tracktion.amount %>
+</p>
+
+<%= link_to 'Edit', edit_tracktion_path(@tracktion) %> |
+<%= link_to 'Back', tracktions_path %>
