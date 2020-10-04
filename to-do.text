@@ -1,3 +1,24 @@
+at log in, create a variable with a query
+ - pass that variable
+
+
+Profile pic
+@user = User..
+ @user.avatar  - image file
+
+every loop can be converted
+ordering should be done in n + 1 conversion
+
+Active Record lets you eager load any number of associations with a single Model.find call by using an array, hash, or a nested hash of array/hash with the includes method.
+13.1.1 Array of Multiple Associations
+Article.includes(:category, :comments)
+
+This loads all the articles and the associated category and comments for each article.
+13.1.2 Nested Associations Hash
+Category.includes(articles: [{ comments: :guest }, :tags]).find(1)
+
+This will find the category with id 1 and eager load all of the associated articles, the associated articles' tags and comments, and every comment's guest association.
+
 add amazon s3
 
 

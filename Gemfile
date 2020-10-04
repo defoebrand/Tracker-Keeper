@@ -58,3 +58,5 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 
 gem 'hirb'
+
+gem 'byebug'
