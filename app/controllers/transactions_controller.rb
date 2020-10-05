@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :check_user_log_in
-  before_action :set_transaction, only: %i[show edit update destroy]
+  # before_action :set_transaction, only: %i[show edit update destroy]
   before_action :set_user, except: %i[update destroy]
   before_action :share_groups, except: %i[index destroy new_type show_type create_type]
   before_action :share_types, only: %i[new edit create]
@@ -10,7 +10,7 @@ class TransactionsController < ApplicationController
   def index
     # @transactions = Transaction.all.where(authorid: @user.id)
     # @tracktions = Tracktion.includes(:type).eager_load(:groups)
-    @tracktions = Tracktion.includes(:author).includes(:type).eager_load(:groups)
+    @tracktions = Tracktion.includes(:author).includes(:type).eager_load(:groups).all
     # @tracktions = Tracktion.includes(:type).includes(:groups).all
 
     # @tracktions = Tracktion.group(:author_id)
@@ -20,7 +20,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/1
   # GET /transactions/1.json
   def show
-    @tracktions = Tracktion.all
+    @tracktion = Tracktion.includes(:type).eager_load(:groups).find(params[:id])
   end
 
   # GET /transactions/new
@@ -128,7 +128,7 @@ class TransactionsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_transaction
-    @transaction = Transaction.find(params[:id])
+    @transaction = Tracktion.find(params[:id])
   end
 
   def share_types

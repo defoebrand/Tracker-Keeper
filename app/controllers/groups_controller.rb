@@ -14,7 +14,16 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @group = Group.find(params[:id]).eager_load(:tracktions).all
+    # @group = Group.find(params[:id]).eager_load(:tracktions).all
+    # @group = Group.joins(:tracktions, :users).find(params[:id])
+    # @group = Group.joins('INNER JOIN user on tracktions.author_id = user.id').select('*').find(params[:id])
+    @group = Group.eager_load(tracktions: [:author]).find(params[:id])
+
+    # Subscription.joins("INNER JOIN plans ON plans.id = subscriptions.plan_id
+    #                 INNER JOIN roles ON roles.id = plans.role_id").where("roles.name = 'Gold'").first
+    # (:plan => [:role])
+
+    # Address.joins('INNER JOIN phones on addresses.person_id = phones.person_id').select("addresses.*, phones.*").limit(1)
     # @groups = Group.eager_load(:tracktions)
     # @groups = Group.eager_load(:tracktions).all
     # @groups_count = Group.eager_load(:tracktions).count

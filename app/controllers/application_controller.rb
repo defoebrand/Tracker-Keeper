@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user
-    @user = User.find(session[:user_id])
+    @user = User.with_attached_avatar.find(session[:user_id])
   end
 
   def share_groups

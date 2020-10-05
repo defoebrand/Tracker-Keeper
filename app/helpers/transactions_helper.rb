@@ -23,16 +23,16 @@ module TransactionsHelper
 
   def icon?(transaction)
     @content = tag(:p)
-    if transaction.group_id
-      @content << content_tag(:a, transaction.group.icon.html_safe, href: "/groups/#{transaction.group_id}")
+    if transaction.groups
+      @content << content_tag(:a, transaction.groups.first.icon.html_safe, href: "/groups/#{transaction.groups}")
     end
     @content
   end
 
   def group?(transaction)
     @content = tag(:td)
-    @content << if transaction.group_id
-                  transaction.group.name
+    @content << if transaction.groups
+                  transaction.groups.first.icon
                 else
                   content_tag(:a, 'Assign', href: "/transactions/#{transaction.id}/edit")
                 end
@@ -40,7 +40,7 @@ module TransactionsHelper
   end
 
   def back(transaction)
-    @content = if transaction.group_id
+    @content = if transaction.groups
                  content_tag(:a, 'Back', href: '/assigned_transactions')
                else
                  content_tag(:a, 'Back', href: '/unassigned_transactions')
