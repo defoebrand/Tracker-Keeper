@@ -22,10 +22,10 @@
   </div>
 
   <div class="icon-box">
-    <% @group_icons.each do |icon| %>
+    <% @groups.each do |group| %>
       <div>
-        <%= form.radio_button :icon, icon %>
-        <%= icon.html_safe %>
+        <%= form.radio_button :icon, group.icon %>
+        <%= group.icon.html_safe %>
       </div>
     <% end %>
   </div>

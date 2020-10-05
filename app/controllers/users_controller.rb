@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     redirect_to root_path unless session[:user_id] == 1
-    @users = User.with_attached_avatar.all
+    @users = User.all.with_attached_avatar
+    # @users = User.includes(:).all
   end
 
   # GET /users/1

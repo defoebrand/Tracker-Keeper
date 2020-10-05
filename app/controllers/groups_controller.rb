@@ -34,6 +34,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    @groups = Group.all
   end
 
   # GET /groups/1/edit
@@ -43,6 +44,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(group_params)
+    @groups = Group.all
 
     respond_to do |format|
       if @group.save

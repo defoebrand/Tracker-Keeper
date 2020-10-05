@@ -1,33 +1,48 @@
-<p id="notice"><%= notice %></p>
+<div class="">
+<%= link_to 'All', tracktions_path %>
+<%= link_to 'Assigned', assigned_path %>
+<%= link_to 'Unassigned', unassigned_path %>
+</div>
+<div class="container sum-totals">
+   <%=  transactions_count %>
+</div>
+<div>
 
-<h1>Tracktions</h1>
+     <h1>All Transactions</h1>
+<div class="view-display">
+   <%# @tracktions.sort_by{ |x| x.created_at }.each do |trans| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Author</th>
-      <th>Type</th>
-      <th>Name</th>
-      <th>Amount</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+ <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |track| %>
+ <div class='group-cards'>
+ <% if track.groups.first %>
+   <%= link_to track.groups.first.icon.html_safe, track.groups.first %>
+<% else %>
+<%= link_to 'Assign', edit_tracktion_path(track) %>
+<% end %>
+   <div class='card-text'>
+     <h4><%= link_to track.name, tracktion_path(track.id) %></h4>
+   <p>   <%= track.created_at.strftime("%d %b. %Y") %></p>
+   </div>
+   <p><%= track.amount %><br>
+     <%# link_to track.type.amount_type, show_type_path(track.type.amount_type) %></p>
+     <%= track.author.name %>
+ </div>
+<% end %>
 
-  <tbody>
-    <% @tracktions.each do |tracktion| %>
-      <tr>
-        <td><%= tracktion.author_id %></td>
-        <td><%= tracktion.type_id %></td>
-        <td><%= tracktion.name %></td>
-        <td><%= tracktion.amount %></td>
-        <td><%= link_to 'Show', tracktion %></td>
-        <td><%= link_to 'Edit', edit_tracktion_path(tracktion) %></td>
-        <td><%= link_to 'Destroy', tracktion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+ </div>
+</div>
 
-<br>
+   <div class='new-transaction'>
+     <a href="/tracktions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
+   </div>
 
-<%= link_to 'New Tracktion', new_tracktion_path %>
+
+
+   <%# @day_of_week = "assigned_transactions" %>
+   <%# select_tag :days, options_for_select(["assigned_transactions", "unassigned_transactions"]), :id => "select_days" %>
+   <%# select_tag :days, options_for_select([@transactions_test.name, "Tuesday"]), :id => "select_days" %>
+   <!-- <div id="text_to_be_changed" href='test'> -->
+
+     <%# render @day_of_week %>
+     <%# @day_of_week %>
+     <!-- </div> -->

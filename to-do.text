@@ -1,3 +1,28 @@
+solve n+1
+add tests
+add readme instructions for tests
+
+check user restful routes
+
+remove logic from views
+
+remove comments
+
+remove empty functions (session / transaction)
+
+find total_group = group.transactions.sum(:amount) to get sum of transactions
+
+controller methods = model
+view methods = helper
+
+test package from clone to deployment
+
+external group page??
+
+
+clean up code
+
+
 at log in, create a variable with a query
  - pass that variable
 

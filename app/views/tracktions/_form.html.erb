@@ -1,4 +1,4 @@
-<%= form_with(model: tracktion, local: true) do |form| %>
+<%= form_with(model: tracktion, local: true, class: 'container') do |form| %>
   <% if tracktion.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tracktion.errors.count, "error") %> prohibited this tracktion from being saved:</h2>
@@ -11,25 +11,65 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :authorid, :value => session[:user_id] %>
   <div class="field">
-    <%= form.label :author_id %>
-    <%= form.text_field :author_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :type_id %>
-    <%= form.text_field :type_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, 'Name of Transaction:' %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :amount %>
+    <div class="field">
+    <%= form.label :amount, 'Amount of Transaction:' %>
     <%= form.text_field :amount %>
   </div>
+  <div class="field amount-field">
+    <%= form.label :amount_type, 'Amount Type:' %>
+    <% @tracks.each do |track| %>
+      <%= track.groups.first.name %>
+      <%= track.type.amount_type %>
+    <% end %>
+    <%= form.collection_select :amount_type, @types, :amount_type, :amount_type,
+     :include_blank => true %>
+    <%# form.collection_select :amount_type, @tracktion.type, :amount_type, :amount_type,
+     :include_blank => true %>
+  <span class='add-type'>
+      <a href="/types/new"><i class="fas fa-plus-square"><span>New Type</span></i></a>
+  </span>
+  </div>
+<p>Primary Group</p>
+  <div class="icon-box">
+    <%# @groups.select(:name) %>
+    <%# @groups.each do |group| %>
+     <!-- <div> -->
+       <%# group %>
+      <%# form.collection_check_boxes group.tracktions, group.tracktions, :id, :icon do |gr| %>
+      <%# gr.check_box(checked: true) %>
+      <%# gr.icon.html_safe %>
+      <%# tag(:br) %>
+      <%# gr.name %>
+      <%# | %>
+  <!-- </div> -->
+  <%# end %>
+<%# end %>
+  </div>
+
+  <!-- <div class="field">
+  <%# form.label "Secondary Groups" %>
+  <%# form.collection_check_boxes tracktion.groups, Group.all, :id, :icon do |b| %>
+  <%# unless b.value == @tracktion.groups.  %>
+    <div class="collection-check-box" >
+      <%# unless @tracktion.groups.select{|x| x if x.id == b.value}.empty? %>
+      <%# b.check_box(checked: true) %>
+      <%# else %>
+      <%# b.check_box %>
+      <%# end %>
+      <%# b.text.html_safe %>
+      <%# b.value %>
+      <%# @groups.find(b.value).name %>
+    </div>
+    <%# end %>
+    <%# end %>
+  </div> -->
+
 
   <div class="actions">
     <%= form.submit %>

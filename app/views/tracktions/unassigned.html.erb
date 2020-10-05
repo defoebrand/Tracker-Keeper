@@ -1,5 +1,5 @@
 <div class="">
-<%= link_to 'All', transactions_path %>
+<%= link_to 'All', tracktions_path %>
 <%= link_to 'Assigned', assigned_path %>
 </div>
 <div class="">
@@ -10,17 +10,18 @@
   <h1>Unassigned</h1>
   <div class="view-display">
 
-  <% @transactions.sort_by{ |x| x.created_at }.reverse.each do |trans| %>
+  <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |tracks| %>
+  <% unless tracks.groups.first %>
   <div class='group-cards'>
-<%= link_to 'Assign', edit_transaction_path(trans) %>
+<%= link_to 'Assign', edit_tracktion_path(tracks) %>
     <div class='card-text'>
-       <h4><%= link_to trans.name, transaction_path(trans.id) %></h4>
-    <p><%= trans.created_at.strftime("%d %b. %Y") %></p>
+       <h4><%= link_to tracks.name, tracktion_path(tracks.id) %></h4>
+    <p><%= tracks.created_at.strftime("%d %b. %Y") %></p>
     </div>
-    <p><%= trans.amount %><br>
-      <%= trans.amount_type %></p>
+    <p><%= tracks.amount %><br>
+      <%= tracks.type.amount_type %></p>
   </div>
-
+<% end %>
 <% end %>
 </div>
 </div>

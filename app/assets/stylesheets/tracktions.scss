@@ -1,3 +1,109 @@
-// Place all the styles related to the Tracktions controller here.
+// Place all the styles related to the Transactions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.row-container {
+  display: flex;
+  padding-left: 83px;
+}
+
+.amount-field {
+  position: relative;
+}
+
+.add-type {
+  .fas {
+    position: relative;
+    font-size: 1.5em;
+
+    span {
+      display: none;
+      font-size: 15px;
+      color: black;
+    }
+  }
+}
+
+.new-transaction {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+  z-index: 1;
+  background-color: var(--link);
+
+  a {
+    display: flex;
+    width: 75%;
+    border: 1px solid white;
+    justify-content: center;
+
+    .fas {
+      position: relative;
+      font-size: 3.5em;
+      z-index: 1;
+      color: white;
+
+      span {
+        display: none;
+        font-size: 15px;
+        color: black;
+      }
+    }
+  }
+}
+
+.add-type .fas:hover {
+  span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 25px;
+  }
+}
+
+.new-transaction a:hover {
+  text-decoration: none;
+
+  .fas:hover {
+    span {
+      display: block;
+      position: absolute;
+      top: 10px;
+      left: 50px;
+    }
+  }
+}
+
+.trans-totals {
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.collection-check-box {
+  display: flex;
+}
+
+.transactions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 90vw;
+
+  @media (min-width: 920px) {
+    width: 60vw;
+  }
+}
+
+.sum-totals {
+  margin-top: 15px;
+}

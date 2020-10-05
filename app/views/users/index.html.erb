@@ -5,10 +5,13 @@
 <br>
 
 <% @users.each do |user| %>
-  <%= user.name %>
-  <%= user.id %>
+<div style='display:flex'>
+  <%= "ID: #{user.id}" %>
   <%= tag(:br) %>
-  <%= image_tag user.avatar %>
+  <%= "Name: #{user.name}" %>
+
+  <%= image_tag user.avatar.variant(resize_to_limit: [100, 100]) %>
+</div>
 <% end %>
 
 <p>

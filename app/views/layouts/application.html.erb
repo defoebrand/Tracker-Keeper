@@ -37,9 +37,9 @@
               <br>
               <hr class='menu-lines'>
               <i class="fas fa-list menu-icon"></i>
-              <%= link_to 'Transactions', transactions_path, class: 'transaction-a' %>
-              <%= link_to ' - Assigned', assigned_path, class: 'filter-links' %>
-              <%= link_to ' - Unassigned', unassigned_path, class: 'filter-links' %>
+              <%= link_to 'Transactions', tracktions_path, class: 'transaction-a' %>
+              <%# link_to ' - Assigned', assigned_path, class: 'filter-links' %>
+              <%# link_to ' - Unassigned', unassigned_path, class: 'filter-links' %>
               <br>
               <hr class='menu-lines'>
               <i class="fas fa-cog menu-icon"></i>
@@ -79,7 +79,7 @@
 
             <%= link_to 'Groups', groups_path %>
 
-              <%= link_to 'Transactions', transactions_path %>
+              <%= link_to 'Transactions', tracktions_path %>
           </div>
           <div>
             <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
