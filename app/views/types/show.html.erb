@@ -1,0 +1,15 @@
+<h1><%= @type.amount_type %></h1>
+<br>
+
+<% @type.tracktions.each do |tracks| %>
+<div>
+<%= tracks.name %>
+<%= tracks.amount %>
+<% tracks.groups.each do |group| %>
+  <%= group.name %>
+  <%= group.icon.html_safe %>
+  <% break %>
+<% end %>
+  <%# trans.name if trans.amount_type == @type.amount_type %>
+</div>
+<% end %>

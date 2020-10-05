@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= form.hidden_field :authorid, :value => session[:user_id] %>
+  <%= form.hidden_field :author_id, :value => session[:user_id] %>
   <div class="field">
     <%= form.label :name, 'Name of Transaction:' %>
     <%= form.text_field :name %>
@@ -22,14 +22,26 @@
     <%= form.text_field :amount %>
   </div>
   <div class="field amount-field">
-    <%= form.label :amount_type, 'Amount Type:' %>
-    <% @tracks.each do |track| %>
-      <%= track.groups.first.name %>
-      <%= track.type.amount_type %>
-    <% end %>
-    <%= form.collection_select :amount_type, @types, :amount_type, :amount_type,
-     :include_blank => true %>
-    <%# form.collection_select :amount_type, @tracktion.type, :amount_type, :amount_type,
+    <%= form.label :type_id, 'Amount Type:' %>
+    <%# @types.each do |x| %>
+    <%# x.amount_type %>
+    <%  %>
+      <%# @fields[x].amount_type %>
+      <%# @fields[x].tracktions.first.name if @fields[x].tracktions.first %>
+      <%# User.find(:all, :include => :events, :conditions => { "events_users.event_id" => nil}) %>
+      <%# @fields[x].icon.html_safe %>
+    <%# end %>
+    <%# @fields.size.times do |x| %>
+      <%#= @fields[0].tracktions.first.groups.first.name %>
+    <%# end %>
+    <%# @tracktion.type.each do |track| %>
+      <%# track.groups.first.name %>
+      <%# track.type.amount_type %>
+    <%# end %>
+    <%# form.collection_select :amount_type, @types, :amount_type, :amount_type, {:selected => @tracktion.type},
+     :include_blank => true  %>
+    <%# #,     :include_blank => true  %>
+    <%= form.collection_select :type_id, Type.all, :id, :amount_type,
      :include_blank => true %>
   <span class='add-type'>
       <a href="/types/new"><i class="fas fa-plus-square"><span>New Type</span></i></a>
@@ -37,18 +49,38 @@
   </div>
 <p>Primary Group</p>
   <div class="icon-box">
+
+    <%# @groups.each do |group| %>
+    <!-- <div> -->
+      <%# form.radio_button :groups, group.id %>
+      <%# group.icon.html_safe %>
+      <%# group.name %>
+      <!-- </div> -->
+      <!-- <p>|</p> -->
+    <%# end %>
+
     <%# @groups.select(:name) %>
     <%# @groups.each do |group| %>
      <!-- <div> -->
-       <%# group %>
-      <%# form.collection_check_boxes group.tracktions, group.tracktions, :id, :icon do |gr| %>
-      <%# gr.check_box(checked: true) %>
-      <%# gr.icon.html_safe %>
+       <%# group.name %>
+      <%# group.icon.html_safe %>
+      <%# form.collection_check_boxes :groups_tracktions, Group.all, :id, :icon do |group_select| %>
+      <%= form.collection_check_boxes :groups, @groups, :id, :icon do |group_select| %>
+      <div>
+        <% unless tracktion.groups.select{|x| x if x.id == group_select.value}.empty? %>
+        <%# tracktion.groups.find(group_select.value) %>
+      <%= group_select.check_box(checked: true) %>
+      <% else %>
+      <%= group_select.check_box %>
+      <% end %>
+      <%# group_select.icon.html_safe %>
+      <%= group_select.text.html_safe %>
+      <%# group_select.value %>
       <%# tag(:br) %>
-      <%# gr.name %>
       <%# | %>
+      </div>
   <!-- </div> -->
-  <%# end %>
+  <% end %>
 <%# end %>
   </div>
 

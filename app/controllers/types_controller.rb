@@ -1,21 +1,24 @@
 class TypesController < ApplicationController
   def new
+    set_user
     @type = Type.new
   end
 
   def show
+    set_user
     @transactions = Tracktion.all
     @type = Type.find_by(params[:amount_type])
   end
 
   def create
+    set_user
     @type = Type.new(type_params)
 
     respond_to do |format|
       if @type.save
-        format.html { redirect_to new_transaction_path, notice: 'Type was successfully created.' }
+        format.html { redirect_to new_tracktion_path, notice: 'Type was successfully created.' }
       else
-        format.html { render :new_type }
+        format.html { render :new }
       end
     end
   end

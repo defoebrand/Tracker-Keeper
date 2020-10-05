@@ -24,26 +24,28 @@ module TracktionsHelper
   def icon?(transaction)
     @content = tag(:p)
     if transaction.groups
-      @content << content_tag(:a, transaction.groups.first.icon.html_safe, href: "/groups/#{transaction.groups}")
+      unless transaction.groups.first.nil?
+        @content << content_tag(:a, transaction.groups.first.icon.html_safe, href: "/groups/#{transaction.groups}")
+      end
     end
     @content
   end
 
   def group?(transaction)
     @content = tag(:td)
-    @content << if transaction.groups
-                  transaction.groups.first.icon
+    @content << if !transaction.groups.first.nil?
+                  content_tag(:a, transaction.groups.first.icon.html_safe, href: "/groups/#{transaction.groups.first.id}")
                 else
-                  content_tag(:a, 'Assign', href: "/transactions/#{transaction.id}/edit")
+                  content_tag(:a, 'Assign', href: "/tracktions/#{transaction.id}/edit")
                 end
     @content
   end
 
   def back(transaction)
     @content = if transaction.groups
-                 content_tag(:a, 'Back', href: '/assigned_transactions')
+                 content_tag(:a, 'Back', href: '/assigned')
                else
-                 content_tag(:a, 'Back', href: '/unassigned_transactions')
+                 content_tag(:a, 'Back', href: '/unassigned')
                end
     @content
   end

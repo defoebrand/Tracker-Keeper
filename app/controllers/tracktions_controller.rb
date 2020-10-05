@@ -20,29 +20,38 @@ class TracktionsController < ApplicationController
   def new
     @tracktion = Tracktion.new
     # @tracktion = Tracktion.includes(:type).eager_load(:groups).new
-    # @types = Type.all
-    # @groups = Group.all
-    @tracks = Tracktion.all.includes(:type).eager_load(:groups)
+    @types = Type.all
+    @groups = Group.all
+    # @tracks = Tracktion.all.includes(:type).eager_load(:groups)
   end
 
   # GET /tracktions/1/edit
-  def edit; end
+  def edit
+    @tracktion = Tracktion.find(params[:id])
+    @types = Type.all
+    @groups = Group.all
+    # @fields = Tracktion.eager_load(:type).eager_load(:groups)
+    # @fields = Group.all.includes(tracktions: [:type])
+    # Type.all.includes(:tracktions => [:groups])
+  end
 
   # POST /tracktions
   # POST /tracktions.json
   def create
-    @tracktion = Tracktion.new(tracktion_params)
+    @tracktion = Tracktion.new(tracktion_params.except(:groups))
+    # @types = Type.all
+    @groups = Group.all
 
     respond_to do |format|
-      # tracktion_params.slice(:groups).values.each do |x|
-      #   x.each do |y|
-      #     if y.empty?
-      #     else
-      #       group = @groups.find(y.to_i)
-      #       @tracktion.groups << group
-      #     end
-      #   end
-      # end
+      tracktion_params.slice(:groups).values.each do |x|
+        x.each do |y|
+          if y.empty?
+          else
+            group = @groups.find(y.to_i)
+            @tracktion.groups << group
+          end
+        end
+      end
       if @tracktion.save
         format.html { redirect_to @tracktion, notice: 'Tracktion was successfully created.' }
       else
@@ -54,9 +63,20 @@ class TracktionsController < ApplicationController
   # PATCH/PUT /tracktions/1
   # PATCH/PUT /tracktions/1.json
   def update
-    # @tracktion.groups.clear
+    @tracktion = Tracktion.find(params[:id])
+    @tracktion.groups.clear
+    @groups = Group.all
     respond_to do |format|
-      if @tracktion.update(tracktion_params)
+      tracktion_params.slice(:groups).values.each do |x|
+        x.each do |y|
+          if y.empty?
+          else
+            group = @groups.find(y.to_i)
+            @tracktion.groups << group
+          end
+        end
+      end
+      if @tracktion.update(tracktion_params.except(:groups))
         format.html { redirect_to @tracktion, notice: 'Tracktion was successfully updated.' }
       else
         format.html { render :edit }
@@ -67,7 +87,7 @@ class TracktionsController < ApplicationController
   # DELETE /tracktions/1
   # DELETE /tracktions/1.json
   def destroy
-    # @tracktion.groups.clear
+    @tracktion.groups.clear
     @tracktion.destroy
     respond_to do |format|
       format.html { redirect_to tracktions_url, notice: 'Tracktion was successfully destroyed.' }
@@ -98,7 +118,7 @@ class TracktionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def tracktion_params
-    params.require(:tracktion).permit(:author_id, :type_id, :name, :amount)
+    params.require(:tracktion).permit(:author_id, :type_id, :name, :amount, groups: [])
   end
 
   # def share_types

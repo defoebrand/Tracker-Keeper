@@ -24,7 +24,7 @@
    <p>   <%= track.created_at.strftime("%d %b. %Y") %></p>
    </div>
    <p><%= track.amount %><br>
-     <%# link_to track.type.amount_type, show_type_path(track.type.amount_type) %></p>
+     <%= link_to track.type.amount_type, type_path(track.type.amount_type) %></p>
      <%= track.author.name %>
  </div>
 <% end %>

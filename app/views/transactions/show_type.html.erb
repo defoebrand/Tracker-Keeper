@@ -1,5 +1,0 @@
-<%= @type.amount_type %>
-
-<% @transactions.each do |trans| %>
-  <%= trans.name if trans.amount_type == @type.amount_type %>
-<% end %>
