@@ -5,11 +5,10 @@
 <div>
 <%= tracks.name %>
 <%= tracks.amount %>
-<% tracks.groups.each do |group| %>
+<% tracks.groups.reverse.each do |group| %>
   <%= group.name %>
   <%= group.icon.html_safe %>
   <% break %>
 <% end %>
-  <%# trans.name if trans.amount_type == @type.amount_type %>
 </div>
 <% end %>

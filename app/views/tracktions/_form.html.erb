@@ -65,7 +65,7 @@
        <%# group.name %>
       <%# group.icon.html_safe %>
       <%# form.collection_check_boxes :groups_tracktions, Group.all, :id, :icon do |group_select| %>
-      <%= form.collection_check_boxes :groups, @groups, :id, :icon do |group_select| %>
+      <%= form.collection_check_boxes :groups, Group.all, :id, :icon do |group_select| %>
       <div>
         <% unless tracktion.groups.select{|x| x if x.id == group_select.value}.empty? %>
         <%# tracktion.groups.find(group_select.value) %>

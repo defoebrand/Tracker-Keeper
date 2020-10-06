@@ -1,56 +1,38 @@
 class TracktionsController < ApplicationController
-  before_action :check_user_log_in
-  # before_action :set_tracktion, only: %i[show edit update destroy]
-  before_action :set_user, except: %i[update destroy]
-  # before_action :share_groups, except: %i[index destroy new_type show_type create_type]
-  # before_action :share_types, only: %i[new edit create]
-  # GET /tracktions
-  # GET /tracktions.json
+  before_action :check_user_log_in # , except: %i[update destroy]
+
   def index
     @tracktions = Tracktion.includes(:author).includes(:type).eager_load(:groups).all
   end
 
-  # GET /tracktions/1
-  # GET /tracktions/1.json
   def show
     @tracktion = Tracktion.includes(:type).eager_load(:groups).find(params[:id])
   end
 
-  # GET /tracktions/new
   def new
     @tracktion = Tracktion.new
-    # @tracktion = Tracktion.includes(:type).eager_load(:groups).new
-    @types = Type.all
-    @groups = Group.all
-    # @tracks = Tracktion.all.includes(:type).eager_load(:groups)
   end
 
-  # GET /tracktions/1/edit
   def edit
-    @tracktion = Tracktion.find(params[:id])
-    @types = Type.all
-    @groups = Group.all
-    # @fields = Tracktion.eager_load(:type).eager_load(:groups)
-    # @fields = Group.all.includes(tracktions: [:type])
-    # Type.all.includes(:tracktions => [:groups])
+    @tracktion = Tracktion.eager_load(:groups).find(params[:id])
   end
 
-  # POST /tracktions
-  # POST /tracktions.json
   def create
-    @tracktion = Tracktion.new(tracktion_params.except(:groups))
-    # @types = Type.all
-    @groups = Group.all
+    # user .build or .create line here to prefil tables
+    @tracktion = Tracktion.includes(:author).includes(:type).eager_load(:groups).new(tracktion_params.except(:groups))
 
+    @array = []
     respond_to do |format|
       tracktion_params.slice(:groups).values.each do |x|
         x.each do |y|
           if y.empty?
           else
-            group = @groups.find(y.to_i)
-            @tracktion.groups << group
+            @array << y.to_i
           end
         end
+        @groups = Group.preload(:tracktions).find_by(id: @array)
+        # @tracktion.groups << Group.find(@array)
+        @tracktion.groups << @groups
       end
       if @tracktion.save
         format.html { redirect_to @tracktion, notice: 'Tracktion was successfully created.' }
@@ -60,21 +42,27 @@ class TracktionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tracktions/1
-  # PATCH/PUT /tracktions/1.json
   def update
-    @tracktion = Tracktion.find(params[:id])
+    @tracktion = Tracktion.includes(:author).includes(:type).eager_load(:groups).find(params[:id])
     @tracktion.groups.clear
-    @groups = Group.all
+    @array = []
     respond_to do |format|
       tracktion_params.slice(:groups).values.each do |x|
         x.each do |y|
           if y.empty?
           else
-            group = @groups.find(y.to_i)
-            @tracktion.groups << group
+            @array << y.to_i
+            # group = @groups.find(y.to_i)
+            # @tracktion.groups << Group.find(y.to_i)
+            # group = @groups.find(y.to_i)
+            # @tracktion.groups << group
           end
         end
+        # @groups = Group.find(@array)
+        @tracktion.groups << Group.find(@array)
+        # Group.transaction do
+        #   @tracktion.groups << Group.find(@array)
+        # end
       end
       if @tracktion.update(tracktion_params.except(:groups))
         format.html { redirect_to @tracktion, notice: 'Tracktion was successfully updated.' }
@@ -84,9 +72,8 @@ class TracktionsController < ApplicationController
     end
   end
 
-  # DELETE /tracktions/1
-  # DELETE /tracktions/1.json
   def destroy
+    @tracktion = Tracktion.includes(:groups).find(params[:id])
     @tracktion.groups.clear
     @tracktion.destroy
     respond_to do |format|
@@ -97,40 +84,15 @@ class TracktionsController < ApplicationController
 
   def assigned
     @tracktions = Tracktion.includes(:type).includes(:author).eager_load(:groups).all
-
-    # @transactions = []
-    # Tracktion.all.each { |x| @transactions << x if x.author_id == @user.id }
-    # # Tracktion.all.each { |x| @transactions << x if (x.author_id == @user.id) && !x.group_id.nil? }
   end
 
   def unassigned
     @tracktions = Tracktion.includes(:type).includes(:author).eager_load(:groups).all
-    # @transactions = []
-    # Tracktion.all.each { |x| @transactions << x if (x.author_id == @user.id) && x.group_id.nil? }
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_tracktion
-    @tracktion = Tracktion.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
   def tracktion_params
     params.require(:tracktion).permit(:author_id, :type_id, :name, :amount, groups: [])
   end
-
-  # def share_types
-  #   @types = Type.all
-  # end
-  #
-  # # Only allow a list of trusted parameters through.
-  # def transaction_params
-  #   params.require(:transaction).permit(:authorid, :name, :amount, :amount_type, :group_id, groups: [])
-  # end
-  #
-  # def type_params
-  #   params.require(:type).permit(:amount_type)
-  # end
 end
