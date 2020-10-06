@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
+<div class="nav-icons">
+<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, user_path(@user) %> </p>
+</div>
 <main class="container">
 
 <h1>Tracker Keeper</h1>
@@ -10,14 +13,13 @@
   <%= tag(:br) %>
   <%= "Name: #{user.name}" %>
 
-  <%= image_tag user.avatar.variant(resize_to_limit: [100, 100]) %>
+  <%= user.avatar.attached? ? (image_tag user.avatar.variant(resize_to_limit: [100, 100])) : (image_tag '', size: "100x100", alt: 'No Image', style: 'border:1px solid black') %>
 </div>
 <% end %>
 
-<p>
-<%= link_to 'New User', new_user_path %> |
-<%= link_to 'Log Out', logout_path %>
-</p>
+<!-- <p>
+<%# link_to 'New User', new_user_path %>
+</p> -->
 
 
 

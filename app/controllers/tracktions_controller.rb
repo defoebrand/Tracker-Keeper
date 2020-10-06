@@ -83,11 +83,15 @@ class TracktionsController < ApplicationController
   end
 
   def assigned
-    @tracktions = Tracktion.includes(:type).includes(:author).eager_load(:groups).all
+    @tracktions = Tracktion.includes(:type).includes(:author).eager_load(:groups).select do |track|
+      track if track.groups.first
+    end
   end
 
   def unassigned
-    @tracktions = Tracktion.includes(:type).includes(:author).eager_load(:groups).all
+    @tracktions = Tracktion.includes(:type).includes(:author).eager_load(:groups).select do |track|
+      track unless track.groups.first
+    end
   end
 
   private

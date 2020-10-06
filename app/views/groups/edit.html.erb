@@ -1,3 +1,6 @@
+<div class="nav-icons">
+<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, group_path(@group) %> </p>
+</div>
 <h1>Edit <%=@group.name%> Group</h1>
 
 <%= render 'form', group: @group %>

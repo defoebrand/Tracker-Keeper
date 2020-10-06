@@ -148,6 +148,7 @@ table {
 }
 
 .fab,
+.far,
 .fas {
   font-size: 2em;
   margin: 10px 5px;
@@ -244,7 +245,7 @@ table {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    // z-index: 3;
     top: 0;
     left: 0;
     background-color: #111;
@@ -334,4 +335,18 @@ table {
   margin-bottom: 50px;
   width: 80vw;
   max-width: 750px;
+}
+
+.nav-icons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 60px;
+  left: 5px;
+  z-index: 1;
+
+  @media (min-width: 650px) {
+    top: 90px;
+  }
 }

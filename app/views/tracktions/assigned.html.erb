@@ -1,13 +1,22 @@
-<div class="">
-<%= link_to 'All', tracktions_path %>
-<%= link_to 'Unassigned', unassigned_path %>
+<div class="nav-icons">
+<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, tracktions_path %> </p>
 </div>
+<span>
+<h1>Assigned</h1>
+<p><%= link_to 'Unassigned', unassigned_path %></p>
+</span>
 <div>
-<%=  transactions_count %>
+  <% @types = [] %>
+  <% @tracktions.each do |track| %>
+    <% (@types << track.type.amount_type) unless @types.include?(track.type.amount_type) %>
+  <% end %>
+  <% @types.each do |type| %>
+    <%= type %>
+  <% end  %>
+  <%=  transactions_count %>
 </div>
 <div class="">
 
-  <h1>Assigned</h1>
 <div class="view-display">
 
     <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |tracks| %>
@@ -29,5 +38,5 @@
 </div>
 
 <div class='new-transaction'>
-  <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
+  <a href="/tracktions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
 </div>

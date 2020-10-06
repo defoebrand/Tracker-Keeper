@@ -10,15 +10,19 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @groups = Group.all
     @group = Group.new
+  end
+
+  def edit
+    @group = Group.find(params[:id])
+    ## only add distinct icons in group.all? to allow multiple groups to share an icon
     @groups = Group.all
   end
 
-  def edit; end
-
   def create
-    @group = Group.new(group_params)
     @groups = Group.all
+    @group = Group.new(group_params)
 
     respond_to do |format|
       if @group.save
@@ -30,6 +34,8 @@ class GroupsController < ApplicationController
   end
 
   def update
+    @groups = Group.all
+    @group = Group.find(params[:id])
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }

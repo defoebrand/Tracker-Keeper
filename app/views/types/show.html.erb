@@ -1,14 +1,28 @@
-<h1><%= @type.amount_type %></h1>
-<br>
-
-<% @type.tracktions.each do |tracks| %>
-<div>
-<%= tracks.name %>
-<%= tracks.amount %>
-<% tracks.groups.reverse.each do |group| %>
-  <%= group.name %>
-  <%= group.icon.html_safe %>
-  <% break %>
-<% end %>
+<div class="nav-icons">
+<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, tracktions_path %> </p>
+ <!-- <p> <%# link_to '<i class="fas fa-edit"></i>'.html_safe, edit_group_path(@group) %></p> -->
 </div>
-<% end %>
+<br>
+<h1><%= @type.amount_type %></h1>
+  <h4>Total - <%= @type.tracktions.sum(:amount) %></h4>
+<br>
+<div class="view-display">
+
+  <% @type.tracktions.sort_by{|x|x.name.downcase}.each do |track| %>
+    <div class='group-cards'>
+      <div>
+        <p><%= track.groups.first ? (track.groups.last.name) : (link_to 'Assign', edit_tracktion_path(track) ) %></p>
+          <p><%= (link_to track.groups.last.icon.html_safe, group_path(track.groups.last)) if  track.groups.first %></p>
+        </div>
+      <div class='card-text'>
+        <h4><%= link_to track.name, tracktion_path(track) %></h4>
+        <p><%= track.created_at.strftime("%d %b. %Y") %></p>
+      </div>
+      <div>
+        <!-- <p>Author</p> -->
+        <h4><%= track.amount %></h4>
+        <span><%= track.author.name %></span>
+      </div>
+    </div>
+  <% end %>
+</div>

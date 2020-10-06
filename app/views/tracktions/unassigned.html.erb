@@ -1,13 +1,15 @@
-<div class="">
-<%= link_to 'All', tracktions_path %>
-<%= link_to 'Assigned', assigned_path %>
+<div class="nav-icons">
+<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, tracktions_path %> </p>
 </div>
+<span>
+<h1>Unassigned</h1>
+<%= link_to 'Assigned', assigned_path %>
+</span>
 <div class="">
   <%= transactions_count %>
 </div>
 <div class="">
 
-  <h1>Unassigned</h1>
   <div class="view-display">
 
   <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |tracks| %>
@@ -26,5 +28,5 @@
 </div>
 </div>
 <div class='new-transaction'>
-  <a href="/transactions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
+  <a href="/tracktions/new"><i class="fas fa-plus-square"><span>New Transaction</span></i></a>
 </div>

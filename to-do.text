@@ -1,26 +1,33 @@
-solve n+1
-add tests
-add readme instructions for tests
+will groups be edited / updated / destroyed?
 
-check user restful routes
+groups controller
+ - group.new, group.find, and group.all cleanup
+
+tracktions controller
+ - #new / #create | #edit / #update | #destroy cleanup
+
+
+external group page??
 
 remove logic from views
+
+clean up code
 
 remove comments
 
 remove empty functions (session / transaction)
 
-find total_group = group.transactions.sum(:amount) to get sum of transactions
+controller methods = in controller - run_method
+model methods = model - User.method
+view methods = helper - run_method
 
-controller methods = model
-view methods = helper
+add tests
+add readme instructions for tests
 
 test package from clone to deployment
 
-external group page??
 
 
-clean up code
 
 
 at log in, create a variable with a query

@@ -1,43 +1,30 @@
 <p id="notice"><%= notice %></p>
+<div class="nav-icons">
+<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, groups_path %> </p>
+ <p> <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_group_path(@group) %></p>
+</div>
 
+<h2><%= @group.icon.html_safe %> <%= @group.name %> Transactions </h2>
+<h3>Total - <%= @group.tracktions.sum(:amount) %></h3>
+<!-- <p class='group-show-icon'><%# @group.icon.html_safe %></p> -->
 
-<!-- <h2><%# @group.name %> Transactions </h2> -->
-<h2><%= @group.name %> Transactions </h2>
-<h3>Total - <%# @total.sum %></h3>
-<p class='group-show-icon'><%= @group.icon.html_safe %></p>
+<div class="view-display">
 
-<table>
-  <thead>
-    <tr>
-      <th>Author:</th>
-      <th></th>
-      <th>Name:</th>
-      <th></th>
-      <th>Amount:</th>
-      <th></th>
-      <th>Date:</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @group.tracktions.each do |track| %>
-      <tr>
-        <%# if track.groups.first %>
-        <td><%= track.author.name %></td>
-        <td></td>
-        <td><%= link_to track.name, tracktion_path(track.id) %></td>
-        <td></td>
-        <td><%= track.amount %></td>
-        <td></td>
-        <td><%= track.created_at.strftime("%d %b. %Y") %></td>
-        <%# end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br />
-<div>
-  <%= link_to 'Back', groups_path %>
+  <% @group.tracktions.sort_by{|x|x.name.downcase}.each do |track| %>
+    <div class='group-cards'>
+      <div>
+        <p>Author</p>
+        <p><%= track.author.name %></p>
+      </div>
+      <div class='card-text'>
+        <h4><%= link_to track.name, tracktion_path(track) %></h4>
+        <p><%= track.created_at.strftime("%d %b. %Y") %></p>
+      </div>
+      <div>
+        <p>Amount</p>
+        <p><%= track.amount %>
+           <%= link_to track.type.amount_type, type_path(track.type) %></p>
+      </div>
+    </div>
+  <% end %>
 </div>

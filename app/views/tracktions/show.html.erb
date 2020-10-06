@@ -1,39 +1,42 @@
 <p id="notice"><%= notice %></p>
+<div class="nav-icons">
+<p><%= @tracktion.groups.first ? (link_to '<i class="fas fa-arrow-left"></i>'.html_safe, assigned_path) : (link_to '<i class="fas fa-arrow-left"></i>'.html_safe, unassigned_path)  %>  </p>
+ <p> <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_tracktion_path(@tracktion) %></p>
+</div>
 <h2><%= @tracktion.name %></h2>
-<%= icon?(@tracktion) %>
+  <p>Author: <%= @tracktion.author.name %></p>
+<%# icon?(@tracktion) %>
+<%# group?(@tracktion) %>
+<div class="view-display">
+    <div class='group-cards'>
+      <div>
+        <%# @tracktion.groups.first ? (link_to @tracktion.groups.first.name, group_path(@tracktion.groups.first)) : (link_to 'Assign', edit_tracktion_path(@tracktion)) %>
+        <%# tag(:br) %>
+        <%= @tracktion.groups.first ? (link_to @tracktion.groups.first.icon.html_safe, group_path(@tracktion.groups.first)) : (link_to 'Assign', edit_tracktion_path(@tracktion)) %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Group:</th>
-      <th>Amount:</th>
-      <th>Type:</th>
-      <th>Date:</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      </div>
+      <div class='card-text'>
+        <!-- <p>Amount</p> -->
+        <h4><%= @tracktion.amount %></h4>
+        <p><%= link_to @tracktion.type.amount_type, type_path(@tracktion.type) %></p>
+      </div>
+      <div>
+        <p><%= @tracktion.created_at.strftime("%d %b. %Y") %></p>
 
-  <tbody>
-      <tr>
-        <%= group?(@tracktion) %>
-        <td><%= @tracktion.amount %></td>
-        <!-- <td><%# @tracktion.type.amount_type %></td> -->
-        <td><%= link_to @tracktion.type.amount_type, type_path(@tracktion.type.id) %></td>
-        <td><%= @tracktion.created_at.strftime("%d %b. %Y") %></td>
-      </tr>
-  </tbody>
-</table>
+        <!-- <p>Author: <%# @tracktion.author.name %></p> -->
+        <!-- <p><%# @tracktion.groups.first.name if @tracktion.groups.first %></p> -->
+      </div>
+    </div>
+</div>
+
 <h4>Additional Groups</h4>
 <div style='display:flex'>
 <% @tracktion.groups.each do |group|%>
-<div class='container'>
-<%= group.name %>
-<%= link_to group.icon.html_safe, group_path(group.id) %>
-</div>
+  <% unless (group == @tracktion.groups.first) %>
+    <div class='container'>
+        <%= group.name %>
+        <%= link_to group.icon.html_safe, group_path(group.id) %>
+    </div>
+  <% end %>
 <% end %>
-</div>
-
-<div>
-  <%= link_to 'Edit', edit_tracktion_path(@tracktion) %> |  <%= link_to 'Destroy', @tracktion, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= back(@tracktion) %>
 </div>
