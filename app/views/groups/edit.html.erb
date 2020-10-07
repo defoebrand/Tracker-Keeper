@@ -1,11 +1,6 @@
 <div class="nav-icons">
-<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, group_path(@group) %> </p>
+<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, group_path(@group) %> </p><p><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, @group, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 </div>
-<h1>Edit <%=@group.name%> Group</h1>
+<h1>Edit <%=@group.name%></h1>
 
 <%= render 'form', group: @group %>
-
-<div>
-  <%= link_to 'Show', @group %> |
-  <%= link_to 'Back', groups_path %>
-</div>

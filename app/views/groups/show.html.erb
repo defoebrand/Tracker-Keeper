@@ -5,7 +5,10 @@
 </div>
 
 <h2><%= @group.icon.html_safe %> <%= @group.name %> Transactions </h2>
-<h3>Total - <%= @group.tracktions.sum(:amount) %></h3>
+<br>
+<div class="container sum-totals">
+  <%=  group_transactions_count %>
+</div>
 <!-- <p class='group-show-icon'><%# @group.icon.html_safe %></p> -->
 
 <div class="view-display">

@@ -32,7 +32,7 @@ class TracktionsController < ApplicationController
         end
         @groups = Group.preload(:tracktions).find_by(id: @array)
         # @tracktion.groups << Group.find(@array)
-        @tracktion.groups << @groups
+        (@tracktion.groups << @groups) unless @groups.nil?
       end
       if @tracktion.save
         format.html { redirect_to @tracktion, notice: 'Tracktion was successfully created.' }

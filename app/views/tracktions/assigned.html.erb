@@ -1,40 +1,29 @@
 <div class="nav-icons">
-<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, tracktions_path %> </p>
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, tracktions_path %></p>
 </div>
-<span>
+
 <h1>Assigned</h1>
-<p><%= link_to 'Unassigned', unassigned_path %></p>
-</span>
 <div>
-  <% @types = [] %>
-  <% @tracktions.each do |track| %>
-    <% (@types << track.type.amount_type) unless @types.include?(track.type.amount_type) %>
-  <% end %>
-  <% @types.each do |type| %>
-    <%= type %>
-  <% end  %>
+  <%= link_to 'All', tracktions_path %>
+  <%= link_to 'Unassigned', unassigned_path %>
+</div>
+
+<div class="container sum-totals">
   <%=  transactions_count %>
 </div>
-<div class="">
 
 <div class="view-display">
-
-    <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |tracks| %>
-    <% if tracks.groups.first %>
+  <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |tracks| %>
     <div class='group-cards'>
       <%= link_to tracks.groups.first.icon.html_safe, tracks.groups.first %>
-
       <div class='card-text'>
-         <h4><%= link_to tracks.name, tracktion_path(tracks.id) %></h4>
-      <p><%= tracks.created_at.strftime("%d %b. %Y") %></p>
+        <h4><%= link_to tracks.name, tracktion_path(tracks.id) %></h4>
+        <p><%= tracks.created_at.strftime("%d %b. %Y") %></p>
       </div>
       <p><%= tracks.amount %><br>
         <%= tracks.type.amount_type %></p>
     </div>
-    <% end %>
   <% end %>
-
-</div>
 </div>
 
 <div class='new-transaction'>

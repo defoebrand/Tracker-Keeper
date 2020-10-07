@@ -5,7 +5,7 @@ class TypesController < ApplicationController
   end
 
   def show
-    @type = Type.eager_load(tracktions: [:groups]).find_by(params[:amount_type])
+    @type = Type.eager_load(tracktions: [:groups]).find(params[:id])
   end
 
   def create

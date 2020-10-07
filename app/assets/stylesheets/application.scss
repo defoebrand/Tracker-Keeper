@@ -102,11 +102,11 @@ a {
   word-wrap: break-word;
   text-align: justify;
   font-family: Proxima-Nova-Bold, sans-serif;
+  text-decoration: none;
 }
 
 a:hover {
   color: var(--hover);
-  text-decoration: none;
 }
 
 a:visited {
@@ -343,7 +343,7 @@ table {
   justify-content: space-between;
   position: fixed;
   top: 60px;
-  left: 5px;
+  // left: 5px;
   z-index: 1;
 
   @media (min-width: 650px) {

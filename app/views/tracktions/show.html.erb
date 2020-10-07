@@ -4,23 +4,26 @@
  <p> <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_tracktion_path(@tracktion) %></p>
 </div>
 <h2><%= @tracktion.name %></h2>
-  <p>Author: <%= @tracktion.author.name %></p>
+<%= tag(:br) %>
 <%# icon?(@tracktion) %>
 <%# group?(@tracktion) %>
 <div class="view-display">
     <div class='group-cards'>
       <div>
         <%# @tracktion.groups.first ? (link_to @tracktion.groups.first.name, group_path(@tracktion.groups.first)) : (link_to 'Assign', edit_tracktion_path(@tracktion)) %>
-        <%# tag(:br) %>
         <%= @tracktion.groups.first ? (link_to @tracktion.groups.first.icon.html_safe, group_path(@tracktion.groups.first)) : (link_to 'Assign', edit_tracktion_path(@tracktion)) %>
+        <%= tag(:br) %>
+        <%= @tracktion.groups.first.name if @tracktion.groups.first %>
 
       </div>
       <div class='card-text'>
         <!-- <p>Amount</p> -->
-        <h4><%= @tracktion.amount %></h4>
-        <p><%= link_to @tracktion.type.amount_type, type_path(@tracktion.type) %></p>
+        <h4><%= link_to @tracktion.type.amount_type, type_path(@tracktion.type) %></h4>
+        <p><%= @tracktion.amount %></p>
       </div>
       <div>
+
+          <p>Author: <%= @tracktion.author.name %></p>
         <p><%= @tracktion.created_at.strftime("%d %b. %Y") %></p>
 
         <!-- <p>Author: <%# @tracktion.author.name %></p> -->
