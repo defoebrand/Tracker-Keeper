@@ -17,7 +17,12 @@ class TracktionsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create tracktion' do
     assert_difference('Tracktion.count') do
-      post tracktions_url, params: { tracktion: { amount: @tracktion.amount, author_id: @tracktion.author_id, name: @tracktion.name, type_id: @tracktion.type_id } }
+      post tracktions_url, params:
+      { tracktion:
+        { amount: @tracktion.amount,
+          author_id: @tracktion.author_id,
+          name: @tracktion.name,
+          type_id: @tracktion.type_id } }
     end
 
     assert_redirected_to tracktion_url(Tracktion.last)
@@ -34,7 +39,12 @@ class TracktionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update tracktion' do
-    patch tracktion_url(@tracktion), params: { tracktion: { amount: @tracktion.amount, author_id: @tracktion.author_id, name: @tracktion.name, type_id: @tracktion.type_id } }
+    patch tracktion_url(@tracktion), params:
+    { tracktion:
+      { amount: @tracktion.amount,
+        author_id: @tracktion.author_id,
+        name: @tracktion.name,
+        type_id: @tracktion.type_id } }
     assert_redirected_to tracktion_url(@tracktion)
   end
 
