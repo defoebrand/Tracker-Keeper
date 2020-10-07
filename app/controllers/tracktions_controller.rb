@@ -2,11 +2,11 @@ class TracktionsController < ApplicationController
   before_action :check_user_log_in
 
   def index
-    @tracktions = Tracktion.includes(:author).includes(:type).eager_load(:groups).all
+    @tracktions = Tracktion.includes(:author).includes(:type).includes(:groups).eager_load([:groups_tracktions]).all
   end
 
   def show
-    @tracktion = Tracktion.includes(:type).eager_load(:groups).find(params[:id])
+    @tracktion = Tracktion.includes(:author).includes(:type).eager_load(:groups).find(params[:id])
   end
 
   def new
@@ -18,22 +18,10 @@ class TracktionsController < ApplicationController
   end
 
   def create
-    # user .build or .create line here to prefil tables
     @tracktion = Tracktion.includes(:author).includes(:type).eager_load(:groups).new(tracktion_params.except(:groups))
 
-    @array = []
     respond_to do |format|
-      tracktion_params.slice(:groups).values.each do |x|
-        x.each do |y|
-          if y.empty?
-          else
-            @array << y.to_i
-          end
-        end
-        @groups = Group.preload(:tracktions).find_by(name: @array)
-        # @tracktion.groups << Group.find(@array)
-        (@tracktion.groups << @groups) unless @groups.nil?
-      end
+      add_groups(tracktion_params)
       if @tracktion.save
         format.html { redirect_to @tracktion, notice: 'Tracktion was successfully created.' }
       else
@@ -44,26 +32,9 @@ class TracktionsController < ApplicationController
 
   def update
     @tracktion = Tracktion.includes(:author).includes(:type).eager_load(:groups).find(params[:id])
-    @tracktion.groups.clear
-    @array = []
+
     respond_to do |format|
-      tracktion_params.slice(:groups).values.each do |x|
-        x.each do |y|
-          if y.empty?
-          else
-            @array << y.to_i
-            # group = @groups.find(y.to_i)
-            # @tracktion.groups << Group.find(y.to_i)
-            # group = @groups.find(y.to_i)
-            # @tracktion.groups << group
-          end
-        end
-        # @groups = Group.find(@array)
-        @tracktion.groups << Group.find(@array)
-        # Group.transaction do
-        #   @tracktion.groups << Group.find(@array)
-        # end
-      end
+      add_groups(tracktion_params)
       if @tracktion.update(tracktion_params.except(:groups))
         format.html { redirect_to @tracktion, notice: 'Tracktion was successfully updated.' }
       else
@@ -83,13 +54,15 @@ class TracktionsController < ApplicationController
   end
 
   def assigned
-    @tracktions = Tracktion.includes(:type).includes(:author).eager_load(:groups).select do |track|
+    @tracktions = Tracktion.includes(:type).includes(:author).includes(:groups)
+                           .eager_load([:groups_tracktions]).select do |track|
       track if track.groups.first
     end
   end
 
   def unassigned
-    @tracktions = Tracktion.includes(:type).includes(:author).eager_load(:groups).select do |track|
+    @tracktions = Tracktion.includes(:type).includes(:author).includes(:groups)
+                           .eager_load([:groups_tracktions]).select do |track|
       track unless track.groups.first
     end
   end
@@ -98,5 +71,17 @@ class TracktionsController < ApplicationController
 
   def tracktion_params
     params.require(:tracktion).permit(:author_id, :type_id, :name, :amount, groups: [])
+  end
+
+  def add_groups(tracktion_params)
+    @tracktion.groups.clear
+    @array = []
+    tracktion_params.slice(:groups).values.flatten.each do |group_name|
+      @array << group_name unless group_name.empty?
+    end
+    @groups = Group.eager_load(:tracktions)
+    @array.size.times do |xyz|
+      @tracktion.groups << @groups.find_by(name: @array[xyz])
+    end
   end
 end

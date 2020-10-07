@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.eager_load(tracktions: [:author]).find(params[:id])
+    @group = Group.eager_load(tracktions: [:author]).includes(tracktions: [:type]).find(params[:id])
     @type_sums = {}
   end
 
