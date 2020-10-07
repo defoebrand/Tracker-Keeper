@@ -1,0 +1,18 @@
+@font-face {
+  font-family: Proxima-Nova-Bold;
+  src: url("/Proxima Nova Bold.otf");
+}
+
+@font-face {
+  font-family: Proxima-Nova-Light;
+  src: url("/Proxima Nova Thin.otf");
+}
+
+$background: #f5f6f8;
+$main: #3778c2;
+$font: #434b54;
+$link: #5fb523;
+$hover: #9c914f;
+$notice: #c3d2d5;
+$visited: #274a0d;
+$gradient: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(125,94,130,1) 100%);

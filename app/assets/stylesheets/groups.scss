@@ -1,6 +1,7 @@
 // Place all the styles related to the Groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import 'app_variables.scss';
 
 .group-show-icon {
   margin-top: -15px;
@@ -16,7 +17,7 @@
   align-items: center;
   margin-top: -10px;
   z-index: 1;
-  background-color: var(--link);
+  background-color: $link;
 
   a {
     display: flex;
@@ -44,7 +45,6 @@
       position: absolute;
       top: 10px;
       left: 50px;
-      // right: 5px;
     }
   }
 }

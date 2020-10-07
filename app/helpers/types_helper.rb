@@ -1,6 +1,5 @@
 module TypesHelper
   def filter_type_transactions
-    @type_sums = {}
     @type.tracktions.each do |x|
       @type_sums["#{x.type.amount_type}_id"] = x.type.id
       @type_sums[x.type.amount_type] = 0
@@ -16,12 +15,8 @@ module TypesHelper
     filter_type_transactions
     @content = tag(:br)
     @type_sums.each_with_index do |type, index|
-      if index.even?
-        @type_id = type[1]
-      else
-        @more_content = content_tag(:div, set_type_id(type, index))
-        @content << @more_content
-      end
+      index.even? ? (@type_id = type[1]) : @more_content = content_tag(:div, set_type_id(type, index))
+      @content << @more_content unless index.even?
     end
     content_tag(:div, @content, class: 'trans-totals')
   end

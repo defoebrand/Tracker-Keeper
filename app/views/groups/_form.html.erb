@@ -1,8 +1,8 @@
 <%= form_with(model: group, local: true, class: 'container') do |form| %>
   <% if group.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
+      <h2><%= pluralize(group.errors.count, "error") %>
+        prohibited this group from being saved:</h2>
       <ul>
         <% group.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,28 +10,31 @@
       </ul>
     </div>
   <% end %>
-<div class="container">
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :icon, 'Add New Icon *' %>
-    <%= form.text_field :icon %>
-  </div>
+  <div class="container">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-  <div class="icon-box">
-    <% @groups.each do |group| %>
-      <div>
-        <%= form.radio_button :icon, group.icon %>
-        <%= group.icon.html_safe %>
-      </div>
-    <% end %>
-  </div>
+    <div class="field">
+      <%= form.label :icon, 'Add New Icon *' %>
+      <%= form.text_field :icon %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="icon-box">
+      <% @groups.each do |group| %>
+        <div>
+          <%= form.radio_button :icon, group.icon %>
+          <%= group.icon.html_safe %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+
   </div>
-</div>
+  
 <% end %>

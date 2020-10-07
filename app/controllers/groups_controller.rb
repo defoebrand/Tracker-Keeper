@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.eager_load(tracktions: [:author]).find(params[:id])
+    @type_sums = {}
   end
 
   def new
@@ -16,7 +17,6 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
-    ## only add distinct icons in group.all? to allow multiple groups to share an icon
     @groups = Group.all
   end
 

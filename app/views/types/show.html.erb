@@ -1,13 +1,11 @@
 <div class="nav-icons">
-<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, tracktions_path %> </p>
- <!-- <p> <%# link_to '<i class="fas fa-edit"></i>'.html_safe, edit_group_path(@group) %></p> -->
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, tracktions_path %></p>
 </div>
-<br>
+
 <h1><%= @type.amount_type %></h1>
-  <h4>Total - <%= @type.tracktions.sum(:amount) %></h4>
+<h4>Total - <%= @type.tracktions.sum(:amount) %></h4>
 
 <div class="view-display">
-
   <% @type.tracktions.sort_by{|x|x.name.downcase}.each do |track| %>
     <div class='group-cards'>
       <div>
@@ -19,7 +17,6 @@
         <p><%= track.created_at.strftime("%d %b. %Y") %></p>
       </div>
       <div>
-        <!-- <p>Author</p> -->
         <h4><%= track.amount %></h4>
         <span><%= track.author.name %></span>
       </div>

@@ -1,6 +1,8 @@
 // Place all the styles related to the Transactions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import 'app_variables.scss';
+
 .row-container {
   display: flex;
   padding-left: 83px;
@@ -33,7 +35,7 @@
   align-items: center;
   margin-top: -10px;
   z-index: 1;
-  background-color: var(--link);
+  background-color: $link;
 
   a {
     display: flex;
@@ -85,7 +87,6 @@
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  // height: 50px;
   margin-bottom: 15px;
 }
 

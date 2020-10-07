@@ -1,6 +1,8 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import 'app_variables.scss';
+
 .splash {
   width: 80vw;
   height: 80vh;
@@ -63,7 +65,7 @@
 
 .new-transaction-button {
   border: 1px solid rgb(226, 226, 226);
-  background-color: var(--link);
+  background-color: $link;
   min-width: 75px;
   line-height: 50px;
   margin: 25px;
@@ -76,7 +78,7 @@
     min-width: 250px;
 
     span {
-      color: var(--font);
+      color: $font;
       font-size: 1.25rem;
     }
   }

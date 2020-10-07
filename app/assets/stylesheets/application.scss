@@ -13,28 +13,7 @@
  *= require_tree .
  *= require_self
  */
-@font-face {
-  font-family: Proxima-Nova-Bold;
-  src: url("/Proxima Nova Bold.otf");
-}
-
-@font-face {
-  font-family: Proxima-Nova-Light;
-  src: url("/Proxima Nova Thin.otf");
-}
-
-:root {
-  // --background: #7d5e82; my background choice
-  // --font: #053225; my font choice
-  // --link: #274a0d; my link choice
-  --background: #f5f6f8;
-  --main: #3778c2;
-  --font: #434b54;
-  --link: #5fb523;
-  --hover: #9c914f;
-  --notice: #c3d2d5;
-  --visited: #9c914f;
-}
+@import 'app_variables.scss';
 
 * {
   box-sizing: border-box;
@@ -54,7 +33,7 @@ html {
 }
 
 h1 {
-  color: var(--font);
+  color: $font;
   font-size: 3rem;
   line-height: 65px;
   margin: 0 15px 15px;
@@ -66,7 +45,7 @@ h1 {
 }
 
 h2 {
-  color: var(--font);
+  color: $font;
   margin-top: 35px;
   margin-bottom: -10px;
   text-align: center;
@@ -76,7 +55,7 @@ h2 {
 }
 
 h3 {
-  color: var(--font);
+  color: $font;
   font-size: 2em;
   text-align: center;
   line-height: 25px;
@@ -96,7 +75,7 @@ h5 {
 }
 
 a {
-  color: var(--link);
+  color: $link;
   font-weight: bold;
   margin: 10px;
   word-wrap: break-word;
@@ -106,11 +85,11 @@ a {
 }
 
 a:hover {
-  color: var(--hover);
+  color: $hover;
 }
 
 a:visited {
-  color: var(--visited);
+  color: $visited;
 }
 
 table {
@@ -121,7 +100,7 @@ table {
   position: sticky;
   top: 0;
   width: 100vw;
-  background: var(--main);
+  background: $main;
   padding-top: 15px;
   display: flex;
   justify-content: center;
@@ -245,7 +224,6 @@ table {
     height: 100%;
     width: 0;
     position: fixed;
-    // z-index: 3;
     top: 0;
     left: 0;
     background-color: #111;
@@ -343,7 +321,6 @@ table {
   justify-content: space-between;
   position: fixed;
   top: 60px;
-  // left: 5px;
   z-index: 1;
 
   @media (min-width: 650px) {

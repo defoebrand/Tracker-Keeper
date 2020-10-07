@@ -1,17 +1,21 @@
 <p id=”alert”><%= alert %></p>
 <div class="splash">
-<h1>Tracker Keeper</h1>
+  <h1>Tracker Keeper</h1>
 
-<%= form_tag sessions_path, class: 'form container' do |form| %>
-  <%= label_tag :name, "What name are your transactions under?" %>
-  <div class='actions'>
-    <%= text_field_tag :name %>
-    <%= submit_tag('login') %>
+  <%= form_tag sessions_path, class: 'form container' do |form| %>
+    <%= label_tag :name, "What name are your transactions under?" %>
+    <div class='actions'>
+      <%= text_field_tag :name %>
+      <%= submit_tag('login') %>
+    </div>
+  <% end %>
+
+  <div class="omniauth">
+    <%= link_to 'Sign in with Github?', "/auth/github"  %>
   </div>
-<% end %>
 
-<div class="omniauth">
-  <%= link_to 'Sign in with Github?', "/auth/github"  %>
-</div>
-<p>Haven't registered yet?<%= link_to "Sign up", new_user_path, class: 'sign-up' %><span class='today'>today!</span></p>
+  <p>Haven't registered yet?
+    <%= link_to "Sign up", new_user_path, class: 'sign-up' %>
+    <span class='today'>today!</span>
+  </p>
 </div>

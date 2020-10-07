@@ -1,25 +1,26 @@
 <p id="notice"><%= notice %></p>
 <div class="nav-icons">
-<p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, user_path(@user) %> </p>
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, user_path(@user) %></p>
 </div>
-  <h1>Groups</h1>
+
+<h1>Groups</h1>
 
 <div class="view-display">
 
   <% @groups.sort_by{|x|x.name.downcase}.each do |group| %>
     <div class='group-cards'>
       <%= link_to group.icon.html_safe, group %>
-
       <div class='card-text'>
         <h4><%= group.name %></h4>
-      <p><%= group.created_at.strftime("%d %b. %Y") %></p>
+        <p><%= group.created_at.strftime("%d %b. %Y") %></p>
       </div>
       <div>
         <p>Number of Transactions</p>
-       <h5><%= group.tracktions.size %></h5>
-    </div>
+        <h5><%= group.tracktions.size %></h5>
+      </div>
     </div>
   <% end %>
+  
 </div>
 
 <br>

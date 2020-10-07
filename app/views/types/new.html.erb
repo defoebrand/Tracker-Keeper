@@ -1,12 +1,13 @@
 <div class="nav-icons">
-  <p> <%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, new_tracktion_path %> </p>
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, new_tracktion_path %></p>
 </div>
+
 <h1>New Amount Type</h1>
 <%= form_with(model: @type, local: true, class: 'container') do |form| %>
   <% if @type.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@type.errors.count, "error") %> prohibited this type from being saved:</h2>
-
+      <h2><%= pluralize(@type.errors.count, "error") %>
+        prohibited this type from being saved:</h2>
       <ul>
         <% @type.errors.full_messages.each do |message| %>
            <li><%= message %></li>

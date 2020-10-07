@@ -16,6 +16,7 @@
   <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |tracks| %>
     <div class='group-cards'>
       <%= link_to tracks.groups.first.icon.html_safe, tracks.groups.first %>
+      <%= tracks.groups.first.name %>
       <div class='card-text'>
         <h4><%= link_to tracks.name, tracktion_path(tracks.id) %></h4>
         <p><%= tracks.created_at.strftime("%d %b. %Y") %></p>

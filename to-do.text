@@ -1,4 +1,3 @@
-will groups be edited / updated / destroyed?
 
 groups controller
  - group.new, group.find, and group.all cleanup
@@ -7,15 +6,7 @@ tracktions controller
  - #new / #create | #edit / #update | #destroy cleanup
 
 
-external group page??
-
 remove logic from views
-
-clean up code
-
-remove comments
-
-remove empty functions (session / transaction)
 
 controller methods = in controller - run_method
 model methods = model - User.method

@@ -9,16 +9,11 @@
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
   </head>
-
   <body class='container'>
     <% if session[:user_id] %>
       <div class="sticky-header">
-
-
-
         <div class="mobile-header">
-           <i class="fas fa-bars burger-menu">
-
+          <i class="fas fa-bars burger-menu">
             <div class='burger-links hidden'>
               <div class='menu-pic container'>
                 <%= profile_pic(@user) %>
@@ -37,8 +32,8 @@
               <hr class='menu-lines'>
               <i class="fas fa-list menu-icon"></i>
               <%= link_to 'Transactions', tracktions_path, class: 'transaction-a' %>
-              <%# link_to ' - Assigned', assigned_path, class: 'filter-links' %>
-              <%# link_to ' - Unassigned', unassigned_path, class: 'filter-links' %>
+              <%= link_to ' - Assigned', assigned_path, class: 'filter-links' %>
+              <%= link_to ' - Unassigned', unassigned_path, class: 'filter-links' %>
               <br>
               <hr class='menu-lines'>
               <i class="fas fa-cog menu-icon"></i>
@@ -48,50 +43,32 @@
               <i class="fas fa-sign-out-alt menu-icon"></i>
               <%= link_to 'Log Out', logout_path %>
             </div>
+          </i>
 
-           </i>
-
-
-           <span class='account-menu' tabindex='0'>
-
+          <span class='account-menu' tabindex='0'>
             <div class='account-links ac-hidden'>
               <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
               <br />
               <%= link_to 'Log Out', logout_path %>
             </div>
-
-           </span>
-
-
+          </span>
         </div>
 
-
-
-
         <div class="desktop-header">
-
-
           <div class='desktop-menu'>
             <%= profile_pic(@user) %>
-
             <%= link_to 'Home', user_path(session[:user_id]) %>
-
             <%= link_to 'Groups', groups_path %>
-
-              <%= link_to 'Transactions', tracktions_path %>
+            <%= link_to 'Transactions', tracktions_path %>
           </div>
           <div>
             <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-
             <%= link_to 'Log Out', logout_path %>
           </div>
-
-
         </div>
-
-
-    </div>
+      </div>
     <% end %>
+
     <%= yield %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>

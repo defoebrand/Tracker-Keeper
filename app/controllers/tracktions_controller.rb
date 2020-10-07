@@ -1,5 +1,5 @@
 class TracktionsController < ApplicationController
-  before_action :check_user_log_in # , except: %i[update destroy]
+  before_action :check_user_log_in
 
   def index
     @tracktions = Tracktion.includes(:author).includes(:type).eager_load(:groups).all
@@ -30,7 +30,7 @@ class TracktionsController < ApplicationController
             @array << y.to_i
           end
         end
-        @groups = Group.preload(:tracktions).find_by(id: @array)
+        @groups = Group.preload(:tracktions).find_by(name: @array)
         # @tracktion.groups << Group.find(@array)
         (@tracktion.groups << @groups) unless @groups.nil?
       end

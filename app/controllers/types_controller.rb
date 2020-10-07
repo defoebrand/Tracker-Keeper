@@ -1,5 +1,6 @@
 class TypesController < ApplicationController
   before_action :check_user_log_in
+
   def new
     @type = Type.new
   end
