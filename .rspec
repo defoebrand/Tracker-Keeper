@@ -1,0 +1,9 @@
+--require spec_helper
+
+--default-path spec/
+
+--pattern models/*_spec.rb
+
+--pattern features/*_spec.rb
+
+--pattern /spec_seeds.rb

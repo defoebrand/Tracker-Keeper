@@ -2,11 +2,11 @@ class TracktionsController < ApplicationController
   before_action :check_user_log_in
 
   def index
-    @tracktions = Tracktion.includes(:author).includes(:type).includes(:groups).eager_load([:groups_tracktions]).all
+    @tracktions = Tracktion.includes(%i[author type]).includes(:groups).eager_load([:groups_tracktions]).all
   end
 
   def show
-    @tracktion = Tracktion.includes(:author).includes(:type).eager_load(:groups).find(params[:id])
+    @tracktion = Tracktion.includes(%i[author type]).eager_load(:groups).find(params[:id])
   end
 
   def new
@@ -18,7 +18,7 @@ class TracktionsController < ApplicationController
   end
 
   def create
-    @tracktion = Tracktion.includes(:author).includes(:type).eager_load(:groups).new(tracktion_params.except(:groups))
+    @tracktion = Tracktion.includes(%i[author type]).eager_load(:groups).new(tracktion_params.except(:groups))
 
     respond_to do |format|
       add_groups(tracktion_params)
@@ -31,7 +31,7 @@ class TracktionsController < ApplicationController
   end
 
   def update
-    @tracktion = Tracktion.includes(:author).includes(:type).eager_load(:groups).find(params[:id])
+    @tracktion = Tracktion.includes(%i[author type]).eager_load(:groups).find(params[:id])
 
     respond_to do |format|
       add_groups(tracktion_params)
@@ -54,17 +54,17 @@ class TracktionsController < ApplicationController
   end
 
   def assigned
-    @tracktions = Tracktion.includes(:type).includes(:author).includes(:groups)
-                           .eager_load([:groups_tracktions]).select do |track|
-      track if track.groups.first
-    end
+    @tracktions =
+      Tracktion.includes(%i[author type]).includes(:groups).eager_load([:groups_tracktions]).select do |track|
+        track if track.groups.first
+      end
   end
 
   def unassigned
-    @tracktions = Tracktion.includes(:type).includes(:author).includes(:groups)
-                           .eager_load([:groups_tracktions]).select do |track|
-      track unless track.groups.first
-    end
+    @tracktions =
+      Tracktion.includes(%i[author type]).includes(:groups).eager_load([:groups_tracktions]).select do |track|
+        track unless track.groups.first
+      end
   end
 
   private

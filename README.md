@@ -7,11 +7,23 @@
 
 ### Features
 
--   Create custom icons
+-   Create custom groups with icons
 -   Create custom amount types
+-   Create transactions to record anything (time, money, calories, etc)
+-   View transactions based on associated groups or amount type
 -   Log in with GitHub credentials
 -   Responsive design for desktop or mobile use
--   Upload profile picture - saved on local server and subject to deletion: currently set up as proof of concept - a future update will include integration with cloud storage for persistent existence
+-   Upload profile picture
+    -   Saved on local server and subject to deletion: currently set up as proof of concept
+
+###### Coming Features
+
+-   Integration with cloud storage for persistent profile picture
+-   Filter transactions to display by day, week, month, or year
+-   Customizable color scheme
+-   Separate display of transactions for only logged in user
+    -   Show user list and friendships to connect and see other user transactions on profile or in groups / types
+-   Ambee updates for time and weather
 
 ## Built With
 
@@ -28,20 +40,25 @@ Click the [Live Link](https://vast-basin-15172.herokuapp.com/) to visit this sit
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+#### Prerequisites
 
-Ruby: 2.7
+Ruby: 2.7  
 Rails: 6
 
-### Setup
+#### Setup
 
-1.  Clone this repository with `git clone` [`https://github.com/defoebrand/private-events.git`](https://github.com/defoebrand/Tracker-Keeper.git) using a terminal or command line.
+1.  Clone this repository with `git clone` [`https://github.com/defoebrand/Tracker-Keeper.git`](https://github.com/defoebrand/Tracker-Keeper.git) using a terminal or command line.
 2.  Direct your terminal to the project folder by entering `cd Tracker-Keeper`
 3.  Run `bundle install` to install the necessary dependencies
 4.  Check the config/database.yml file for matching username and password for your local postgres database
 5.  Run `rails db:setup` to setup your local database.
-6.  Run `rails server` to start the application.
-7.  Finally, direct your browser to '<http://localhost:3000/>' to view the app.
+6.  Run `rails db:migrate` to setup your database schema.
+7.  Run `rails server` to start the application.
+8.  Finally, direct your browser to '<http://localhost:3000/>' to view the app.
+
+### Testing
+
+> To run tests open the terminal inside the project's root directory and run `rspec`
 
 ## Authors
 

@@ -1,11 +1,13 @@
 module GroupsHelper
-  def filter_group_transactions
-    @group.tracktions.each do |x|
+  def filter_transactions(filter_type)
+    # @group.tracktions.each do |x|
+    filter_type.each do |x|
       @type_sums["#{x.type.amount_type}_id"] = x.type.id
       @type_sums[x.type.amount_type] = 0
     end
 
-    @group.tracktions.each do |x|
+    # @group.tracktions.each do |x|
+    filter_type.each do |x|
       @type_sums[x.type.amount_type] += x.amount
     end
     @type_sums
@@ -21,8 +23,8 @@ module GroupsHelper
     content_tag(:div, @content, class: 'trans-totals')
   end
 
-  def set_type_id(type, _index)
-    @nested_content = content_tag(:a, (type[0]).to_s, href: type_path(@type_id))
-    @nested_content << content_tag(:p, (type[1]).to_s)
-  end
+  # def set_type_id(type, _index)
+  #   @nested_content = content_tag(:a, (type[0]).to_s, href: type_path(@type_id))
+  #   @nested_content << content_tag(:p, (type[1]).to_s)
+  # end
 end
