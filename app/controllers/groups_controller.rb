@@ -9,7 +9,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.eager_load(tracktions: %i[author type]).find(params[:id])
-    @type_sums = {}
   end
 
   def new

@@ -9,18 +9,15 @@
 </div>
 
 <div class="container sum-totals">
-  <%=  transactions_count %>
+  <%=  transactions_count(@tracktions) %>
 </div>
 
 <div class="view-display">
   <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |track| %>
     <div class='group-cards'>
-      <% if track.groups.first %>
-        <p><%= link_to track.groups.first.icon.html_safe, track.groups.first %></p>
-        <p><%= track.groups.first.name %></p>
-      <% else %>
-        <%= link_to 'Assign', edit_tracktion_path(track) %>
-      <% end %>
+      <div>
+        <%= group?(track) %>
+      </div>
       <div class='card-text'>
         <h4><%= link_to track.name, tracktion_path(track.id) %></h4>
         <p><%= track.created_at.strftime("%d %b. %Y") %></p>

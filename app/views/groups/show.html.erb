@@ -7,7 +7,7 @@
 <h2><%= @group.icon.html_safe %> <%= @group.name %> Transactions </h2>
 <br>
 <div class="container sum-totals">
-  <%=  group_transactions_count %>
+  <%=  transactions_count(@group.tracktions) %>
 </div>
 
 <div class="view-display">

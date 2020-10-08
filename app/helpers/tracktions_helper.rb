@@ -1,29 +1,48 @@
 module TracktionsHelper
-  def filter_transactions
-    @type_sums = {}
-    @tracktions.each do |x|
-      @type_sums["#{x.type.amount_type}_id"] = x.type.id
-      @type_sums[x.type.amount_type] = 0
+  def group?(track)
+    if track.groups.first
+      create_group_link(track)
+    else
+      @content = content_tag(:a, 'Assign', href: edit_tracktion_path(track))
     end
-
-    @tracktions.each do |x|
-      @type_sums[x.type.amount_type] += x.amount
-    end
-    @type_sums
+    @content
   end
 
-  def transactions_count
-    filter_transactions
-    @content = tag(:br)
-    @type_sums.each_with_index do |type, index|
-      index.even? ? @type_id = type[1] : @more_content = content_tag(:div, set_type_id(type, index))
-      @content << @more_content unless index.even?
-    end
-    content_tag(:div, @content, class: 'trans-totals')
+  def create_group_link(track)
+    @content = content_tag(:p, content_tag(:a, track.groups.first.icon.html_safe,
+                                           href: group_path(track.groups.first.id)))
+    @content << content_tag(:p, track.groups.first.name)
   end
 
-  def set_type_id(type, _index)
-    @nested_content = content_tag(:a, (type[0]).to_s, href: type_path(@type_id))
-    @nested_content << content_tag(:p, (type[1]).to_s)
+  def nav_buttons
+    if @tracktion.groups.first
+      content_tag(:a, '<i class="fas fa-arrow-left"></i>'.html_safe, href: assigned_path)
+    else
+      content_tag(:a, '<i class="fas fa-arrow-left"></i>'.html_safe, href: unassigned_path)
+    end
+  end
+
+  def create_additional_group_links(group)
+    @content = content_tag(:p, content_tag(:a, group.icon.html_safe,
+                                           href: group_path(group.id)))
+    @content << content_tag(:p, group.name)
+  end
+
+  def additional_groups(group)
+    return if group == @tracktion.groups.first
+
+    @nested_content = create_additional_group_links(group)
+    @content = content_tag(:div, @nested_content, class: 'container')
+  end
+
+  def checked_box?(*args)
+    args.each do |arg|
+      @content = if @tracktion.groups.select { |group| group if group.name == arg.value }.empty?
+                   arg.check_box
+                 else
+                   arg.check_box(checked: true)
+                 end
+    end
+    @content
   end
 end

@@ -41,11 +41,7 @@
     <%= form.collection_check_boxes :groups, Group.all, :name, :icon do |group_select| %>
       <div>
         <div class="container">
-        <% unless tracktion.groups.select{|x| x if x.name == group_select.value}.empty? %>
-          <%= group_select.check_box(checked: true) %>
-        <% else %>
-          <%= group_select.check_box %>
-        <% end %>
+          <%= checked_box?(group_select) %>
           <%= group_select.text.html_safe %>
           <%= group_select.value %>
         </div>
