@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    redirect_to root_path unless session[:user_id] == 4
+    redirect_to root_path unless session[:user_id] == 1
     @users = User.with_attached_avatar.all
   end
 
