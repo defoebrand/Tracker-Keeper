@@ -85,5 +85,5 @@ test:
 production:
   <<: *default
   database: Tracker_Keeper_production
-  username: admin
-  password: admin
+  # username: admin
+  # password: admin
