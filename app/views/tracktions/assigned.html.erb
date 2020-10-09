@@ -13,18 +13,19 @@
 </div>
 
 <div class="view-display">
-  <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |tracks| %>
+  <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |track| %>
     <div class='group-cards'>
       <div>
-    <p><%= link_to tracks.groups.first.icon.html_safe, tracks.groups.first %></p>
-      <p><%= tracks.groups.first.name %></p>
+    <p><%= link_to track.groups.first.icon.html_safe, track.groups.first %></p>
+      <p><%= track.groups.first.name %></p>
       </div>
       <div class='card-text'>
-        <h4><%= link_to tracks.name, tracktion_path(tracks.id) %></h4>
-        <p><%= tracks.created_at.strftime("%d %b. %Y") %></p>
+        <h4><%= link_to track.name, tracktion_path(track.id) %></h4>
+        <p><%= track.created_at.strftime("%d %b. %Y") %></p>
       </div>
-      <p><%= tracks.amount %><br>
-        <%= tracks.type.amount_type %></p>
+      <p><%= track.amount %><br>
+        <%= link_to track.type.amount_type, type_path(track.type.id) %></p>
+      <%= track.author.name %>
     </div>
   <% end %>
 </div>

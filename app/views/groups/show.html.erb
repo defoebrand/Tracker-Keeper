@@ -15,7 +15,7 @@
   <% @group.tracktions.sort_by{|x|x.name.downcase}.each do |track| %>
     <div class='group-cards'>
       <div>
-        <p>Author</p>
+        <p>Author:</p>
         <p><%= track.author.name %></p>
       </div>
       <div class='card-text'>
@@ -23,9 +23,8 @@
         <p><%= track.created_at.strftime("%d %b. %Y") %></p>
       </div>
       <div>
-        <p>Amount</p>
-        <p><%= track.amount %>
-           <%= link_to track.type.amount_type, type_path(track.type) %></p>
+        <p><%= track.amount %><br>
+          <%= link_to track.type.amount_type, type_path(track.type.id) %></p>
       </div>
     </div>
   <% end %>
