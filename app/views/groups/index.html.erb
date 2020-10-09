@@ -6,21 +6,7 @@
 <h1>Groups</h1>
 
 <div class="view-display">
-
-  <% @groups.sort_by{|x|x.name.downcase}.each do |group| %>
-    <div class='group-cards'>
-      <%= link_to group.icon.html_safe, group %>
-      <div class='card-text'>
-        <h4><%= link_to group.name, group %></h4>
-        <p><%= group.created_at.strftime("%d %b. %Y") %></p>
-      </div>
-      <div>
-        <p>Number of Transactions</p>
-        <h5><%= group.tracktions.size %></h5>
-      </div>
-    </div>
-  <% end %>
-
+  <%= render 'group_cards' %>
 </div>
 
 <br>

@@ -13,18 +13,7 @@
 </div>
 
 <div class="view-display">
-  <% @tracktions.sort_by{ |x| x.created_at }.reverse.each do |track| %>
-    <div class='group-cards'>
-      <%= link_to 'Assign', edit_tracktion_path(track) %>
-      <div class='card-text'>
-        <h4><%= link_to track.name, tracktion_path(track.id) %></h4>
-        <p><%= track.created_at.strftime("%d %b. %Y") %></p>
-      </div>
-      <p><%= track.amount %><br>
-        <%= link_to track.type.amount_type, type_path(track.type.id) %></p>
-      <%= track.author.name %>
-    </div>
-  <% end %>
+  <%= render 'transaction_cards' %>
 </div>
 
 <div class='new-transaction'>

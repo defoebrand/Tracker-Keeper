@@ -42,4 +42,8 @@ module ApplicationHelper
       content_tag(:a, '<i class="fas fa-edit"></i>'.html_safe, href: edit_group_path(@group))
     end
   end
+
+  def header
+    render 'layouts/header' if session[:user_id]
+  end
 end

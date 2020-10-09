@@ -3,25 +3,4 @@
 </div>
 
 <h1>New Amount Type</h1>
-<%= form_with(model: @type, local: true, class: 'container') do |form| %>
-  <% if @type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@type.errors.count, "error") %>
-        prohibited this type from being saved:</h2>
-      <ul>
-        <% @type.errors.full_messages.each do |message| %>
-           <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :amount_type, 'Name of type:' %>
-    <%= form.text_field :amount_type %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render 'form' %>

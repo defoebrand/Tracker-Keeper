@@ -24,7 +24,5 @@
 
 <h4>Additional Groups</h4>
 <div style='display:flex'>
-  <% @tracktion.groups.each do |group|%>
-    <%= additional_groups(group) %>
-  <% end %>
+  <%= render 'additional_groups' %>
 </div>

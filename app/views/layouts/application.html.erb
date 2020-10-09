@@ -10,65 +10,7 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
   </head>
   <body class='container'>
-    <% if session[:user_id] %>
-      <div class="sticky-header">
-        <div class="mobile-header">
-          <i class="fas fa-bars burger-menu">
-            <div class='burger-links hidden'>
-              <div class='menu-pic container'>
-                <%= profile_pic(@user) %>
-                <br>
-                <%= @user.name %>
-              </div>
-              <br>
-              <br>
-              <i class="fas fa-home menu-icon"></i>
-              <%= link_to 'Home', user_path(session[:user_id]) %>
-              <br>
-              <hr class='menu-lines'>
-              <i class="fas fa-layer-group menu-icon"></i>
-              <%= link_to 'Groups', groups_path %>
-              <br>
-              <hr class='menu-lines'>
-              <i class="fas fa-list menu-icon"></i>
-              <%= link_to 'Transactions', tracktions_path, class: 'transaction-a' %>
-              <%= link_to ' - Assigned', assigned_path, class: 'filter-links' %>
-              <%= link_to ' - Unassigned', unassigned_path, class: 'filter-links' %>
-              <br>
-              <hr class='menu-lines'>
-              <i class="fas fa-cog menu-icon"></i>
-              <%= link_to 'Settings', edit_user_path(session[:user_id]) %>
-              <br>
-              <hr class='menu-lines'>
-              <i class="fas fa-sign-out-alt menu-icon"></i>
-              <%= link_to 'Log Out', logout_path %>
-            </div>
-          </i>
-
-          <span class='account-menu' tabindex='0'>
-            <div class='account-links ac-hidden'>
-              <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-              <br />
-              <%= link_to 'Log Out', logout_path %>
-            </div>
-          </span>
-        </div>
-
-        <div class="desktop-header">
-          <div class='desktop-menu'>
-            <%= profile_pic(@user) %>
-            <%= link_to 'Home', user_path(session[:user_id]) %>
-            <%= link_to 'Groups', groups_path %>
-            <%= link_to 'Transactions', tracktions_path %>
-          </div>
-          <div>
-            <%= link_to 'Account Settings', edit_user_path(session[:user_id]) %>
-            <%= link_to 'Log Out', logout_path %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
+    <%= header %>
     <%= yield %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>

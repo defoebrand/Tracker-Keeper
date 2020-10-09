@@ -2,13 +2,7 @@
 <div class="splash">
   <h1>Tracker Keeper</h1>
 
-  <%= form_tag sessions_path, class: 'form container' do |form| %>
-    <%= label_tag :name, "What name are your transactions under?" %>
-    <div class='actions'>
-      <%= text_field_tag :name %>
-      <%= submit_tag('login') %>
-    </div>
-  <% end %>
+  <%= render 'login' %>
 
   <div class="omniauth">
     <%= link_to 'Sign in with Github?', "/auth/github"  %>
