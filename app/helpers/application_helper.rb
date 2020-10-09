@@ -24,13 +24,13 @@ module ApplicationHelper
     filter_transactions(filter_type)
     @content = tag(:br)
     @type_sums.each_with_index do |type, index|
-      index.even? ? @type_id = type[1] : @more_content = content_tag(:div, set_type_id(type, index))
+      index.even? ? @type_id = type[1] : @more_content = content_tag(:div, type_id(type))
       @content << @more_content unless index.even?
     end
     content_tag(:div, @content, class: 'trans-totals')
   end
 
-  def set_type_id(type, _index)
+  def type_id(type)
     @nested_content = content_tag(:a, (type[0]).to_s, href: type_path(@type_id))
     @nested_content << content_tag(:p, (type[1]).to_s)
   end

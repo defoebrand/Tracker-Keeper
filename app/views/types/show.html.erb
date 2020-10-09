@@ -3,8 +3,9 @@
 </div>
 
 <h1><%= @type.amount_type %></h1>
-<h4>Total - <%= @type.tracktions.sum(:amount) %></h4>
-
+<div class="container sum-totals">
+  <%= type_transactions_count(@type.tracktions) %>
+</div>
 <div class="view-display">
   <%= render 'list_transactions' %>
 </div>
