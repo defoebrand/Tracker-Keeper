@@ -49,12 +49,11 @@ Rails: 6
 
 1.  Clone this repository with `git clone` [`https://github.com/defoebrand/Tracker-Keeper.git`](https://github.com/defoebrand/Tracker-Keeper.git) using a terminal or command line.
 2.  Direct your terminal to the project folder by entering `cd Tracker-Keeper`
-3.  Run `bundle install` to install the necessary dependencies
-4.  Check the config/database.yml file for matching username and password for your local postgres database
+3.  Type `git checkout working-branch` (this will be unnecessary once this project is merged with development)
+4.  Run `bundle install` to install the necessary dependencies
 5.  Run `rails db:setup` to setup your local database.
-6.  Run `rails db:migrate` to setup your database schema.
-7.  Run `rails server` to start the application.
-8.  Finally, direct your browser to '<http://localhost:3000/>' to view the app.
+6.  Run `rails server` to start the application.
+7.  Finally, direct your browser to '<http://localhost:3000/>' to view the app.
 
 ### Testing
 
