@@ -76,6 +76,7 @@ Give a ⭐️ if you like this project!
 
 -   Microverse
 -   [Gregoire Vella](https://www.behance.net/gregoirevella)� and his design, which can be seen [here](https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding?tracking_source=).
+-   The Kermits
 
 ## 📝 License
 
