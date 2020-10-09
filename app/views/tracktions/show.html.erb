@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="nav-icons">
   <p><%= nav_buttons %></p>
-  <p><%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_tracktion_path(@tracktion) %></p>
+  <p><%= edit_button('tracktion') %></p>
 </div>
 
 <h2><%= @tracktion.name %></h2>

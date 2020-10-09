@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="nav-icons">
   <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, groups_path %></p>
-  <p> <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_group_path(@group) %></p>
+  <p><%= edit_button('group') %></p>
 </div>
 
 <h2><%= @group.icon.html_safe %> <%= @group.name %> Transactions </h2>

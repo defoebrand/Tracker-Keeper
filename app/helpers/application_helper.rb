@@ -34,4 +34,12 @@ module ApplicationHelper
     @nested_content = content_tag(:a, (type[0]).to_s, href: type_path(@type_id))
     @nested_content << content_tag(:p, (type[1]).to_s)
   end
+
+  def edit_button(type)
+    if type == 'tracktion' && @tracktion.author_id == @user.id
+      content_tag(:a, '<i class="fas fa-edit"></i>'.html_safe, href: edit_tracktion_path(@tracktion))
+    elsif type == 'group' && session[:user_id] == 1
+      content_tag(:a, '<i class="fas fa-edit"></i>'.html_safe, href: edit_group_path(@group))
+    end
+  end
 end
