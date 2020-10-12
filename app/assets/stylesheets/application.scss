@@ -1,0 +1,329 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'app_variables.scss';
+
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+input {
+  text-align: left;
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+h1 {
+  color: $font;
+  font-size: 3rem;
+  line-height: 65px;
+  margin: 0 15px 15px;
+  padding: 0;
+  text-align: center;
+  word-wrap: break-word;
+  font-family: Proxima-Nova-Bold, sans-serif;
+  font-weight: 300;
+}
+
+h2 {
+  color: $font;
+  margin-top: 35px;
+  margin-bottom: -10px;
+  text-align: center;
+  font-size: 3em;
+  line-height: 50px;
+  font-family: Proxima-Nova-Bold, sans-serif;
+}
+
+h3 {
+  color: $font;
+  font-size: 2em;
+  text-align: center;
+  line-height: 25px;
+  font-family: Proxima-Nova-Bold, sans-serif;
+}
+
+h4 {
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 0;
+  font-family: Proxima-Nova-Bold, sans-serif;
+}
+
+h5 {
+  font-size: 1.25em;
+  font-family: Proxima-Nova-Bold, sans-serif;
+}
+
+a {
+  color: $link;
+  font-weight: bold;
+  margin: 10px;
+  word-wrap: break-word;
+  text-align: justify;
+  font-family: Proxima-Nova-Bold, sans-serif;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $hover;
+}
+
+a:visited {
+  color: $visited;
+}
+
+table {
+  margin-bottom: 25px;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  background: $main;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+  text-align: center;
+  overflow-wrap: normal;
+  padding-bottom: 15px;
+
+  a {
+    white-space: nowrap;
+  }
+
+  @media (min-width: 650px) {
+    display: none;
+  }
+}
+
+.fab,
+.far,
+.fas {
+  font-size: 2em;
+  margin: 10px 5px;
+}
+
+#nav ul.sub-nav {
+  display: none;
+}
+
+#nav ul.visible {
+  display: block;
+}
+
+.desktop-header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto;
+
+  .profile-pic {
+    width: 75px;
+    border-radius: 50px;
+    margin: 0 15px 15px;
+  }
+
+  .desktop-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (min-width: 650px) {
+    display: flex;
+  }
+}
+
+.filter-links {
+  display: block;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.group-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgrey;
+  width: 100%;
+  margin: 5px;
+  padding: 10px;
+
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+
+    h4 {
+      margin-top: 5px;
+      margin-bottom: -5px;
+    }
+  }
+}
+
+.icon-box {
+  margin: 25px 0;
+  width: 66vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.burger-menu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+
+  .profile-pic {
+    width: 75px;
+    border-radius: 50px;
+  }
+
+  .burger-links {
+    a {
+      font-size: 15px;
+    }
+  }
+
+  .hidden {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .visible {
+    width: 200px;
+    padding-left: 10px;
+
+    .menu-icon {
+      color: white;
+      border: 1px solid white;
+      border-radius: 50%;
+      padding: 5px;
+      font-size: 0.65rem;
+    }
+
+    .menu-lines {
+      opacity: 0.25;
+    }
+
+    .menu-pic {
+      margin: 25px 25px -25px 15px;
+      color: white;
+    }
+  }
+}
+
+.account-menu {
+  border-radius: 50%;
+  outline: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .profile-pic {
+    width: 75px;
+    border-radius: 50px;
+  }
+
+  .account-links {
+    position: absolute;
+    height: fit-content;
+    top: 15px;
+    right: 75px;
+  }
+
+  .ac-hidden {
+    display: none;
+  }
+
+  .ac-visible {
+    display: block;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 0 15px 15px;
+}
+
+.form {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+
+  .actions {
+    margin-top: 15px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    input[type=submit] {
+      margin: 5px;
+    }
+  }
+}
+
+.view-display {
+  margin-bottom: 50px;
+  width: 80vw;
+  max-width: 750px;
+}
+
+.nav-icons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 60px;
+  z-index: 1;
+
+  @media (min-width: 650px) {
+    top: 90px;
+  }
+}

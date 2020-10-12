@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+  <div style='display:flex'>
+    <div>
+      <p><%= "Name: #{user.name}" %></p>
+      <p><%= "ID: #{user.id}" %></p>
+    </div>
+    <%= user_images(user) %>
+    <div>
+      <p>Number of Transactions: </p>
+      <p><%= user.tracktions.size %></p>
+    </div>
+  </div>
+<% end %>

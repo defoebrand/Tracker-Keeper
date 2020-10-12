@@ -1,0 +1,24 @@
+<div class="nav-icons">
+   <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, user_path(@user) %></p>
+</div>
+
+<h1>All Transactions</h1>
+<div>
+  <%= link_to 'Assigned', assigned_path %>
+  <%= link_to 'Unassigned', unassigned_path %>
+</div>
+
+<div class="container sum-totals">
+  <%=  transactions_count(@tracktions) %>
+</div>
+
+<div class="view-display">
+  <%= render 'transaction_cards' %>
+</div>
+
+<div class='new-transaction'>
+   <a href="/tracktions/new"><i class="fas fa-plus-square">
+      <span>New Transaction</span>
+    </i>
+  </a>
+</div>

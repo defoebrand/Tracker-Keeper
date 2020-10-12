@@ -1,0 +1,55 @@
+<%= form_with(model: tracktion, local: true, class: 'container') do |form| %>
+  <% if tracktion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tracktion.errors.count, "error") %>
+         prohibited this tracktion from being saved:</h2>
+      <ul>
+        <% tracktion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :author_id, :value => session[:user_id] %>
+  <div class="field">
+    <%= form.label :name, 'Name of Transaction:' %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount, 'Amount of Transaction:' %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field amount-field">
+    <%= form.label :type_id, 'Amount Type:' %>
+    <%= form.collection_select :type_id, Type.all, :id, :amount_type,
+     :include_blank => true %>
+    <span class='add-type'>
+      <a href="/types/new">
+        <i class="fas fa-plus-square">
+          <span>New Type</span>
+        </i>
+      </a>
+    </span>
+  </div>
+
+  <h3>Groups</h3>
+
+  <div class="icon-box">
+    <%= form.collection_check_boxes :groups, Group.all, :name, :icon do |group_select| %>
+      <div>
+        <div class="container">
+          <%= checked_box?(group_select) %>
+          <%= group_select.text.html_safe %>
+          <%= group_select.value %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

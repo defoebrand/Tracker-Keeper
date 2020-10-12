@@ -1,0 +1,15 @@
+<p id=”alert”><%= alert %></p>
+<div class="splash">
+  <h1>Tracker Keeper</h1>
+
+  <%= render 'users/login' %>
+
+  <div class="omniauth">
+    <%= link_to 'Sign in with Github?', "/auth/github"  %>
+  </div>
+
+  <p>Haven't registered yet?
+    <%= link_to "Sign up", new_user_path, class: 'sign-up' %>
+    <span class='today'>today!</span>
+  </p>
+</div>

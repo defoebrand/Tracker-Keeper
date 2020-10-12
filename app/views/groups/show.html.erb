@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<div class="nav-icons">
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, groups_path %></p>
+  <p><%= edit_button('group') %></p>
+</div>
+
+<h2><%= @group.icon.html_safe %> <%= @group.name %> Transactions </h2>
+<br>
+<div class="container sum-totals">
+  <%=  transactions_count(@group.tracktions) %>
+</div>
+
+<div class="view-display">
+  <%= render 'track_cards' %>
+</div>

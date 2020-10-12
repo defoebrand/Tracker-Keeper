@@ -1,0 +1,98 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@import 'app_variables.scss';
+
+.splash {
+  width: 80vw;
+  height: 80vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 25px;
+
+  label {
+    margin-bottom: 35px;
+  }
+
+  @media (min-width: 920px) {
+    width: 60vw;
+  }
+}
+
+.sign-up-form {
+  width: 30vw;
+  max-width: 300px;
+
+  label {
+    margin-top: 15px;
+  }
+
+  input {
+    margin-bottom: 15px;
+  }
+}
+
+.user-registration {
+  div.actions {
+    flex-direction: column;
+
+    input {
+      margin: 5px;
+    }
+
+    #user_avatar {
+      margin-left: 30px;
+      width: 250px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      margin-bottom: 0;
+      margin-top: 25px;
+    }
+  }
+}
+
+.date {
+  text-align: right;
+}
+
+.disclaimer {
+  width: 75vw;
+}
+
+.new-transaction-button {
+  border: 1px solid rgb(226, 226, 226);
+  background-color: $link;
+  min-width: 75px;
+  line-height: 50px;
+  margin: 25px;
+  padding: 15px;
+
+  a {
+    display: block;
+    text-align: center;
+    border: 1px solid white;
+    min-width: 250px;
+
+    span {
+      color: $font;
+      font-size: 1.25rem;
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  div:hover {
+    opacity: 0.5;
+    transform: scale(0.95);
+
+    span {
+      color: black;
+    }
+  }
+}
