@@ -2,7 +2,10 @@ class TracktionsController < ApplicationController
   before_action :check_user_log_in
 
   def index
-    @tracktions = Tracktion.includes(%i[author type]).includes(:groups).eager_load([:groups_tracktions]).all
+    @tracktions = Tracktion.includes(%i[author type]).includes(:groups).eager_load([:groups_tracktions]).select do
+      |track|
+      track if track.author == @user
+    end
   end
 
   def show
@@ -49,21 +52,20 @@ class TracktionsController < ApplicationController
     @tracktion.destroy
     respond_to do |format|
       format.html { redirect_to tracktions_url, notice: 'Tracktion was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
   def assigned
     @tracktions =
       Tracktion.includes(%i[author type]).includes(:groups).eager_load([:groups_tracktions]).select do |track|
-        track if track.groups.first
+        track if track.groups.first && track.author == @user
       end
   end
 
   def unassigned
     @tracktions =
       Tracktion.includes(%i[author type]).includes(:groups).eager_load([:groups_tracktions]).select do |track|
-        track unless track.groups.first
+        track if track.groups.first.nil? && track.author == @user
       end
   end
 

@@ -1,0 +1,6 @@
+<% @groups.each do |group| %>
+  <div>
+    <%= form.radio_button :icon, group.icon %>
+    <%= group.icon.html_safe %>
+  </div>
+<% end %>
