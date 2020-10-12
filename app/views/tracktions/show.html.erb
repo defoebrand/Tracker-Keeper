@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<div class="nav-icons">
+  <p><%= nav_buttons %></p>
+  <p><%= edit_button('tracktion') %></p>
+</div>
+
+<h2><%= @tracktion.name %></h2>
+<%= tag(:br) %>
+<div class="view-display">
+  <div class='group-cards'>
+    <div>
+      <%= group?(@tracktion) %>
+    </div>
+    <div class='card-text'>
+      <h4><%= link_to @tracktion.type.amount_type, type_path(@tracktion.type) %></h4>
+      <p><%= @tracktion.amount %></p>
+    </div>
+    <div>
+      <p>Author: <%= @tracktion.author.name %></p>
+      <p><%= @tracktion.created_at.strftime("%d %b. %Y") %></p>
+    </div>
+  </div>
+</div>
+
+<h4>Additional Groups</h4>
+<div style='display:flex'>
+  <%= render 'additional_groups' %>
+</div>

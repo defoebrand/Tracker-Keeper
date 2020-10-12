@@ -1,0 +1,15 @@
+<% @type.tracktions.sort_by { |x| x.name.downcase }.each do |track| %>
+  <div class='group-cards'>
+    <div>
+      <%= group_link(track) %>
+    </div>
+    <div class='card-text'>
+      <h4><%= link_to track.name, tracktion_path(track) %></h4>
+      <p><%= track.created_at.strftime("%d %b. %Y") %></p>
+    </div>
+    <div>
+      <h4><%= track.amount %></h4>
+      <span><%= track.author.name %></span>
+    </div>
+  </div>
+<% end %>

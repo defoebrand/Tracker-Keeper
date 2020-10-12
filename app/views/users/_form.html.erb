@@ -1,0 +1,25 @@
+<div class='sign-up-form'>
+  <%= form_with(model: user, local: true, class: 'form container') do |form| %>
+
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %>
+          prohibited this user from being saved:</h2>
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="actions container">
+      <%= form.label :name, "What name will these transactions be under?" %>
+      <%= form.text_field :name %>
+      <%= form.label :avatar, 'Choose a Profile Picture' %>
+      <%= form.file_field :avatar %>
+      <%= form.submit %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<div class="nav-icons">
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, user_path(@user) %></p>
+</div>
+
+<h1>Account Settings</h1>
+
+<%= render 'form', user: @user %>

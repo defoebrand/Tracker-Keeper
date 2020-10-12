@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :sessions, only: %i[create destroy]
+  resources :types, only: %i[new show create]
+  resources :users
+  resources :tracktions
+  resources :groups
+
+  get '/assigned', to: 'tracktions#assigned', as: 'assigned'
+  get '/unassigned', to: 'tracktions#unassigned', as: 'unassigned'
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  root 'users#splash'
 end

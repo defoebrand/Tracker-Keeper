@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<div class="nav-icons">
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, user_path(@user) %></p>
+</div>
+
+<h1>Groups</h1>
+
+<div class="view-display">
+  <%= render 'group_cards' %>
+</div>
+
+<br>
+
+<div class='new-group'>
+  <a href="/groups/new"><i class="fas fa-plus-square"><span>New Group</span></i></a>
+</div>

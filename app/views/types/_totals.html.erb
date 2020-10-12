@@ -1,0 +1,26 @@
+<% @type.tracktions.each do |track| %>
+  <% if track.groups.first %>
+    <% track.groups.each do |group| %>
+      <% @type_sums[group.name] = 0 unless @groups_sums[group.name] %>
+    <% end %>
+  <% else %>
+  <% end %>
+<% end %>
+
+<% @type_sums = {} %>
+<% @type.tracktions.each do |track| %>
+  <% if track.groups.first %>
+    <% track.groups.each do |group| %>
+      <div>
+        <% @type_sums[group.name] += track.amount %>
+        <p><%= link_to group.name, group_path(group) %></p>
+        <p><%= track.amount %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <div>
+      <p><%= link_to 'Unassigned', unassigned_path %></p>
+      <p><%= track.amount %></p>
+    </div>
+  <% end %>
+<% end %>

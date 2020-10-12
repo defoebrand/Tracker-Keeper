@@ -1,0 +1,11 @@
+<div class="nav-icons">
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, tracktions_path %></p>
+</div>
+
+<h1><%= @type.amount_type %></h1>
+<div class="container sum-totals">
+  <%= type_transactions_count(@type.tracktions) %>
+</div>
+<div class="view-display">
+  <%= render 'list_transactions' %>
+</div>

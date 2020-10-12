@@ -17,6 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: postgres
+
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -81,5 +83,3 @@ test:
 production:
   <<: *default
   database: Tracker_Keeper_production
-  username: Tracker_Keeper
-  password: <%= ENV['TRACKER_KEEPER_DATABASE_PASSWORD'] %>

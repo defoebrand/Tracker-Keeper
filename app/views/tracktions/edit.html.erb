@@ -1,0 +1,8 @@
+<div class="nav-icons">
+  <p><%= link_to '<i class="fas fa-arrow-left"></i>'.html_safe, @tracktion %></p>
+  <p><%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, @tracktion, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+</div>
+
+<h1>Edit <%= @tracktion.name %></h1>
+
+<%= render 'form', tracktion: @tracktion %>
